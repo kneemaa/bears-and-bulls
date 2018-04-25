@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Portfolio from "./components/Portfolio/Portfolio.js"
+// import TradeHistory from "./components/TradeHistory/TradeHistory.js"
+// import Trade from "./components/Trade/Trade.js"
+// import Search from "./components/Search/Search.js"
+// import Nav from "./components/Nav/Nav.js"
+// import Footer from "./components/Footer/Footer.js"
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+
+
+
+const App = () =>
+    <Router>
+    <div>
+        <div>
+          <h1>Hellooooo, Stocks App...Build in Progress</h1>
+        </div>
+      {/* <Nav /> */}
+      {/* <UserData /> */}
+      <Switch>
+        {/* <Route exact path="/" component={Portfolio} />
+        <Route exact path="/history" component={TradeHistory} />
+        <Route exact path="/trade" component={Trade} />
+        <Route exact path="/search" component={Search} /> */}
+      </Switch>
+      {/* <Footer /> */}
+    </div>
+  </Router>;
 
 export default App;
+
