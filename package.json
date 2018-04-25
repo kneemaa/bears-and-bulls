@@ -1,0 +1,24 @@
+{
+  "name": "bears-and-bulls",
+  "version": "1.0.0",
+  "description": "React Mock Stock Market trading app",
+  "main": "server.js",
+  "repository": "git@github.com:smalldoorman/bears-and-bulls.git",
+  "author": "Nema Darban <nema.darban@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "seed": "node scripts/seedDB.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "installDeps": "yarn && cd client && yarn"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.0"
+  }
+}
