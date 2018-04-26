@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Portfolio from "./components/Portfolio/Portfolio.js"
 // import TradeHistory from "./components/TradeHistory/TradeHistory.js"
 // import Trade from "./components/Trade/Trade.js"
-// import Search from "./components/Search/Search.js"
+import Search from "./components/Search/Search.js"
 // import Nav from "./components/Nav/Nav.js"
 // import Footer from "./components/Footer/Footer.js"
 
@@ -16,6 +16,7 @@ const App = () =>
         <div>
           <h1>Hellooooo, Stocks App...Build in Progress</h1>
         </div>
+        <Search/>
       {/* <Nav /> */}
       {/* <UserData /> */}
       <Switch>
