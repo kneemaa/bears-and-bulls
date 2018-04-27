@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 
-class Search extends Component {
+class Portfolio extends Component {
     state = {
-        stocks: ["appl", "snap", 'x']
+        userStocks: ["appl", "snap", 'x'],
+        chartedStock: ""
     }
 
     componentDidMount() {
@@ -12,13 +13,18 @@ class Search extends Component {
     render() {
         return(
         <div>
+            {/* <Pills />  */}
             <div>
                 <h1 className = "heading">Portfolio</h1>
             </div>
             <div>
-                <BarChart />
+                {/* <BarChart />
                 <CircleChart />
+                <MyStocks />
+                <SuggestedStocks /> */}
             </div>
         </div>
         )}
 }
+
+export default Portfolio
