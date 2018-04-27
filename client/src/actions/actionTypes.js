@@ -1,10 +1,10 @@
-// this file basically consolidates a list of all the possible actioTypes for the app
+// this file basically consolidates a list of all the possible actionTypes for the app
 // and makes them accessible to all reducers through the exported "actions"
 
-// actions call reducers with an actionType that tells the reducer what to do
-// actions describe/request something to happen, and the reducer responds to the action
+// actions call reducers with an actionType that tells the reducer what to do to state
+// actions describe/request something to happen to state, and the reducer responds to the action by updating state
 
-// how does it call the reducer? "Under the hood magic?"
+// how does it call the reducer? "Under the hood magic?" :yes
 
 const actions = {
     BUY_THIS_STOCK: "BUY_THIS_STOCK",
