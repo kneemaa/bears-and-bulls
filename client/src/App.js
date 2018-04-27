@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+//import { Button } from 'react-bootstrap'
 // import Portfolio from "./components/Portfolio/Portfolio.js"
 // import TradeHistory from "./components/TradeHistory/TradeHistory.js"
 // import Trade from "./components/Trade/Trade.js"
