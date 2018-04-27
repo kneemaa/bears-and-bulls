@@ -17,7 +17,6 @@ const App = () =>
         <div>
           <h1>Hellooooo, Stocks App...Build in Progress</h1>
         </div>
-        <Search/>
       {/* <Nav /> */}
       {/* <UserData /> */}
       <Switch>
