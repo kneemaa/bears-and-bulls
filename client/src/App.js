@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import TradeHistory from "./components/TradeHistory/TradeHistory.js"
 // import Trade from "./components/Trade/Trade.js"
 import Search from "./components/Search/Search.js"
+import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
 // import Nav from "./components/Nav/Nav.js"
 // import Footer from "./components/Footer/Footer.js"
 
