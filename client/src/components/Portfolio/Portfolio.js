@@ -23,7 +23,7 @@ class Portfolio extends Component {
                 <h1 className = "heading">Portfolio</h1>
             </div>
             <div>
-                <BarChart symbol = "aapl"/>
+                <BarChart symbol = "aapl" style={{height:400, width:'100%'}}/>
                 {/* <CircleChart /> */}
                 {/* <MyStocks /> */}
                 <SuggestedStock />
