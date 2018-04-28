@@ -6,17 +6,7 @@ import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 // import MyStocks from "../MyStocks/MyStocks.js"
 
 
-class Portfolio extends Component {
-    state = {
-        userStocks: ["appl", "snap", 'x'],
-        chartedStock: ""
-    }
-
-    componentDidMount() {
-        // this.openWebSocket()
-    }
-   
-    render() {
+const Portfolio = () => {
         return(
         <div>
             {/* <Pills />  */}
@@ -30,7 +20,7 @@ class Portfolio extends Component {
                 <SuggestedStock />
             </div>
         </div>
-        )}
+        )
 }
 
 export default Portfolio
