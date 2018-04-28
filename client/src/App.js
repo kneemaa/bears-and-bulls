@@ -9,8 +9,7 @@ import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
 import Navbar from "./components/Navbar/Navbar.js"
 // import Footer from "./components/Footer/Footer.js"
 
-
-
+import BarChart from './components/barChart/chart.js';
 
 const App = () =>
     <Router>
@@ -21,6 +20,11 @@ const App = () =>
         </div>
       {/* <Nav /> */}
       {/* <UserData /> */}
+	  	<h2>Hey, I am a portfolio chart waiting for relocation and resizing. <br/>It may take a few second to load me.</h2>
+	  	<BarChart
+			symbol='IBM'
+			style={{height:400, width:'100%'}}
+		/>
       <Switch>
         {/* <Route exact path="/" component={Portfolio} />
         <Route exact path="/history" component={TradeHistory} />
