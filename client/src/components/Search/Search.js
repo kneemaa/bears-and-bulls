@@ -15,6 +15,7 @@ class Search extends Component {
 	}
 
 	handleSubmit = event => {
+		event.preventDefault()
 		this.setState({ helpBlock: ''})
 		let searchKey = (this.state.searchKey).trim().toUpperCase()
 		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
@@ -47,9 +48,11 @@ class Search extends Component {
 					</div>
 					) : (
 					<div>Nothing to show</div>)}
+				<form className='searchForm' onSubmit={this.handleSubmit}>
 				<FormControl value={this.state.searchKey} className='searchInput' onChange={this.handleChange} componentClass='input'/>
 				<Button type='submit' onClick={this.handleSubmit} value='Submit'>Search</Button>
 				<HelpBlock>{this.state.helpBlock}</HelpBlock>
+				</form>
 			</div>
 			)
 	}

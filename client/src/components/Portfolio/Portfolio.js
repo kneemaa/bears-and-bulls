@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import BarChart from "../barChart/chart.js"
+import BarChart from "../BarChart/BarChart.js"
 import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 // import CircleChart from "../CircleChart/CircleChart.js"
 // import MyStocks from "../MyStocks/MyStocks.js"
