@@ -8,34 +8,44 @@ import Search from "./components/Search/Search.js"
 import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
 import Navbar from "./components/Navbar/Navbar.js"
 // import Footer from "./components/Footer/Footer.js"
-
+import Auth from './components/Auth/Auth'
+import history from './components/Auth/History'
+import Callback from './components/Callback/Callback'
+import Home from './components/Home/Home'
 
 import BarChart from './components/BarChart/BarChart.js';
 import PieChart from './components/PieChart/PieChart.js';
 
+const auth = new Auth();
+
+const handleAuthentication = ({location}) => {
+  if (/access_token|id_token|error/.test(location.hash)) {
+    auth.handleAuthentication();
+  }
+}
+
+//const { isAuthenticated } = this.props.auth
 
 class App extends Component {
 
 
-  goTo(route) {
+  goTo = (route) => {
     this.props.history.replace(`/${route}`)
   }
 
-  login() {
+  login = () => {
     this.props.auth.login();
   }
 
-  logout() {
+  logout = () => {
     this.props.auth.logout();
   }
 
-  
-
   render() {
-    //const { isAuthenticated } = this.props.auth
+    
 
     return (
-      <Router>
+      <Router history={history}>
     
         <div>
             <Navbar
@@ -82,15 +92,6 @@ class App extends Component {
             </div>*/}
           
 
-            
-
-
-
-
-
-
-
-
 
             <div>
               <h1>Hellooooo, Stocks App...Build in Progress</h1>
@@ -102,7 +103,12 @@ class App extends Component {
             <Route exact path="/" component={Portfolio} />
             {/* <Route exact path="/history" component={TradeHistory} />
             <Route exact path="/trade" component={Trade} /> */}
-            <Route exact path="/search" component={Search} />
+            <Route path='/home' render={(props) => <Home auth={auth} {...props} />} />
+            <Route path="/search" component={Search} />
+            <Route path='/callback' render={(props) => {
+            handleAuthentication(props);
+            return <Callback {...props} /> 
+          }}/>
           </Switch>
           {/* <Footer /> */}
         </div>
