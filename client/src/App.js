@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Trade from "./components/Trade/Trade.js"
 import Search from "./components/Search/Search.js"
 import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
-// import Nav from "./components/Nav/Nav.js"
+import Navbar from "./components/Navbar/Navbar.js"
 // import Footer from "./components/Footer/Footer.js"
 
 
@@ -15,6 +15,7 @@ import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
 const App = () =>
     <Router>
     <div>
+        <Navbar/>
         <div>
           <h1>Hellooooo, Stocks App...Build in Progress</h1>
         </div>
