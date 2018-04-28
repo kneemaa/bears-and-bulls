@@ -9,7 +9,8 @@ import SuggestedStock from "./components/SuggestedStock/SuggestedStock.js"
 // import Nav from "./components/Nav/Nav.js"
 // import Footer from "./components/Footer/Footer.js"
 
-import BarChart from './components/barChart/chart.js';
+import BarChart from './components/BarChart/BarChart.js';
+import PieChart from './components/PieChart/PieChart.js';
 
 const App = () =>
     <Router>
@@ -24,6 +25,8 @@ const App = () =>
 			symbol='IBM'
 			style={{height:400, width:'100%'}}
 		/>
+		<h2>I am a sample pie chart.</h2>
+		<PieChart style={{height:400, width:400}} />
       <Switch>
         {/* <Route exact path="/" component={Portfolio} />
         <Route exact path="/history" component={TradeHistory} />
