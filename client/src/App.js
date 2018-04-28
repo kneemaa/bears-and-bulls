@@ -10,11 +10,6 @@ import Search from "./components/Search/Search.js"
 // import Footer from "./components/Footer/Footer.js"
 
 
-// import BarChart from './components/barChart/chart.js';
-import BarChart from './components/BarChart/BarChart.js';
-import PieChart from './components/PieChart/PieChart.js';
-
-
 const App = () =>
     <Router>
     <div>
@@ -24,13 +19,6 @@ const App = () =>
       {/* <Nav /> */}
       {/* <UserData /> */}
 
-	  	<h2>Hey, I am a portfolio chart waiting for relocation and resizing. <br/>It may take a few second to load me.</h2>
-	  	<BarChart
-			symbol='IBM'
-			style={{height:400, width:'100%'}}
-		/>
-		<h2>I am a sample pie chart.</h2>
-		<PieChart style={{height:400, width:400}} />
       <Switch>
         <Route exact path="/" component={Portfolio} />
         {/* <Route exact path="/history" component={TradeHistory} />
