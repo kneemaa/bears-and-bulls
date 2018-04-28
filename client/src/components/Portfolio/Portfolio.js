@@ -1,4 +1,9 @@
 import React, {Component} from "react";
+import BarChart from "../barChart/chart.js"
+import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
+// import CircleChart from "../CircleChart/CircleChart.js"
+// import MyStocks from "../MyStocks/MyStocks.js"
+
 
 class Portfolio extends Component {
     state = {
@@ -18,10 +23,10 @@ class Portfolio extends Component {
                 <h1 className = "heading">Portfolio</h1>
             </div>
             <div>
-                {/* <BarChart />
-                <CircleChart />
-                <MyStocks />
-                <SuggestedStocks /> */}
+                <BarChart symbol = "aapl"/>
+                {/* <CircleChart /> */}
+                {/* <MyStocks /> */}
+                <SuggestedStock />
             </div>
         </div>
         )}
