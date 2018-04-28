@@ -26,7 +26,7 @@ class BarChart extends Component {
 	}
 
     createChart = () => {
-		let myChart = echarts.init(document.getElementById('main'));
+		let myChart = echarts.init(document.getElementById('bar'));
 		let symbol = this.state.symbol;
 		let data = this.state.data;
 
@@ -154,7 +154,7 @@ class BarChart extends Component {
     }
     render() {
         return (
-            <div id="main" style={this.props.style}></div>
+            <div id="bar" style={this.props.style}></div>
         );
     }
 }
