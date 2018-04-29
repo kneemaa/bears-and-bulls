@@ -4,16 +4,12 @@ import './SuggestedStock'
 
 
 class SuggestedStock extends Component {
-	
-	constructor(props) {
-		super(props)
-	}
 
 
 	render() {
 		return (
 			<div>
-				<img src={this.props.logo}></img>
+				<img src={this.props.logo} alt={this.props.alt}></img>
 				<p>{this.props.price}</p>
 				<p>{this.props.symbol}</p>
 				<div>{this.props.detailButton}</div>
