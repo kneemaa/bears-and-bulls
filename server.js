@@ -1,13 +1,17 @@
 const express = require("express")
-const logger = require("morgan");
+const logger = require("morgan")
 const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
-//const routes = require('./routes')
+const path = require('path')
+
+const controller = require('./controllers/stockController.js')
+
 const PORT = process.env.PORT || 3001
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/BearsAndBulls"
-mongoose.Promise = Promise
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI)
 
 app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -15,10 +19,17 @@ app.use(bodyParser.json())
 
 app.use(express.static("client/build"))
 
-//app.use(routes)
-app.get('*', function(req,res) {res.sendFile(path.resolve(__dirname,'../client/build/index.html'))})
+// test routes
+app.get('/api/allUsers', controller.allUsers)
+// create user
+app.post('/api/newUser', controller.newUser)
+// find one user
+app.get('/api/user/:id', controller.findUser)
+// buy stock
+app.post('/api/user/:id/buy', controller.buyStock)
 
-mongoose.connect(MONGODB_URI)
+// app.use(routes)
+// app.get('*', function(req,res) {res.sendFile(path.resolve(__dirname,'../client/build/index.html'))})
 
 const server = app.listen(PORT, () => {
 	console.log("App listening on PORT: " + PORT)

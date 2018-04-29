@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import BarChart from "../barChart/BarChart.js"
+import BarChart from "../BarChart/BarChart.js"
 import PieChart from "../PieChart/PieChart.js"
 
 import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
@@ -15,7 +15,7 @@ class Portfolio extends Component {
     componentDidMount() {
         // this.openWebSocket()
     }
-   
+
     render() {
         return(
         <div>
@@ -25,7 +25,7 @@ class Portfolio extends Component {
             </div>
             <div>
                 <BarChart symbol = "IBM" style={{height:400, width:'100%'}}/>
-                <PieChart style={{height:400, width:400}} />                
+                <PieChart style={{height:400, width:400}} />
                 {/* <MyStocks /> */}
                 <SuggestedStock />
             </div>

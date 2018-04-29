@@ -15,19 +15,11 @@ const UserSchema = new Schema({
 		type: Number,
 		default: 100000
 	},
-	createdAt: {
-		type: Date,
-		required: true
-	},
-	updatedAt: {
-		type: Date,
-		required: true
-	},
 	ledger: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Ledger'
 	}]
-})
+}, { timestamps: Date })
 
 let Users = mongoose.model('Users', UserSchema)
 
