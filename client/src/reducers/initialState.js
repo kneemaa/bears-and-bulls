@@ -3,9 +3,30 @@
 export default {
     user: {
         id: 0,
-        name: "",
-        owned: [],
+        name: "John Jacob",
+        owned: ["TSLA", "AAPL", "FB", "SNAP"],
         contest: false
     },
-    stocks: []
+    stocks: [
+        {
+            symbol: "TSLA",
+            paid: "50",
+            quantity: 5
+        },
+        {
+            symbol: "AAPL",
+            paid: "100",
+            quantity: 10
+        },
+        {
+            symbol: "FB",
+            paid: "75",
+            quantity:7
+        },
+        {
+            symbol: "SNAP",
+            paid: "25",
+            quantity: 12
+        },
+    ]
 }
