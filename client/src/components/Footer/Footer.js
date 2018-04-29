@@ -2,7 +2,7 @@ import './Footer.css'
 import React from 'react'
 //import {Footer} from 'react-bootstrap'
 
-export const Footer = () => return (
+const Footer = () =>  (
 		<div className="container text-md-left">
 	      <div className="row">
 	        <div className="col-md-8">
@@ -27,8 +27,10 @@ export const Footer = () => return (
 	          </ul>
 	        </div>
 	        <div className="col-md-12 pb-5">
-	          <hr style="background-color:white"></hr>
+	          <hr></hr>
 	          <a href="https://github.com/smalldoorman/bears-and-bulls">Github Repository</a>
 	        </div>
 	      </div>
 	    </div>)
+
+export default Footer
