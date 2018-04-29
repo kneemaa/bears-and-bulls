@@ -3,7 +3,7 @@ import BarChart from "../BarChart/BarChart.js"
 import PieChart from "../PieChart/PieChart.js"
 
 import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
-// import MyStocks from "../MyStocks/MyStocks.js"
+import MyStocks from "../MyStocks/MyStocks.js"
 
 
 const Portfolio = () => {
@@ -16,7 +16,7 @@ const Portfolio = () => {
             <div>
                 <BarChart symbol = "IBM" style={{height:400, width:'100%'}}/>
                 <PieChart style={{height:400, width:400}} />                
-                {/* <MyStocks /> */}
+                <MyStocks />
                 <SuggestedStock />
             </div>
         </div>
