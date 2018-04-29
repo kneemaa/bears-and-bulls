@@ -16,6 +16,7 @@
     "installDeps": "yarn && cd client && yarn"
   },
   "dependencies": {
+    "@types/auth0-js": "^8.11.2",
     "auth0-js": "^9.5.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
