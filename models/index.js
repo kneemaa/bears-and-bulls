@@ -1,4 +1,4 @@
 module.exports = {
-	Users: require('./users'),
-	Ledger: require('./ledger')
+	Users: require('./users.js'),
+	Ledger: require('./ledger.js')
 }

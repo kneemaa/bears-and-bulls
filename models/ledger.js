@@ -15,16 +15,8 @@ const LedgerSchema = new Schema({
 	is_owned: {
 		type: Boolean,
 		default: true
-	},
-	createdAt: {
-		type: Date,
-		required: true
-	},
-	updatedAt: {
-		type: Date,
-		required: true
 	}
-})
+}, { timestamps: Date })
 
 let Ledger = mongoose.model("Ledger", LedgerSchema)
 

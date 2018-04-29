@@ -26,7 +26,11 @@
     "moment": "^2.22.1",
     "mongoose": "^5.0.16",
     "morgan": "^1.9.0",
+<<<<<<< HEAD
+    "path": "^0.12.7",
+=======
     "react": "^16.3.2",
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",

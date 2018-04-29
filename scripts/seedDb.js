@@ -13,6 +13,11 @@ const userSeed = [
 		last_name: 'Thomas',
 		email: 'dthomase30@gmail.com',
 		account_balance: 10000,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 		ledger: [
 			{'_id': 'ObjectId("59316b89008c586bc2214313")'},
 			{'_id': 'ObjectId("59316b89008c586bc2214310")'},
@@ -26,6 +31,11 @@ const userSeed = [
 		last_name: 'Darban',
 		email: 'nema.darban@gmail.com',
 		account_balance: 10000,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 		ledger: [
 			{'_id': 'ObjectId("59316b89008c586bc2214305")'},
 			{'_id': 'ObjectId("59316b89008c586bc2214305")'},
@@ -38,6 +48,11 @@ const userSeed = [
 		last_name: 'Chen',
 		email: 'daphne@gmail.com',
 		account_balance: 10000,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 		ledger: [
 			{'_id': 'ObjectId("59316b89008c586bc2214302")'},
 			{'_id': 'ObjectId("59316b89008c586bc2214306")'},
@@ -52,6 +67,11 @@ const userSeed = [
 		last_name: 'Gruhlkey',
 		email: 'jeremygruhlkey@gmail.com',
 		account_balance: 10000,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 		ledger: [
 			{'_id': 'ObjectId("59316b89008c586bc2214308")'},
 			{'_id': 'ObjectId("59316b89008c586bc2214307")'},
@@ -67,6 +87,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214301")',
@@ -74,6 +99,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214302")',
@@ -81,6 +111,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214303")',
@@ -88,6 +123,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214304")',
@@ -95,6 +135,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214305")',
@@ -102,6 +147,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214306")',
@@ -109,13 +159,24 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+	},
+=======
 	},	
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	{
 		_id: 'ObjectId("59316b89008c586bc2214307")',
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214308")',
@@ -123,6 +184,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214309")',
@@ -130,6 +196,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214310")',
@@ -137,6 +208,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214311")',
@@ -144,6 +220,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214312")',
@@ -151,6 +232,11 @@ const ledgerSeed = [
 		purchase_price: 50,
 		stock_count: 5,
 		is_owned: true,
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 4cfd202eebdbad5dfc0c5c9e8ebbbb93d64cd2d0
 	},
 	{
 		_id: 'ObjectId("59316b89008c586bc2214313")',
