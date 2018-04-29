@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from '../../utils/API.js';
+//import API from '../../utils/API.js';
 
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/pie';

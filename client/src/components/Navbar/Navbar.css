@@ -1,0 +1,25 @@
+.custom-navbar-container {
+	width: 100%;
+	background-color: lightblue;
+	display: flex;
+	justify-content: space-between;
+}
+.navbar-brand {
+  margin-right: 60px;
+  font-size: 24px;
+  font-family: 'Pacifico';
+  opacity: .8;
+  display: flex;
+}
+.justify-content-between {
+	display: flex;
+	justify-content: space-between;
+}
+.custom-navbar-nav, .custom-navbar-form {
+	display: flex;
+}
+
+#menu-search-input {
+	width: 200px;
+	display: flex;
+}
