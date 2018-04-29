@@ -6,7 +6,7 @@
   "dependencies": {
     "react-scripts": "1.1.4"
   },
-  "homepage" : "http://localhost:3001/",
+  "homepage": "http://localhost:3001/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

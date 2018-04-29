@@ -3,13 +3,13 @@ import React from 'react'
 //import {Footer} from 'react-bootstrap'
 
 const Footer = () =>  (
-		<div className="container text-md-left">
+		<div className="container footer-container">
 	      <div className="row">
-	        <div className="col-md-8">
+	        <div className="col-md-8 branding">
 	          <h5 className="navbar-brand">Bears and Bulls</h5>
 	          <p className="pr-5">Lorem ipsum dolor sit amet, mandamus consequuntur pri at, augue tollit accommodare duo at. In posse semper quo, brute munere mnesarchum ad his. Oportere consulatu qui eu. Ad modus porro mundi per. </p>
 	        </div>
-	        <div className="col-md-4">
+	        <div className="col-md-4 references">
 	          <h5 className="mb-3">References</h5>
 	          <ul className="list-unstyled">
 	            <li>
@@ -26,7 +26,7 @@ const Footer = () =>  (
 	            </li>
 	          </ul>
 	        </div>
-	        <div className="col-md-12 pb-5">
+	        <div className="col-md-12 pb-5 github">
 	          <hr></hr>
 	          <a href="https://github.com/smalldoorman/bears-and-bulls">Github Repository</a>
 	        </div>

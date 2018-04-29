@@ -36,27 +36,27 @@ class Navbar extends Component {
 	render() {
 		const { isAuthenticated } = this.props.auth
 		return (
-			<div className='container'>
+			<div className='container custom-navbar-container'>
 				<p className='navbar-brand'>Bears and Bulls</p>
 				<div className='collapse navbar-collapse justify-content-between' id='menubar'>
-					<form className='form-inline md-form form-sm' onSubmit={this.handleSubmit}>
+					<form className='custom-navbar-form' onSubmit={this.handleSubmit}>
 						{/*<a href='' id='menu-search' onClick={this.handleSubmit}></a>*/}
 						<div className='waves-input-wrapper waves-effect waves-light'>
 						<input onChange={this.handleChange} id='menu-search-input' className='form-control form-control-sm' type='text' placeholder='Search Stock' aria-label='Search'></input>
 						</div>
 					</form>
-					<Nav className='navbar-nav' bsStyle="pills">
+					<Nav className='custom-navbar-nav' bsStyle="pills">
 						<LinkContainer to='/'>
-							<NavItem>Home</NavItem>
+							<NavItem className="custom-navbar-link">Home</NavItem>
 						</LinkContainer>
-						<LinkContainer to='/profile'>
-							<NavItem>My Account</NavItem>
+						<LinkContainer to='/home'>
+							<NavItem className="navbar-link">My Account</NavItem>
 						</LinkContainer>
-						<NavItem>{
+						<NavItem className="navbar-link">{
 				              !isAuthenticated() && (
 				                  <Button
 				                    bsStyle="primary"
-				                    className="btn-margin"
+				                    className="btn-margin login-btn"
 				                    onClick={this.login.bind(this)}
 				                  >
 				                    Log In
@@ -67,7 +67,7 @@ class Navbar extends Component {
 				              isAuthenticated() && (
 				                  <Button
 				                    bsStyle="primary"
-				                    className="btn-margin"
+				                    className="btn-margin logout-btn"
 				                    onClick={this.logout.bind(this)}
 				                  >
 				                    Log Out
