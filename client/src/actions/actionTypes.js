@@ -7,8 +7,10 @@
 // how does it call the reducer? "Under the hood magic?" :yes
 
 const actions = {
-    BUY_STOCK: "BUY_THIS_STOCK",
+    BUY_STOCK: "BUY_STOCK",
     BUY_STOCK_SUCCESS: "BUY_STOCK_SUCCESS",
+
+    SELL_STOCK: "SELL_STOCK",
     SELL_STOCK_SUCCESS: "SELL_STOCK_SUCCESS",
 
     UPDATE_USER_AVAILABLE: "UPDATE_USER_AVAILABLE"
