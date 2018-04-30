@@ -6,8 +6,8 @@ import initialState from './initialState';
 
 export default function stocksReducer(state = initialState.stocks, action) {
     switch (action.type) {
-      case actionTypes.BUY_THIS_STOCK: {
-        return action.data;
+      case actionTypes.BUY_STOCK_SUCCESS: {
+        return state.push(action.data);
       }
       default: {
         return state;
