@@ -5,6 +5,7 @@ export default {
         id: 0,
         name: "John Jacob",
         owned: ["TSLA", "AAPL", "FB", "SNAP"],
+        availableBalance: 10000,
         contest: false
     },
     stocks: [
