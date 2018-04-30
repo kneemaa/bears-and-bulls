@@ -1,5 +1,4 @@
-
-import React, {Component} from "react";
+import React from "react";
 import BarChart from "../BarChart/BarChart.js"
 import PieChart from "../PieChart/PieChart.js"
 
@@ -7,19 +6,7 @@ import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 import MyStocks from "../MyStocks/MyStocks.js"
 
 
-
-class Portfolio extends Component {
-    state = {
-        userStocks: ["appl", "snap", 'x'],
-        chartedStock: ""
-    }
-
-    componentDidMount() {
-        // this.openWebSocket()
-    }
-
-    render() {
-
+const Portfolio = () => {
         return(
         <div>
             {/* <Pills />  */}
@@ -28,10 +15,8 @@ class Portfolio extends Component {
             </div>
             <div>
                 <BarChart symbol = "IBM" style={{height:400, width:'100%'}}/>
-
                 <PieChart style={{height:400, width:400}} />                
                 <MyStocks />
-
                 <SuggestedStock />
             </div>
         </div>
