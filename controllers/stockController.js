@@ -18,14 +18,54 @@ module.exports = {
 	},
 	// find one user
 	findUser: (req, res) => {
-		db.Users.find({_id:req.params.id})
-		.populate('ledger')
+		db.Users.findOne({_id:req.params.id})
 		.then(data => {
 			res.json(data)
 		})
 	},
-	// buy stock
-	buyStock: (req, res) => {
+	// get portfolio
+	getPortfolio: (req, res) => {
+		db.Users.findOne({_id:req.params.id})
+		.populate('ledger')
+		.then(data => {
+			Array.prototype.sortBySymbol = function(){
+				return this.reduce((groups,item) => {
+				groups[item.symbol] = groups[item.symbol] || [];
+				groups[item.symbol].push(item);
+				return groups
+			}, {});
+			}
+
+			let stocks = data.ledger.sortBySymbol();
+			let portfolioData = [];
+
+			for(key in stocks){
+				let count = 0;
+				stocks[key].map((record)=>{
+					count = count + record.stock_count
+					return count
+				});
+
+				if (count !== 0) {
+					portfolioData.push({
+						symbol: key,
+						count: count
+					});
+				}
+			}
+			res.json(portfolioData);
+		})
+	},
+	// get trade history
+	getHistory: (req, res) => {
+		db.Users.findOne({_id:req.params.id})
+		.populate('ledger')
+		.then(data => {
+			res.json(data.ledger)
+		})
+	},
+	// buy and sell stock
+	stockTrade: (req, res) => {
 		db.Ledger.create(req.body)
 		.then(stock => {
 			db.Users.update(
