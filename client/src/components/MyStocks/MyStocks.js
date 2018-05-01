@@ -9,7 +9,10 @@ const MyStocks = (props) => {
             <h1>My Stocks</h1>
             <ul>
             {props.stocks.map(stock => (
+                <div>
                 <li> {stock.symbol}, {stock.paid}, {stock.quantity}</li>
+                <button onClick ={() => stocksActionCreators.sellStock(stock.symbol) }>SELL</button>
+                </div>
             ))}
             </ul>
             

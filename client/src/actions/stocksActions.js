@@ -15,6 +15,7 @@ export const buyStockSuccess = data => {
 }
 
 export const sellStockSuccess = data => {
+    console.log("in success")
     return {
         type: actionTypes.SELL_STOCK_SUCCESS,
         data: data,
@@ -24,17 +25,17 @@ export const sellStockSuccess = data => {
 export const buyStock = (data) => {
     return function(dispatch) {
         // API to add stock to the database
-        // .then(data){
+        // .then( () => {
         //      dispatch(buyStockSuccess(data)) // data needs to be formatted stock object
         // }
     }
 }
 
-export const sellStock = (data) => {
-    return function(dispatch) {
+export const sellStock = (data) =>{
+    console.log("here we are " + data)
+    // return function(dispatch) {
         // API call to remove stock from the db
-        // .then(data){
+        // .then( () => {
         //      dispatch(sellStockSuccess(data.symbol)) // data.symbol of stock to remove
         // }
-    }
 }
