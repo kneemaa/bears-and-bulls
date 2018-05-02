@@ -46,8 +46,6 @@ module.exports = {
 				stocks[key].map((record)=>{
 					count = count + record.stock_count;
 					total = total + record.stock_count*record.purchase_price;
-					return count
-				});
 
 				if (count !== 0) {
 					let avg_price = (total/count).toFixed(2);
@@ -57,9 +55,10 @@ module.exports = {
 						purchase_price: avg_price
 					});
 				}
-			}
+			});
 			res.json(portfolioData);
-		})
+		}
+	});
 	},
 	// get trade history
 	getHistory: (req, res) => {

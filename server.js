@@ -22,8 +22,7 @@ app.use(express.static("client/build"))
 
 require("./routes/routes.js")(app);
 
-// app.use(routes)
-app.get('*', function(req,res) {res.sendFile(path.resolve(__dirname,'../client/build/index.html'))})
+// app.get('*', function(req,res) {res.sendFile(path.resolve(__dirname,'../client/build/index.html'))})
 
 const server = app.listen(PORT, () => {
 	console.log("App listening on PORT: " + PORT)
