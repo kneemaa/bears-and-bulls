@@ -6,7 +6,7 @@ const routes = function(app){
 	// create user
 	app.post('/api/newUser', controller.newUser)
 	// find user data
-	app.get('/api/user/:id', controller.findUser)
+	app.get('/api/user/:email', controller.findUser)
 	// get portfolio
 	app.get('/api/user/:id/portfolio', controller.getPortfolio)
 	// get history

@@ -15,7 +15,7 @@ class Profile extends Component {
       getProfile((err, profile) => {
         this.setState({ profile });
         console.log(profile.email)
-        // this.props.userActions.getUser(profile.email)
+        this.props.userActions.getUser(profile.email)
       });
     } else {
       this.setState({ profile: userProfile });
