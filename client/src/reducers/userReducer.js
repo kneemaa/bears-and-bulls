@@ -9,8 +9,10 @@ import initialState from './initialState';
 
 export default function userReducer(state = initialState.user, action) {
     switch (action.type) {
-      case actionTypes.UPDATE_USER_AVAILABLE: {
-        return action.data;
+      case actionTypes.GET_USER_SUCCESS: {
+        return {...state, id: action.data._id, accountBalance: action.data.account_balance,
+                firstName: action.data.first_name, lastName: action.data.last_name, 
+                email: action.data.email};
       }
       default: {
         return state;

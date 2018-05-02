@@ -7,9 +7,26 @@
 //import axios from 'axios'; // for outbound api calls
 import actionTypes from './actionTypes';
 
-export const updateAvailableBalance = data => {
+export const getUser = data => {
+    console.log("searching user " + data)
+    return function(dispatch) {
+    const email = data
+        axios
+            .get(`/api/user/${email}`)
+            .then(data => {
+                console.log(data)
+                dispatch(getUserSuccess(data.data))
+            })
+            .catch(error => {
+                console.log(error)
+                // dispatch(getUserFailure(email))
+            })
+    }
+}
+
+export const getUserSuccess = data => {
     return {
-        type: actionTypes.UPDATE_USER_AVAILABLE,
+        type: actionTypes.GET_USER_SUCCESS,
         data: data
     }
 }
