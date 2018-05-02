@@ -41,20 +41,24 @@ module.exports = {
 
 			for(key in stocks){
 				let count = 0;
+				let total = 0;
+
 				stocks[key].map((record)=>{
-					count = count + record.stock_count
-					return count
-				});
+					count = count + record.stock_count;
+					total = total + record.stock_count*record.purchase_price;
 
 				if (count !== 0) {
+					let avg_price = (total/count).toFixed(2);
 					portfolioData.push({
 						symbol: key,
-						count: count
+						count: count,
+						purchase_price: avg_price
 					});
 				}
-			}
+			});
 			res.json(portfolioData);
-		})
+		}
+	});
 	},
 	// get trade history
 	getHistory: (req, res) => {
