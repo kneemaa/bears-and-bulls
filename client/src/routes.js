@@ -7,6 +7,7 @@ import Auth from './components/Auth/Auth';
 import history from './components/Auth/History';
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
 
 const auth = new Auth();
@@ -30,6 +31,7 @@ export const makeMainRoutes = () => {
                     <Footer/>
                   </div>} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => { 
             handleAuthentication(props)
             return <Callback {...props} /> }}/>
