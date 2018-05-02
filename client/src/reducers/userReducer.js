@@ -12,6 +12,9 @@ export default function userReducer(state = initialState.user, action) {
       case actionTypes.UPDATE_USER_AVAILABLE: {
         return action.data;
       }
+      case "user": {
+        return {...state, id: 2} 
+      }
       default: {
         return state;
       }

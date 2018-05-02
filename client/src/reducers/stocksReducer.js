@@ -7,7 +7,7 @@ import initialState from './initialState';
 export default function stocksReducer(state = initialState.stocks, action) {
     switch (action.type) {
       case actionTypes.BUY_STOCK_SUCCESS: {
-        return state.push(action.data);
+        return state.concat([action.data]);
       }
       
       case actionTypes.SELL_STOCK_SUCCESS: {
