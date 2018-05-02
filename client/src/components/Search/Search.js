@@ -20,8 +20,10 @@ class Search extends Component {
 	query = (searchKey) => {
 		this.setState({ helpBlock: ''})
 		searchKey ? searchKey = searchKey.trim().toUpperCase() : searchKey = ''
-		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
 		this.setState({lastKey: searchKey})
+		this.props.actions.reduAct
+
+		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
 
 		axios.get(url)
 			.then(res => {

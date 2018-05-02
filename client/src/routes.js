@@ -9,6 +9,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
+import Trade from './components/Trade/Trade'
 
 const auth = new Auth();
 
@@ -47,7 +48,12 @@ export const makeMainRoutes = () => {
                     <Search {...props}/>
                     <Footer/>
                   </div> }/>
-          
+          <Route exact path="/trade" render={(props) =>
+                  <div>
+                    <Navbar auth={auth} />
+                    <Trade {...props}/>
+                    <Footer/>
+                  </div>}/>
         </div>
       </Router>
   );
