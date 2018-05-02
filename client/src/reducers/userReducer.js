@@ -11,7 +11,8 @@ export default function userReducer(state = initialState.user, action) {
     switch (action.type) {
       case actionTypes.GET_USER_SUCCESS: {
         return {...state, id: action.data._id, accountBalance: action.data.account_balance,
-                firstName: action.data.first_name, lastName: action.data.last_name};
+                firstName: action.data.first_name, lastName: action.data.last_name, 
+                email: action.data.email};
       }
       default: {
         return state;
