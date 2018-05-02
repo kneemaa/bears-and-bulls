@@ -4,6 +4,7 @@ const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const path = require('path')
+// const routes = require('./routes/routes.js');
 
 const controller = require('./controllers/stockController.js')
 
@@ -19,18 +20,7 @@ app.use(bodyParser.json())
 
 app.use(express.static("client/build"))
 
-// test routes
-app.get('/api/allUsers', controller.allUsers)
-// create user
-app.post('/api/newUser', controller.newUser)
-// find user data
-app.get('/api/user/:id', controller.findUser)
-// get portfolio
-app.get('/api/user/:id/portfolio', controller.getPortfolio)
-// get history
-app.get('/api/user/:id/history', controller.getHistory)
-// buy and sell stock
-app.post('/api/user/:id/trade', controller.stockTrade)
+require("./routes/routes.js")(app);
 
 // app.use(routes)
 app.get('*', function(req,res) {res.sendFile(path.resolve(__dirname,'../client/build/index.html'))})
