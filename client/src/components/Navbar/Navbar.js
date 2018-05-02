@@ -5,7 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 import './Navbar.css'
 import Auth from '../Auth/Auth.js'
 
-
 class Navbar extends Component {
 
 	state = {

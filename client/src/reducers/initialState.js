@@ -3,9 +3,10 @@
 export default {
     user: {
         id: 0,
-        name: "John Jacob",
-        owned: ["TSLA", "AAPL", "FB", "SNAP"],
-        contest: false
+        accountBalance: 0,
+        firstName: "",
+        lastName: "",
+        email: ""
     },
     stocks: [
         {
