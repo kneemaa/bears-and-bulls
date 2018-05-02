@@ -11,7 +11,7 @@ const MyStocks = (props) => {
             {props.stocks.map((stock, index) => (
                 <div>
                 <li> {stock.symbol}, {stock.paid}, {stock.quantity}</li>
-                <button onClick ={() => stocksActionCreators.sellStock(stock.symbol) }>SELL</button>
+                <button onClick ={() => this.props.stocksActions.sellStock(stock.symbol) }>SELL</button>
                 </div>
             ))}
             </ul>
