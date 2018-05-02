@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, FormControl, HelpBlock } from 'react-bootstrap'
+import query from '../../utils/query'
 import axios from 'axios'
 
 import './Search.css'
@@ -14,30 +15,17 @@ class Search extends Component {
 	}
 
 	componentWillMount() {
-		this.query(this.props.match.params.symbol)
+		this.lookUp(this.props.match.params.symbol)
 	}
 
-	query = (searchKey) => {
+	lookUp = (searchKey) => {
 		this.setState({ helpBlock: ''})
 		searchKey ? searchKey = searchKey.trim().toUpperCase() : searchKey = ''
-		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
+		
+		query(searchKey).then(res => this.setState(res)).catch(err => this.setState(err))
+		
 		this.setState({lastKey: searchKey})
 
-		axios.get(url)
-			.then(res => {
-				let price = res.data[0]["price"]
-				if (price !== undefined) {
-					return this.setState({
-						price: price,
-						searchKey: ''
-					})
-				}
-				this.setState({
-					helpBlock: `${searchKey} is not a valid stock symbol. Please try again.`
-				})
-
-			})
-			.catch(err => console.log(err))
 	}
 
 	handleSubmit = event => {

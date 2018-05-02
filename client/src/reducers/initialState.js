@@ -28,5 +28,10 @@ export default {
             paid: "25",
             quantity: 12
         },
-    ]
+    ],
+    trade: {
+        lastKey: '',
+        helpBlock: '',
+        price: 0,
+    }
 }
