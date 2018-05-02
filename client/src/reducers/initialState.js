@@ -3,10 +3,9 @@
 export default {
     user: {
         id: 0,
-        account_balance: 0,
-        ledger: [],
-        first_name: "",
-        last_name: "",
+        accountBalance: 0,
+        firstName: "",
+        lastName: "",
         email: ""
     },
     stocks: [

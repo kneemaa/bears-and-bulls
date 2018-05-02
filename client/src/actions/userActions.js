@@ -15,7 +15,7 @@ export const getUser = data => {
             .get(`/api/user/${email}`)
             .then(data => {
                 console.log(data)
-                // dispatch(getUserSuccess(data))
+                dispatch(getUserSuccess(data.data))
             })
             .catch(error => {
                 console.log(error)
