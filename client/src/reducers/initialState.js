@@ -30,7 +30,7 @@ export default {
             quantity: 12
         },
     ],
-    trade: {
+    search: {
         lastKey: '',
         helpBlock: '',
         price: 0,

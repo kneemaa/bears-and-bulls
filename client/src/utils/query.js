@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const query = searchKey => {
+
+
+
+/*const query = searchKey => {
 	return new Promise(function(resolve, reject) {
 		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
 		axios.get(url)
@@ -18,6 +21,6 @@ const query = searchKey => {
 
 	})
 	
-}
+}*/
 
-export default query
+export default (query)

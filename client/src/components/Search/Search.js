@@ -1,38 +1,37 @@
+import './Search.css'
 import React, { Component } from 'react'
 import { Button, FormControl, HelpBlock } from 'react-bootstrap'
-import query from '../../utils/query'
-import axios from 'axios'
+import * as searchActionCreators from '../../actions/searchActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import './Search.css'
+function mapStateToProps(state) {
+	  return {
+	    search: state.search,
+	  };
+	}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    searchActions: bindActionCreators(searchActionCreators, dispatch),
+    
+  };
+}
 
 class Search extends Component {
 	state = {
 		searchKey: ''
 	}
 
+
 	handleChange = event => {
 		this.setState({searchKey: event.target.value})
 	}
 
-	componentWillMount() {
-		this.lookUp(this.props.match.params.symbol)
-	}
-
-	lookUp = (searchKey) => {
-		this.setState({ helpBlock: ''})
-		searchKey ? searchKey = searchKey.trim().toUpperCase() : searchKey = ''
-		
-		query(searchKey).then(res => this.setState(res)).catch(err => this.setState(err))
-		
-		this.setState({lastKey: searchKey})
-
-	}
-
 	handleSubmit = event => {
 		event.preventDefault()
-		console.log('posting')
-		this.props.history.push(`/search/${this.state.searchKey}`)
-		window.location.reload()
+		let searchKey = this.state.searchKey.trim().toUpperCase()
+		this.props.searchActions.query(searchKey)
 	}
 
 	render() {
@@ -42,7 +41,7 @@ class Search extends Component {
 				{this.state.lastKey !== '' ? (
 					<div>
 						<p>Key: {this.state.lastKey}</p>
-						<p>{this.state.price}</p>
+						<p>{this.props.search.price ? this.props.search.price : ''}</p>
 					</div>
 					) : (
 					<div>{/*empty div*/}</div>)}
@@ -56,4 +55,4 @@ class Search extends Component {
 	}
 }
 
-export default Search
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
