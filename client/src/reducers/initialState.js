@@ -29,5 +29,10 @@ export default {
             paid: "25",
             quantity: 12
         },
-    ]
+    ],
+    search: {
+        lastKey: '',
+        helpBlock: '',
+        price: 0,
+    }
 }
