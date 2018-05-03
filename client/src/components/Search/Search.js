@@ -1,14 +1,17 @@
 import './Search.css'
+import axios from 'axios'
 import React, { Component } from 'react'
-import { Tabs, Tab, Button, FormControl, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { Button, FormControl, FormGroup, HelpBlock } from 'react-bootstrap'
 import * as searchActionCreators from '../../actions/searchActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import BarChart from '../BarChart/BarChart'
 
+
 function mapStateToProps(state) {
 	  return {
 	    search: state.search,
+	    user: state.user,
 	  };
 	}
 
@@ -21,7 +24,8 @@ function mapDispatchToProps(dispatch) {
 class Search extends Component {
 	state = {
 		searchSymbol: '',
-		qty: 0,
+		quantity: 0,
+		action: '',
 	}
 
 
@@ -48,8 +52,10 @@ class Search extends Component {
 		this.setState({symbol: event.target.value.trim().toUpperCase()})
 	}
 
-	handleChangeQTY = (event) => {
-		this.setState({qty: event.target.value})
+	handleQuantityChange = (event) => {
+		this.setState({quantity: event.target.value})
+		let subtotal = event.target.value * this.props.search.price
+		this.setState({ subtotal: subtotal })
 	}
 
 	validateSymbol = () => {
@@ -62,9 +68,9 @@ class Search extends Component {
 		return null
 	}
 
-	validateQty = () => {
-		if (this.state.qty.length) {
-			    if (isNaN(this.state.qty)) {
+	validateQuantity = () => {
+		if (this.state.quantity.length) {
+			    if (isNaN(this.state.quantity)) {
 			      return 'error'
 			    }
 			    return null
@@ -72,18 +78,63 @@ class Search extends Component {
 		return null
 	}
 
+	actionHandler = (action) => {
+		switch (action) {
+			case 'buy':
+				console.log('buy')
+				axios({
+					method: 'POST',
+					url: `http://localhost:3000/api/user/${this.props.user.email}/trade`, 
+					data:{
+						'symbol': this.props.search.symbol,
+						'purchase_price': this.props.search.price,
+						'stock_count': this.state.quantity
+					},
+				}).then((data) => console.log(data))
+				break;
+			case 'sell':
+				break;
+			default:
+				console.alert('Action was not "Buy" or "Sell"')
+				break;
+		}
+	}
+
 	render() {
 		return (
 		<div>
 			<div className='searchComponent'>
 				<h1>Search & Trade</h1>
-				{this.props.search.symbol !== '' ? (
+				{this.props.search.price !== 0 ? (
 					<div>
-						<p>Key: {this.props.search.symbol}</p>
-						<p>{this.props.search.price ? this.props.search.price : ''}</p>
+						<table className="table table-hover mt-5 show-hide">
+							<thead>
+								<tr>
+									<th>Symbol</th>
+									<th>Current Price ($)</th>
+									<th>Quantity</th>
+									<th>Subtotal</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>{this.props.search.symbol}</th>
+									<th>{this.props.search.price}</th>
+									<th>
+										<FormGroup controlId='formValidationError' validationState={this.validateQuantity()} >
+											<FormControl value={this.state.quantity} className='quantityInput' onChange={this.handleQuantityChange} componentClass='input' />
+										</FormGroup>
+									</th>
+									<th>{this.state.subtotal ? this.state.subtotal : 0}</th>
+									<th><Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button></th>
+								</tr>
+							</tbody>
+						</table>
+						<BarChart symbol={this.props.search.symbol} style={{height:400, width:'100%'}}/>
+						<hr/>
 					</div>
-					) : (
-					<div>{/*empty div*/}</div>)}
+					) : (<div></div>)}
 				<form className='searchForm' onSubmit={this.handleSubmit}>
 				<span className='search-span'>
 					<FormControl value={this.state.searchSymbol} className='searchInput' onChange={this.handleChange} componentClass='input'/>
@@ -91,41 +142,6 @@ class Search extends Component {
 				</span>
 				<HelpBlock>{this.props.search.helpBlock}</HelpBlock>
 				</form>
-
-			</div>
-			<div className='chartComponent'>
-			{this.props.search.price != 0 ? (
-				<BarChart symbol={this.props.search.symbol} style={{height:400, width:'100%'}}/>
-				/*<Tabs activeKey={this.state.key} onSelect={this.handleSelect} id="trade-pane">
-
-					<Tab eventKey={1} title="Buy Stocks">
-						<FormGroup controlId='formValidationError' validationState={this.validateSymbol()}>
-							<ControlLabel>Enter Stock Symbol:</ControlLabel>
-							<FormControl onChange={this.handleChangeSymbol} onBlur={() => console.log('blur symbol')}/>
-						</FormGroup>
-						<div></div>
-						<FormGroup controlId='qtyValidation' validationState={this.validateQty()}>
-							<ControlLabel>Quantity to Buy:</ControlLabel>
-							<FormControl onChange={this.handleChangeQTY} onBlur={() => console.log('blur qty')}/>
-						</FormGroup>
-						<Button className='trade-buy-button'>Buy!</Button>
-						<Button className='trade-lookup=button'>Look Up</Button>
-					</Tab>
-					<Tab eventKey={2} title="Sell Stocks">
-						<FormGroup controlId='formValidationError' validationState={this.validateSymbol()}>
-							<ControlLabel>Enter Stock Symbol:</ControlLabel>
-							<FormControl onChange={this.handleChangeSymbol} onBlur={() => console.log('blur symbol')}/>
-						</FormGroup>
-						<div></div>
-						<FormGroup controlId='qtyValidation' validationState={this.validateQty()}>
-							<ControlLabel>Quantity to Sell:</ControlLabel>
-							<FormControl onChange={this.handleChangeQTY} onBlur={() => console.log('blur qty')}/>
-						</FormGroup>
-						<Button className='trade-sell-button'>Sell!</Button>
-						<Button className='trade-lookup=button'>Look Up</Button>
-					</Tab>
-				</Tabs>*/
-			) : (<div></div>)}
 			</div>
 		</div>
 			)

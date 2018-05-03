@@ -9,7 +9,6 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
-import Trade from './components/Trade/Trade'
 
 const auth = new Auth();
 

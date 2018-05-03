@@ -1,6 +1,5 @@
 .searchComponent{
 	width: 800px;
-	height: 300px;
 	margin: 0 auto;
 	display: flex;
 	align-content: center;
@@ -17,4 +16,7 @@
 
 .chartComponent {
 	width: 300px;
+}
+.quantityInput {
+	width: 60px;
 }

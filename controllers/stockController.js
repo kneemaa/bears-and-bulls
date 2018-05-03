@@ -73,12 +73,14 @@ module.exports = {
 		db.Ledger.create(req.body)
 		.then(stock => {
 			db.Users.update(
-				{ _id: req.params.id},
+				{ email: req.params.email},
 				{ $push: { ledger: stock._id }},
 				{ new: true })
-				.then(() => {
-					res.end()
+				.then((data) => {
+					res.json(data)
+				}).catch(err => {
+					console.log(err)
 				})
-		})
+		}).catch((err) => console.log(err))
 	}
 }
