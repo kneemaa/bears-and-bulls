@@ -4,12 +4,45 @@ import { Nav, NavItem, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import './Navbar.css'
 import Auth from '../Auth/Auth.js'
+import * as userActionCreators from "../../actions/userActions"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
+function mapStateToProps(state) {
+  return {
+    user: state.user.email,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch),
+    
+  };
+}
+
 
 class Navbar extends Component {
 
 	state = {
 		searchKey: ''
 	}
+
+	componentWillMount() {
+        this.setState({ profile: {} });
+        const { userProfile, getProfile } = this.props.auth;
+        console.log(this.props.auth)
+
+        if (!userProfile) {
+          getProfile((err, profile) => {
+            this.setState({ profile });
+            console.log(profile['email'])
+            this.props.userActions.getUser(profile['email'])
+          });
+        } else {
+          this.setState({ profile: userProfile });
+        }
+    }
 
 	handleChange = event => {
 		this.setState({searchKey: event.target.value})
@@ -48,7 +81,7 @@ class Navbar extends Component {
 						<LinkContainer to='/'>
 							<NavItem className="custom-navbar-link">Home</NavItem>
 						</LinkContainer>
-						<LinkContainer to='/home'>
+						<LinkContainer to='/search'>
 							<NavItem className="navbar-link">My Account</NavItem>
 						</LinkContainer>
 						<NavItem className="navbar-link">{
@@ -80,4 +113,4 @@ class Navbar extends Component {
 	}
 }
 
-export default withRouter(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))
