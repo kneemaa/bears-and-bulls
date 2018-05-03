@@ -34,11 +34,12 @@ class Navbar extends Component {
         console.log(this.props.auth)
 
         if (!userProfile) {
-          getProfile((err, profile) => {
-            this.setState({ profile });
-            console.log(profile['email'])
-            this.props.userActions.getUser(profile['email'])
-          });
+        	if (localStorage.getItem('access_token')) {
+	          getProfile((err, profile) => {
+	            this.setState({ profile });
+	            console.log(profile['email'])
+	            this.props.userActions.getUser(profile['email'])
+	          })}
         } else {
           this.setState({ profile: userProfile });
         }
