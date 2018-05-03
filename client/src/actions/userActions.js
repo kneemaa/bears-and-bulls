@@ -8,7 +8,8 @@ import axios from 'axios'; // for outbound api calls
 import actionTypes from './actionTypes';
 
 export const getUser = data => {
-    console.log("searching user " + data)
+    console.log("__")
+    console.log(data)
     return function(dispatch) {
     const email = data
         axios
