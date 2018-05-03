@@ -8,6 +8,7 @@ import * as userActionCreators from "../../actions/userActions"
 import * as searchActionCreators from '../../actions/searchActions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import history from '../Auth/History'
 
 
 function mapStateToProps(state) {
@@ -56,6 +57,7 @@ class Navbar extends Component {
 		event.preventDefault()
 		let searchKey = this.state.searchKey.trim().toUpperCase()
 		this.props.searchActions.query(searchKey)
+		history.push('/search')
 	}
 
 	login = () => {
@@ -86,7 +88,10 @@ class Navbar extends Component {
 							<NavItem className="custom-navbar-link">Home</NavItem>
 						</LinkContainer>
 						<LinkContainer to='/search'>
-							<NavItem className="navbar-link">My Account</NavItem>
+							<NavItem className="navbar-link">Search</NavItem>
+						</LinkContainer>
+						<LinkContainer to='/trade'>
+							<NavItem className="navbar-link">Trade</NavItem>
 						</LinkContainer>
 						<NavItem className="navbar-link">{
 				              !isAuthenticated() && (

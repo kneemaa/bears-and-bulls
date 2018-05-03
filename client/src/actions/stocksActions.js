@@ -9,8 +9,14 @@ import actionTypes from "./actionTypes";
 
 export const buyStock = data => {
     return {
-        type: actionTypes.BUY_THIS_STOCK,
+        type: actionTypes.BUY_STOCK,
         data: data,
     }
 }
 
+export const sellStock = data => {
+    return {
+        type: actionTypes.SELL_STOCK,
+        data: data,
+    }
+}

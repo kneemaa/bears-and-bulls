@@ -31,8 +31,8 @@ export default {
         },
     ],
     search: {
-        lastKey: '',
+        symbol: '',
         helpBlock: '',
         price: 0,
-    }
+    },
 }
