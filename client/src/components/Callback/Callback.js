@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import loading from './loading.svg';
 import { setIdToken, setAccessToken } from '../../utils/AuthService';
 
@@ -11,7 +12,9 @@ class Callback extends Component {
   componentDidMount() {
     setAccessToken();
     setIdToken();
-    window.location.href = "/profile"
+    // window.location.href = "/"
+
+    this.props.history.push('/')
   }
 
   render() {
@@ -36,4 +39,4 @@ class Callback extends Component {
   }
 }
 
-export default Callback;
+export default withRouter(Callback);
