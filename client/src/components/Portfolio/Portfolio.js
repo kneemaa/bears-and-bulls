@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import BarChart from "../BarChart/BarChart.js"
 import PieChart from "../PieChart/PieChart.js"
 
@@ -6,7 +6,9 @@ import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 import MyStocks from "../MyStocks/MyStocks.js"
 
 
-const Portfolio = () => {
+class Portfolio extends Component {
+    
+    render() {
         return(
         <div>
             {/* <Pills />  */}
@@ -21,6 +23,8 @@ const Portfolio = () => {
             </div>
         </div>
         )
+    }
 }
+
 
 export default Portfolio

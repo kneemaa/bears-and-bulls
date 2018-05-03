@@ -3,9 +3,10 @@
 export default {
     user: {
         id: 0,
-        name: "John Jacob",
-        owned: ["TSLA", "AAPL", "FB", "SNAP"],
-        contest: false
+        accountBalance: 0,
+        firstName: "",
+        lastName: "",
+        email: ""
     },
     stocks: [
         {
@@ -28,5 +29,10 @@ export default {
             paid: "25",
             quantity: 12
         },
-    ]
+    ],
+    search: {
+        lastKey: '',
+        helpBlock: '',
+        price: 0,
+    }
 }

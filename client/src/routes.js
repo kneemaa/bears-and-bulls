@@ -28,7 +28,7 @@ export const makeMainRoutes = () => {
           <Route exact path="/" render={(props) => 
                   <div>
                     <Navbar auth={auth} {...props} />
-                    <Portfolio  {...props} />
+                    <Portfolio auth={auth} {...props} />
                     <Footer/>
                   </div>} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
@@ -39,13 +39,13 @@ export const makeMainRoutes = () => {
           <Route exact path="/search" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
-                    <Search {...props}/>
+                    <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
           <Route path="/search/:symbol" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
-                    <Search {...props}/>
+                    <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
           <Route exact path="/trade" render={(props) =>
