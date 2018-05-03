@@ -41,12 +41,14 @@ export const makeMainRoutes = () => {
           <Route exact path="/search" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
+                    <MyAccount auth ={auth} {...props} />
                     <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
           <Route path="/search/:symbol" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
+                    <MyAccount auth ={auth} {...props} />
                     <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
