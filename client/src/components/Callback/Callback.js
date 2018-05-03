@@ -3,10 +3,6 @@ import loading from './loading.svg';
 import { setIdToken, setAccessToken } from '../../utils/AuthService';
 
 class Callback extends Component {
-  
-  constructor() {
-    super()
-  }
 
   componentDidMount() {
     setAccessToken();

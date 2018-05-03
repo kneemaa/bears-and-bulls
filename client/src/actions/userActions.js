@@ -8,14 +8,12 @@ import axios from 'axios'; // for outbound api calls
 import actionTypes from './actionTypes';
 
 export const getUser = data => {
-    console.log("__")
-    console.log(data)
     return function(dispatch) {
     const email = data
         axios
             .get(`/api/user/${email}`)
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 dispatch(getUserSuccess(data.data))
             })
             .catch(error => {

@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import './Navbar.css'
 import Auth from '../Auth/Auth.js'
 import * as userActionCreators from "../../actions/userActions"
+import * as searchActionCreators from '../../actions/searchActions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -12,12 +13,13 @@ import { bindActionCreators } from 'redux';
 function mapStateToProps(state) {
   return {
     user: state.user.email,
+    search: state.search
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActionCreators, dispatch),
-    
+    searchActions: bindActionCreators(searchActionCreators, dispatch),
   };
 }
 
@@ -31,15 +33,16 @@ class Navbar extends Component {
 	componentWillMount() {
         this.setState({ profile: {} });
         const { userProfile, getProfile } = this.props.auth;
-        console.log(this.props.auth)
+        //console.log(this.props.auth)
 
         if (!userProfile) {
         	if (localStorage.getItem('access_token')) {
-	          getProfile((err, profile) => {
-	            this.setState({ profile });
-	            console.log(profile['email'])
-	            this.props.userActions.getUser(profile['email'])
-	          })}
+				getProfile((err, profile) => {
+					this.setState({ profile });
+					//console.log(profile['email'])
+					this.props.userActions.getUser(profile['email'])
+				})
+			}
         } else {
           this.setState({ profile: userProfile });
         }
@@ -51,8 +54,8 @@ class Navbar extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		this.props.history.push(`/search/${this.state.searchKey}`)
-		window.location.reload()
+		let searchKey = this.state.searchKey.trim().toUpperCase()
+		this.props.searchActions.query(searchKey)
 	}
 
 	login = () => {

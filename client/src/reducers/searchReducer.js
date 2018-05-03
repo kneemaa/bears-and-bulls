@@ -7,7 +7,7 @@ export default function searchReducer(state = initialState.search, action) {
         return {
         	...state, 
         	lastKey: action.data.searchKey,
-        	helpBlock: '',
+        	helpBlock: action.data.helpBlock,
         	price: action.data.price,
         }
       }
@@ -16,6 +16,3 @@ export default function searchReducer(state = initialState.search, action) {
       }
     }
   }
-/*{...state, id: action.data._id, accountBalance: action.data.account_balance,
-                firstName: action.data.first_name, lastName: action.data.last_name, 
-                email: action.data.email};*/

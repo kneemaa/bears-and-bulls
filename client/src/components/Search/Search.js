@@ -14,7 +14,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
-    
   };
 }
 
@@ -38,9 +37,9 @@ class Search extends Component {
 		return (
 			<div className='searchComponent'>
 				<h1>Search</h1>
-				{this.state.lastKey !== '' ? (
+				{this.props.search.lastKey !== '' ? (
 					<div>
-						<p>Key: {this.state.lastKey}</p>
+						<p>Key: {this.props.search.lastKey}</p>
 						<p>{this.props.search.price ? this.props.search.price : ''}</p>
 					</div>
 					) : (
@@ -48,7 +47,7 @@ class Search extends Component {
 				<form className='searchForm' onSubmit={this.handleSubmit}>
 				<FormControl value={this.state.searchKey} className='searchInput' onChange={this.handleChange} componentClass='input'/>
 				<Button type='submit' onClick={this.handleSubmit} value='Submit'>Search</Button>
-				<HelpBlock>{this.state.helpBlock}</HelpBlock>
+				<HelpBlock>{this.props.search.helpBlock}</HelpBlock>
 				</form>
 			</div>
 			)
