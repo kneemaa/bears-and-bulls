@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import API from '../../utils/API.js';
 
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/pie';
@@ -20,15 +19,13 @@ class PieChart extends Component {
 		this.getChartData();
 	}
 
-	getChartData = () => {
-		// query from db
+	getChartData = id => {
 		this.createChart();
 	}
 
 	createChart = () => {
 		let myChart = echarts.init(document.getElementById('pie'));
 		let data = this.state.data;
-
 
 		myChart.setOption({
 			title: {

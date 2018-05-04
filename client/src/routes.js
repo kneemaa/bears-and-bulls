@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
 import MyAccount from './components/MyAccount/MyAccount'
-
+import Pills from './components/Pills/Pills'
 
 const auth = new Auth();
 
@@ -26,33 +26,36 @@ export const makeMainRoutes = () => {
 
       <Router history={history}>
         <div>
-          <Route exact path="/" render={(props) => 
+          <Route exact path="/" render={(props) =>
                   <div>
                     <Navbar auth={auth} {...props} />
                     <MyAccount auth ={auth} {...props} />
+					<Pills active="portfolio"/>
                     <Portfolio auth={auth} {...props} />
                     <Footer/>
                   </div>} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => { 
+          <Route path="/callback" render={(props) => {
             handleAuthentication(props)
             return <Callback {...props} /> }}/>
-          <Route exact path="/search" render={(props) => 
+          <Route exact path="/search" render={(props) =>
                   <div>
                     <Navbar auth={auth} />
                     <MyAccount auth ={auth} {...props} />
+					<Pills active="search"/>
                     <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
-          <Route path="/search/:symbol" render={(props) => 
+          <Route path="/search/:symbol" render={(props) =>
                   <div>
                     <Navbar auth={auth} />
                     <MyAccount auth ={auth} {...props} />
+					<Pills active="search"/>
                     <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
-          
+
         </div>
       </Router>
   );
