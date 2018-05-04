@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "mdbreact": "^4.3.0",
     "react-scripts": "1.1.4"
   },
   "homepage": "http://localhost:3001/",
