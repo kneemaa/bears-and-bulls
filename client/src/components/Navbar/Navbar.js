@@ -4,7 +4,27 @@ import { Nav, NavItem, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import './Navbar.css'
 import Auth from '../Auth/Auth.js'
+import * as searchActionCreators from '../../actions/searchActions'
+import * as stocksActionCreators from '../../actions/stocksActions'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import history from '../Auth/History'
 
+
+function mapStateToProps(state) {
+  return {
+    user: state.user.email,
+    search: state.search,
+    stocks: state.stocks
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    searchActions: bindActionCreators(searchActionCreators, dispatch),
+    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+  };
+}
 
 class Navbar extends Component {
 
@@ -18,8 +38,9 @@ class Navbar extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		this.props.history.push(`/search/${this.state.searchKey}`)
-		window.location.reload()
+		let searchKey = this.state.searchKey.trim().toUpperCase()
+		this.props.searchActions.query(searchKey)
+		history.push('/search')
 	}
 
 	login = () => {
@@ -49,8 +70,11 @@ class Navbar extends Component {
 						<LinkContainer to='/'>
 							<NavItem className="custom-navbar-link">Home</NavItem>
 						</LinkContainer>
-						<LinkContainer to='/home'>
-							<NavItem className="navbar-link">My Account</NavItem>
+						<LinkContainer to='/search'>
+							<NavItem className="navbar-link">Search</NavItem>
+						</LinkContainer>
+						<LinkContainer to='/trade'>
+							<NavItem className="navbar-link">Trade</NavItem>
 						</LinkContainer>
 						<NavItem className="navbar-link">{
 				              !isAuthenticated() && (
@@ -81,4 +105,4 @@ class Navbar extends Component {
 	}
 }
 
-export default withRouter(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))

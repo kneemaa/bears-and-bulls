@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import loading from './loading.svg';
+import { setIdToken, setAccessToken } from '../../utils/AuthService';
+import * as userActionCreators from "../../actions/userActions"
+import { connect } from "react-redux"
+import { bindActionCreators} from "redux"
 
 class Callback extends Component {
+
+  componentDidMount() {
+    setAccessToken();
+    setIdToken();
+
+    this.props.auth.getProfile((err, user) => {
+      if (err) {
+        console.log(err)
+      }
+      this.props.userActions.getUser(user.email);
+      this.props.history.push("/");
+    })
+    
+  }
+
   render() {
     const style = {
       position: 'absolute',
@@ -24,4 +44,16 @@ class Callback extends Component {
   }
 }
 
-export default Callback;
+function mapStateToProps(state) {
+  return {
+    user: state.user.email,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch),
+    
+  };
+}
+const routedCallback = withRouter(Callback);
+export default connect(mapStateToProps, mapDispatchToProps)(routedCallback)
