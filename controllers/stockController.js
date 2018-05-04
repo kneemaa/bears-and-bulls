@@ -20,7 +20,7 @@ module.exports = {
 	},
 	// find one user
 	findUser: (req, res) => {
-		db.Users.findOne({_id:req.params.id})
+		db.Users.findOne({email:req.params.email})
 		.then(data => {
 			res.json(data)
 		})

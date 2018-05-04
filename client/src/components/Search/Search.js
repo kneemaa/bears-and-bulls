@@ -1,71 +1,57 @@
+import './Search.css'
 import React, { Component } from 'react'
 import { Button, FormControl, HelpBlock } from 'react-bootstrap'
-import axios from 'axios'
+import * as searchActionCreators from '../../actions/searchActions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import './Search.css'
+function mapStateToProps(state) {
+	  return {
+	    search: state.search,
+	  };
+	}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    searchActions: bindActionCreators(searchActionCreators, dispatch),
+  };
+}
 
 class Search extends Component {
 	state = {
 		searchKey: ''
 	}
 
+
 	handleChange = event => {
 		this.setState({searchKey: event.target.value})
 	}
 
-	componentWillMount() {
-		this.query(this.props.match.params.symbol)
-	}
-
-	query = (searchKey) => {
-		this.setState({ helpBlock: ''})
-		searchKey ? searchKey = searchKey.trim().toUpperCase() : searchKey = ''
-		let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
-		this.setState({lastKey: searchKey})
-
-		axios.get(url)
-			.then(res => {
-				let price = res.data[0]["price"]
-				if (price !== undefined) {
-					return this.setState({
-						price: price,
-						searchKey: ''
-					})
-				}
-				this.setState({
-					helpBlock: `${searchKey} is not a valid stock symbol. Please try again.`
-				})
-
-			})
-			.catch(err => console.log(err))
-	}
-
 	handleSubmit = event => {
 		event.preventDefault()
-		console.log('posting')
-		this.props.history.push(`/search/${this.state.searchKey}`)
-		window.location.reload()
+		let searchKey = this.state.searchKey.trim().toUpperCase()
+		this.props.searchActions.query(searchKey)
 	}
 
 	render() {
 		return (
 			<div className='searchComponent'>
 				<h1>Search</h1>
-				{this.state.lastKey !== '' ? (
+				{this.props.search.lastKey !== '' ? (
 					<div>
-						<p>Key: {this.state.lastKey}</p>
-						<p>{this.state.price}</p>
+						<p>Key: {this.props.search.lastKey}</p>
+						<p>{this.props.search.price ? this.props.search.price : ''}</p>
 					</div>
 					) : (
 					<div>{/*empty div*/}</div>)}
 				<form className='searchForm' onSubmit={this.handleSubmit}>
 				<FormControl value={this.state.searchKey} className='searchInput' onChange={this.handleChange} componentClass='input'/>
 				<Button type='submit' onClick={this.handleSubmit} value='Submit'>Search</Button>
-				<HelpBlock>{this.state.helpBlock}</HelpBlock>
+				<HelpBlock>{this.props.search.helpBlock}</HelpBlock>
 				</form>
 			</div>
 			)
 	}
 }
 
-export default Search
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
+import * as userActionCreators from "../../actions/userActions"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class Profile extends Component {
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     console.log(this.props.auth)
+    
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
+        console.log(profile.email)
+        this.props.userActions.getUser(profile.email)
       });
     } else {
       this.setState({ profile: userProfile });
@@ -18,6 +24,7 @@ class Profile extends Component {
   render() {
     const { profile } = this.state;
     console.log(profile)
+    console.log(profile.email)
     return (
       <div className="container">
         <div className="profile-area">
@@ -36,4 +43,16 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    user: state.user.email,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch),
+    
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
