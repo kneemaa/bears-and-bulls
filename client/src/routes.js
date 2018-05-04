@@ -55,7 +55,6 @@ export const makeMainRoutes = () => {
                     <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
-
         </div>
       </Router>
   );

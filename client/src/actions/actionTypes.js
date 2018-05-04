@@ -7,7 +7,8 @@
 // how does it call the reducer? "Under the hood magic?" :yes
 
 const actions = {
-    BUY_THIS_STOCK: "BUY_THIS_STOCK",
+    BUY_STOCK: "BUY_STOCK",
+    SELL_STOCK: "SELL_STOCK",
     SEARCH_STOCK: "SEARCH_STOCK",
     UPDATE_USER_AVAILABLE: "UPDATE_USER_AVAILABLE",
     GET_USER: "GET_USER", // QUERIES THE DB TO RETURN USER BASED ON EMAIL FROM AUTH0

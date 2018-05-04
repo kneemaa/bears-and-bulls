@@ -6,23 +6,27 @@ import './Navbar.css'
 import Auth from '../Auth/Auth.js'
 import * as userActionCreators from "../../actions/userActions"
 import * as searchActionCreators from '../../actions/searchActions'
+import * as stocksActionCreators from '../../actions/stocksActions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import history from '../Auth/History'
 
 
 function mapStateToProps(state) {
   return {
     user: state.user.email,
-    search: state.search
+    search: state.search,
+    stocks: state.stocks
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActionCreators, dispatch),
     searchActions: bindActionCreators(searchActionCreators, dispatch),
+    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
   };
 }
-
 
 class Navbar extends Component {
 
@@ -31,15 +35,14 @@ class Navbar extends Component {
 	}
 
 	componentWillMount() {
+		this.props.user.email && this.props.stocksActions.getPortfolio(this.props.user.email)
         this.setState({ profile: {} });
         const { userProfile, getProfile } = this.props.auth;
-        //console.log(this.props.auth)
 
         if (!userProfile) {
         	if (localStorage.getItem('access_token')) {
 				getProfile((err, profile) => {
 					this.setState({ profile });
-					//console.log(profile['email'])
 					this.props.userActions.getUser(profile['email'])
 				})
 			}
@@ -56,6 +59,7 @@ class Navbar extends Component {
 		event.preventDefault()
 		let searchKey = this.state.searchKey.trim().toUpperCase()
 		this.props.searchActions.query(searchKey)
+		history.push('/search')
 	}
 
 	login = () => {
@@ -86,7 +90,10 @@ class Navbar extends Component {
 							<NavItem className="custom-navbar-link">Home</NavItem>
 						</LinkContainer>
 						<LinkContainer to='/search'>
-							<NavItem className="navbar-link">My Account</NavItem>
+							<NavItem className="navbar-link">Search</NavItem>
+						</LinkContainer>
+						<LinkContainer to='/trade'>
+							<NavItem className="navbar-link">Trade</NavItem>
 						</LinkContainer>
 						<NavItem className="navbar-link">{
 				              !isAuthenticated() && (
