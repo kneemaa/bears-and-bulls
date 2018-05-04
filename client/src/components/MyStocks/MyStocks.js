@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const MyStocks = (props) => {
+    console.log(props.stocks)
     return (
         <div>
             <h1>My Stocks</h1>

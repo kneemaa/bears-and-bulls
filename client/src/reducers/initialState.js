@@ -4,6 +4,7 @@ export default {
     user: {
         id: 0,
         accountBalance: 0,
+        portfolioValue: 0,
         firstName: "",
         lastName: "",
         email: ""

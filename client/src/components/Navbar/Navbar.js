@@ -4,7 +4,6 @@ import { Nav, NavItem, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import './Navbar.css'
 import Auth from '../Auth/Auth.js'
-import * as userActionCreators from "../../actions/userActions"
 import * as searchActionCreators from '../../actions/searchActions'
 import * as stocksActionCreators from '../../actions/stocksActions'
 import { connect } from 'react-redux';
@@ -22,7 +21,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userActions: bindActionCreators(userActionCreators, dispatch),
     searchActions: bindActionCreators(searchActionCreators, dispatch),
     stocksActions: bindActionCreators(stocksActionCreators, dispatch),
   };
@@ -33,23 +31,6 @@ class Navbar extends Component {
 	state = {
 		searchKey: ''
 	}
-
-	componentWillMount() {
-		this.props.user.email && this.props.stocksActions.getPortfolio(this.props.user.email)
-        this.setState({ profile: {} });
-        const { userProfile, getProfile } = this.props.auth;
-
-        if (!userProfile) {
-        	if (localStorage.getItem('access_token')) {
-				getProfile((err, profile) => {
-					this.setState({ profile });
-					this.props.userActions.getUser(profile['email'])
-				})
-			}
-        } else {
-          this.setState({ profile: userProfile });
-        }
-    }
 
 	handleChange = event => {
 		this.setState({searchKey: event.target.value})
