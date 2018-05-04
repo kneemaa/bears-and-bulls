@@ -13,7 +13,6 @@ export const getUser = data => {
         axios
             .get(`/api/user/${email}`)
             .then(data => {
-                //console.log(data)
                 dispatch(getUserSuccess(data.data))
             })
             .catch(error => {
@@ -23,9 +22,11 @@ export const getUser = data => {
     }
 }
 
+
 export const getUserSuccess = data => {
     return {
         type: actionTypes.GET_USER_SUCCESS,
         data: data
     }
 }
+

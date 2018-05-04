@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { Button, FormControl, FormGroup, HelpBlock } from 'react-bootstrap'
 import * as searchActionCreators from '../../actions/searchActions'
+import * as userActionCreators from '../../actions/userActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import BarChart from '../BarChart/BarChart'
@@ -18,6 +19,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
+    userActions:bindActionCreators(userActionCreators, dispatch),
   };
 }
 
@@ -81,16 +83,24 @@ class Search extends Component {
 	actionHandler = (action) => {
 		switch (action) {
 			case 'buy':
-				console.log('buy')
+				let newBalance = this.props.user.accountBalance - this.state.subtotal
 				axios({
 					method: 'POST',
-					url: `http://localhost:3000/api/user/${this.props.user.email}/trade`, 
+					url: `/api/user/${this.props.user.email}/trade`, 
 					data:{
 						'symbol': this.props.search.symbol,
 						'purchase_price': this.props.search.price,
 						'stock_count': this.state.quantity
 					},
-				}).then((data) => console.log(data))
+				}).then((data) => {
+					axios({
+						method: 'POST',
+						url: `/api/user/${this.props.user.email}/update`,
+						data: {
+							account_balance: newBalance.toFixed(2)
+						}
+					}).then(res => this.props.userActions.getUser(this.props.user.email))
+				})
 				break;
 			case 'sell':
 				break;

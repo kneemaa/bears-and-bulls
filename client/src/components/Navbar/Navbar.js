@@ -6,6 +6,7 @@ import './Navbar.css'
 import Auth from '../Auth/Auth.js'
 import * as userActionCreators from "../../actions/userActions"
 import * as searchActionCreators from '../../actions/searchActions'
+import * as stocksActionCreators from '../../actions/stocksActions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import history from '../Auth/History'
@@ -14,16 +15,18 @@ import history from '../Auth/History'
 function mapStateToProps(state) {
   return {
     user: state.user.email,
-    search: state.search
+    search: state.search,
+    stocks: state.stocks
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActionCreators, dispatch),
     searchActions: bindActionCreators(searchActionCreators, dispatch),
+    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
   };
 }
-
 
 class Navbar extends Component {
 
@@ -32,15 +35,14 @@ class Navbar extends Component {
 	}
 
 	componentWillMount() {
+		this.props.user.email && this.props.stocksActions.getPortfolio(this.props.user.email)
         this.setState({ profile: {} });
         const { userProfile, getProfile } = this.props.auth;
-        //console.log(this.props.auth)
 
         if (!userProfile) {
         	if (localStorage.getItem('access_token')) {
 				getProfile((err, profile) => {
 					this.setState({ profile });
-					//console.log(profile['email'])
 					this.props.userActions.getUser(profile['email'])
 				})
 			}

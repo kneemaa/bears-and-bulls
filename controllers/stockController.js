@@ -7,6 +7,8 @@ module.exports = {
 		.populate('ledger')
 		.then(data => {
 			res.json(data)
+		}).catch(err => {
+			console.log(err)
 		})
 	},
 	// create new user
@@ -14,6 +16,8 @@ module.exports = {
 		db.Users.create(req.body)
 		.then(data => {
 			res.json(data)
+		}).catch(err => {
+			console.log(err)
 		})
 	},
 	// find one user
@@ -21,11 +25,19 @@ module.exports = {
 		db.Users.findOne({email:req.params.email})
 		.then(data => {
 			res.json(data)
+		}).catch(err => {
+			console.log(err)
 		})
+	},
+	updateUser: (req, res) => {
+		console.log(req.body)
+		db.Users.findOneAndUpdate({email:req.params.email}, req.body)
+				.then(result => res.json(result))
+				.catch(err => console.log(err))
 	},
 	// get portfolio
 	getPortfolio: (req, res) => {
-		db.Users.findOne({_id:req.params.id})
+		db.Users.findOne({email:req.params.email})
 		.populate('ledger')
 		.then(data => {
 			Array.prototype.sortBySymbol = function(){
@@ -58,7 +70,9 @@ module.exports = {
 			});
 			res.json(portfolioData);
 		}
-	});
+	}).catch(err => {
+			console.log(err)
+		})
 	},
 	// get trade history
 	getHistory: (req, res) => {
@@ -66,6 +80,8 @@ module.exports = {
 		.populate('ledger')
 		.then(data => {
 			res.json(data.ledger)
+		}).catch(err => {
+			console.log(err)
 		})
 	},
 	// buy and sell stock
