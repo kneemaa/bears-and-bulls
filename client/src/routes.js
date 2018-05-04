@@ -9,6 +9,8 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
+import MyAccount from './components/MyAccount/MyAccount'
+
 
 const auth = new Auth();
 
@@ -27,6 +29,7 @@ export const makeMainRoutes = () => {
           <Route exact path="/" render={(props) => 
                   <div>
                     <Navbar auth={auth} {...props} />
+                    <MyAccount auth ={auth} {...props} />
                     <Portfolio auth={auth} {...props} />
                     <Footer/>
                   </div>} />
@@ -38,13 +41,15 @@ export const makeMainRoutes = () => {
           <Route exact path="/search" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
-                    <Search {...props}/>
+                    <MyAccount auth ={auth} {...props} />
+                    <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
           <Route path="/search/:symbol" render={(props) => 
                   <div>
                     <Navbar auth={auth} />
-                    <Search  {...props}/>
+                    <MyAccount auth ={auth} {...props} />
+                    <Search auth={auth} {...props}/>
                     <Footer/>
                   </div> }/>
         </div>

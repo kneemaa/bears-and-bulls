@@ -3,7 +3,8 @@
 export default {
     user: {
         id: 0,
-        accountBalance: 0,
+        accountBalance: 10000,
+        portfolioValue: 20000,
         firstName: "",
         lastName: "",
         email: ""
