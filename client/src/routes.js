@@ -14,45 +14,26 @@ import MyAccount from './components/MyAccount/MyAccount'
 
 const auth = new Auth();
 
-const handleAuthentication = ({location}) => {
-  if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication();
-  }
-}
+// const handleAuthentication = ({location}) => {
+//   if (/access_token|id_token|error/.test(location.hash)) {
+//     auth.handleAuthentication();
+//   }
+// }
 
 export const makeMainRoutes = () => {
 
   return (
-
-      <Router history={history}>
+        <Router history={history}>
         <div>
-          <Route exact path="/" render={(props) => 
-                  <div>
-                    <Navbar auth={auth} {...props} />
-                    <MyAccount auth ={auth} {...props} />
-                    <Portfolio auth={auth} {...props} />
-                    <Footer/>
-                  </div>} />
+          <Navbar auth={auth} />
+          <MyAccount auth ={auth} />
+          <Route exact path="/" render={(props) => <Portfolio auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => { 
-            handleAuthentication(props)
-            return <Callback {...props} /> }}/>
-          <Route exact path="/search" render={(props) => 
-                  <div>
-                    <Navbar auth={auth} />
-                    <MyAccount auth ={auth} {...props} />
-                    <Search auth={auth} {...props}/>
-                    <Footer/>
-                  </div> }/>
-          <Route path="/search/:symbol" render={(props) => 
-                  <div>
-                    <Navbar auth={auth} />
-                    <MyAccount auth ={auth} {...props} />
-                    <Search auth={auth} {...props}/>
-                    <Footer/>
-                  </div> }/>
-          
+          <Route path="/callback" render={(props) => <Callback auth={auth} {...props} />} />
+          <Route exact path="/search" render={(props) =>  <Search auth={auth} {...props}/>}/>
+          <Route path="/search/:symbol" render={(props) => <Search auth={auth} {...props}/> }/>
+          <Footer/>
         </div>
       </Router>
   );
