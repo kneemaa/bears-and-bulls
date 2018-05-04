@@ -9,12 +9,10 @@ class Profile extends Component {
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
-    console.log(this.props.auth)
     
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
-        console.log(profile.email)
         this.props.userActions.getUser(profile.email)
       });
     } else {
@@ -23,8 +21,6 @@ class Profile extends Component {
   }
   render() {
     const { profile } = this.state;
-    console.log(profile)
-    console.log(profile.email)
     return (
       <div className="container">
         <div className="profile-area">

@@ -9,7 +9,7 @@ const MyStocks = (props) => {
         <div>
             <h1>My Stocks</h1>
             <ul>
-            {props.stocks.map(stock => (
+            {props.stocks.owned.map(stock => (
                     //reset the key to be something more unique
                 <li key={stock.symbol}> {stock.symbol}, {stock.paid}, {stock.quantity}</li>
             ))}

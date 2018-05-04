@@ -13,6 +13,8 @@ const routes = function(app){
 	app.get('/api/user/:id/history', controller.getHistory)
 	// buy and sell stock
 	app.post('/api/user/:id/trade', controller.stockTrade)
+	// update user's profile
+	app.post('/api/user/:email/update', controller.updateUser)
 }
 
 module.exports = routes

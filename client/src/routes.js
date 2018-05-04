@@ -10,7 +10,7 @@ import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
 import MyAccount from './components/MyAccount/MyAccount'
-
+import Pills from './components/Pills/Pills'
 
 const auth = new Auth();
 

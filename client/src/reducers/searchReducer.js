@@ -6,7 +6,7 @@ export default function searchReducer(state = initialState.search, action) {
       case actionTypes.SEARCH_STOCK: {
         return {
         	...state, 
-        	lastKey: action.data.searchKey,
+        	symbol: action.data.symbol,
         	helpBlock: action.data.helpBlock,
         	price: action.data.price,
         }
