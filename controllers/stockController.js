@@ -10,6 +10,7 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// create new user
 	newUser: (req, res) => {
@@ -19,6 +20,7 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// find one user
 	findUser: (req, res) => {
@@ -28,6 +30,7 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
+		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
 		console.log(req.body)
@@ -70,9 +73,8 @@ module.exports = {
 			});
 			res.json(portfolioData);
 		}
-	}).catch(err => {
-			console.log(err)
-		})
+	})
+	.catch(err => { console.log(err)})
 	},
 	// get trade history
 	getHistory: (req, res) => {
@@ -83,6 +85,7 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// buy and sell stock
 	stockTrade: (req, res) => {
@@ -97,6 +100,8 @@ module.exports = {
 				}).catch(err => {
 					console.log(err)
 				})
-		}).catch((err) => console.log(err))
+				.catch(err => { console.log(err)})
+		})
+		.catch(err => { console.log(err)})
 	}
 }
