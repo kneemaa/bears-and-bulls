@@ -8,6 +8,7 @@ module.exports = {
 		.then(data => {
 			res.json(data)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// create new user
 	newUser: (req, res) => {
@@ -15,6 +16,7 @@ module.exports = {
 		.then(data => {
 			res.json(data)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// find one user
 	findUser: (req, res) => {
@@ -22,6 +24,7 @@ module.exports = {
 		.then(data => {
 			res.json(data)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// get portfolio
 	getPortfolio: (req, res) => {
@@ -58,7 +61,8 @@ module.exports = {
 			});
 			res.json(portfolioData);
 		}
-	});
+	})
+	.catch(err => { console.log(err)})
 	},
 	// get trade history
 	getHistory: (req, res) => {
@@ -67,6 +71,7 @@ module.exports = {
 		.then(data => {
 			res.json(data.ledger)
 		})
+		.catch(err => { console.log(err)})
 	},
 	// buy and sell stock
 	stockTrade: (req, res) => {
@@ -79,6 +84,8 @@ module.exports = {
 				.then(() => {
 					res.end()
 				})
+				.catch(err => { console.log(err)})
 		})
+		.catch(err => { console.log(err)})
 	}
 }

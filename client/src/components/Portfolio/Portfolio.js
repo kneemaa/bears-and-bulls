@@ -15,7 +15,7 @@ const Portfolio = () => {
             </div>
             <div>
                 <BarChart symbol = "IBM" style={{height:400, width:'100%'}}/>
-                <PieChart style={{height:400, width:400}} />                
+                <PieChart style={{height:400, width:400}} />
                 <MyStocks />
                 <SuggestedStock />
             </div>
