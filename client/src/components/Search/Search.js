@@ -90,7 +90,8 @@ class Search extends Component {
 					data:{
 						'symbol': this.props.search.symbol,
 						'purchase_price': this.props.search.price,
-						'stock_count': this.state.quantity
+						'stock_count': this.state.quantity,
+						'owned_by': this.props.user.id
 					},
 				}).then((data) => {
 					axios({
