@@ -26,7 +26,12 @@ module.exports = {
 	findUser: (req, res) => {
 		db.Users.findOne({email:req.params.email})
 		.then(data => {
-			res.json(data)
+			if(data){
+			return res.json(data)
+			}
+			return res.status(400).send({
+				message: "User not found"
+			})
 		}).catch(err => {
 			console.log(err)
 		})
