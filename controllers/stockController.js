@@ -73,8 +73,8 @@ module.exports = {
 						});
 					}
 				});
-				res.json(portfolioData);
 			}
+			res.json(portfolioData);
 		}).catch(err => { console.log(err)})
 	},
 	// get trade history
@@ -91,18 +91,7 @@ module.exports = {
 	// buy and sell stock
 	stockTrade: (req, res) => {
 		db.Ledger.create(req.body)
-		.then(stock => {
-			db.Users.update(
-				{ email: req.params.email},
-				{ $push: { ledger: stock._id }},
-				{ new: true })
-				.then((data) => {
-					res.json(data)
-				}).catch(err => {
-					console.log(err)
-				})
-				.catch(err => { console.log(err)})
-		})
-		.catch(err => { console.log(err)})
+		.then(success => res.json(success))
+		.catch(err => res.json(err))
 	}
 }
