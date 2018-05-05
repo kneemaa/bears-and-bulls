@@ -84,9 +84,10 @@ class Search extends Component {
 		switch (action) {
 			case 'buy':
 				let newBalance = this.props.user.accountBalance - this.state.subtotal
+				console.log(this.props.user.id)
 				axios({
 					method: 'POST',
-					url: `/api/user/${this.props.user.email}/trade`, 
+					url: `/api/user/trade`, 
 					data:{
 						'symbol': this.props.search.symbol,
 						'purchase_price': this.props.search.price,
@@ -96,7 +97,7 @@ class Search extends Component {
 				}).then((data) => {
 					axios({
 						method: 'POST',
-						url: `/api/user/${this.props.user.email}/update`,
+						url: `/api/user/${this.props.user.id}/update`,
 						data: {
 							account_balance: newBalance.toFixed(2)
 						}
