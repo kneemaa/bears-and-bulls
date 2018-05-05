@@ -13,10 +13,11 @@ class Callback extends Component {
     setIdToken();
 
     this.props.auth.getProfile((err, user) => {
+      console.log(user)
       if (err) {
         console.log(err)
       }
-      this.props.userActions.getUser(user.email);
+      this.props.userActions.getUser(user);
       this.props.history.push("/");
     })
     
