@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import loading from './loading.svg';
 import { setIdToken, setAccessToken } from '../../utils/AuthService';
 import * as userActionCreators from "../../actions/userActions"
+import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from "react-redux"
 import { bindActionCreators} from "redux"
 
@@ -16,7 +17,7 @@ class Callback extends Component {
       if (err) {
         console.log(err)
       }
-      this.props.userActions.getUser(user.email);
+      this.props.userActions.getUser(user.email)
       this.props.history.push("/");
     })
     
@@ -52,7 +53,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActionCreators, dispatch),
-    
+    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
   };
 }
 const routedCallback = withRouter(Callback);

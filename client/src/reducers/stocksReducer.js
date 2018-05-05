@@ -9,8 +9,11 @@ export default function stocksReducer(state = initialState.stocks, action) {
       case actionTypes.BUY_THIS_STOCK: {
         return action.data
       }
-      case actionTypes.GET_PORTFOLIO: {
-        return action.data
+      case actionTypes.GET_USER_PORTFOLIO: {
+        return {
+          ...state,
+          owned: action.data
+        }
       }
       default: {
         return state;
