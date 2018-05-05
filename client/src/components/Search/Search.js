@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { Button, FormControl, FormGroup, HelpBlock } from 'react-bootstrap'
 import * as searchActionCreators from '../../actions/searchActions'
 import * as userActionCreators from '../../actions/userActions'
+import * as stocksActionCreators from '../../actions/stocksActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import BarChart from '../BarChart/BarChart'
@@ -13,6 +14,7 @@ function mapStateToProps(state) {
 	  return {
 	    search: state.search,
 	    user: state.user,
+	    stocks: state.stocks
 	  };
 	}
 
@@ -20,10 +22,16 @@ function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
     userActions:bindActionCreators(userActionCreators, dispatch),
+    stocksAction:bindActionCreators(stocksActionCreators, dispatch),
   };
 }
 
 class Search extends Component {
+	constructor(props, context) {
+		super(props, context)
+		this.handleSelect = this.handleSelect.bind(this)
+	}
+
 	state = {
 		searchSymbol: '',
 		quantity: 0,
@@ -41,10 +49,7 @@ class Search extends Component {
 		this.props.searchActions.query(searchSymbol)
 	}
 
-	constructor(props, context) {
-		super(props, context)
-		this.handleSelect = this.handleSelect.bind(this)
-	}
+
 
 	handleSelect = (key) => {
 		this.setState({key})
@@ -78,6 +83,12 @@ class Search extends Component {
 			    return null
 			} 
 		return null
+	}
+
+	checkIfStockOwned = symbol => {
+		let searched_stock = this.props.stocks.owned.filter(stock => {return stock.symbol === symbol})
+		console.log(searched_stock)
+		return searched_stock[0].stock_count
 	}
 
 	actionHandler = (action) => {
@@ -124,7 +135,8 @@ class Search extends Component {
 								<tr>
 									<th>Symbol</th>
 									<th>Current Price ($)</th>
-									<th>Quantity</th>
+									<th>QTY Owned</th>
+									<th>QTY to Purchase</th>
 									<th>Subtotal</th>
 									<th>Action</th>
 								</tr>
@@ -133,6 +145,7 @@ class Search extends Component {
 								<tr>
 									<th>{this.props.search.symbol}</th>
 									<th>{this.props.search.price}</th>
+									<th>{this.checkIfStockOwned(this.props.search.symbol)}</th>
 									<th>
 										<FormGroup controlId='formValidationError' validationState={this.validateQuantity()} >
 											<FormControl value={this.state.quantity} className='quantityInput' onChange={this.handleQuantityChange} componentClass='input' />
