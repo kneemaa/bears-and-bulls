@@ -12,9 +12,10 @@ const LedgerSchema = new Schema({
 	stock_count: {
 		type: Number
 	},
-	is_owned: {
-		type: Boolean,
-		default: true
+	owned_by: {
+		type: Schema.Types.ObjectId,
+		required: true,
+		ref: 'Users'
 	}
 }, { timestamps: Date })
 

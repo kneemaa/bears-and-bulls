@@ -9,16 +9,13 @@ const UserSchema = new Schema({
 		type: String
 	},
 	email: {
-		type: String
+		type: String,
+		required: true
 	},
 	account_balance: {
 		type: Number,
 		default: 100000
-	},
-	ledger: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Ledger'
-	}]
+	}
 }, { timestamps: Date })
 
 let Users = mongoose.model('Users', UserSchema)
