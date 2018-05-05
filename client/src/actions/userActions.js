@@ -9,7 +9,8 @@ import actionTypes from './actionTypes';
 
 export const getUser = data => {
     return function(dispatch) {
-    const email = data
+    const user = data
+    const email = data.email
         axios
             .get(`/api/user/${email}`)
             .then(data => {
@@ -17,16 +18,29 @@ export const getUser = data => {
             })
             .catch(error => {
                 console.log(error)
-                // dispatch(getUserFailure(email))
+                dispatch(createUser(user))
             })
     }
 }
-
 
 export const getUserSuccess = data => {
     return {
         type: actionTypes.GET_USER_SUCCESS,
         data: data
+    }
+}
+
+export const createUser = data => {
+    console.log(data)
+    return function(dispatch){
+        axios
+        .post("/api/newUser", {first_name: data.given_name, last_name: data.family_name, email: data.email})
+        .then(data => {
+            dispatch(getUserSuccess(data.data))
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 }
 
