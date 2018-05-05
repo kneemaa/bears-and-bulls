@@ -14,6 +14,7 @@ export const getUser = data => {
             .get(`/api/user/${email}`)
             .then(data => {
                 dispatch(getUserSuccess(data.data))
+                dispatch(getPortfolioSuccess("aapl"))
             })
             .catch(error => {
                 console.log(error)
@@ -22,11 +23,17 @@ export const getUser = data => {
     }
 }
 
-
 export const getUserSuccess = data => {
     return {
         type: actionTypes.GET_USER_SUCCESS,
         data: data
+    }
+}
+
+export const getPortfolioSuccess = data => {
+    return {
+        type: "GET_PORTFOLIO_SUCCESS",
+        stocks: data
     }
 }
 
