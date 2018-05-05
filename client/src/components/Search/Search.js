@@ -36,6 +36,7 @@ class Search extends Component {
 		searchSymbol: '',
 		quantity: 0,
 		action: '',
+		owned_count: 0
 	}
 
 
@@ -48,8 +49,6 @@ class Search extends Component {
 		let searchSymbol = this.state.searchSymbol.trim().toUpperCase()
 		this.props.searchActions.query(searchSymbol)
 	}
-
-
 
 	handleSelect = (key) => {
 		this.setState({key})
@@ -85,10 +84,12 @@ class Search extends Component {
 		return null
 	}
 
-	checkIfStockOwned = symbol => {
-		let searched_stock = this.props.stocks.owned.filter(stock => {return stock.symbol === symbol})
-		console.log(searched_stock)
-		return searched_stock[0].stock_count
+	getOwnedCount = () => {
+		if (this.props.stocks.owned.length > 0) {
+			let searched_stock = this.props.stocks.owned.find(stock => {return stock.symbol === this.props.search.symbol.toUpperCase()})
+			return searched_stock ? searched_stock.stock_count : 0;
+		}
+		return 0;
 	}
 
 	actionHandler = (action) => {
@@ -145,14 +146,18 @@ class Search extends Component {
 								<tr>
 									<th>{this.props.search.symbol}</th>
 									<th>{this.props.search.price}</th>
-									<th>{this.checkIfStockOwned(this.props.search.symbol)}</th>
+									<th>{this.getOwnedCount()}</th>
 									<th>
 										<FormGroup controlId='formValidationError' validationState={this.validateQuantity()} >
 											<FormControl value={this.state.quantity} className='quantityInput' onChange={this.handleQuantityChange} componentClass='input' />
 										</FormGroup>
 									</th>
 									<th>{this.state.subtotal ? this.state.subtotal : 0}</th>
-									<th><Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button></th>
+									<th>
+										<Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button>
+										<Button type='submit' onClick={() => this.actionHandler('sell')} 
+											disabled={this.getOwnedCount() > 0 ? false : true}>Sell</Button>
+									</th>
 								</tr>
 							</tbody>
 						</table>
