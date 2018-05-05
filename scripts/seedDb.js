@@ -28,8 +28,9 @@ const userSeed = [
 		account_balance: 10000,
 		ledger: [
 			{'_id': mongoose.Types.ObjectId("59316b89008c586bc2214305")},
-			{'_id': mongoose.Types.ObjectId("59316b89008c586bc2214305")},
 			{'_id': mongoose.Types.ObjectId("59316b89008c586bc2214311")},
+			{'_id': mongoose.Types.ObjectId("59316b89008c586bc2214316")},
+			{'_id': mongoose.Types.ObjectId("59316b89008c586bc2214315")},
 			]
 	},
 	{
@@ -164,6 +165,20 @@ const ledgerSeed = [
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
+		is_owned: true,
+	},
+	{
+		_id: mongoose.Types.ObjectId("59316b89008c586bc2214315"),
+		symbol: "GOOG",
+		purchase_price: 1000,
+		stock_count: 7,
+		is_owned: true,
+	},
+	{
+		_id: mongoose.Types.ObjectId("59316b89008c586bc2214316"),
+		symbol: "FB",
+		purchase_price: 120,
+		stock_count: 15,
 		is_owned: true,
 	},
 	]

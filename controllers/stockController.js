@@ -33,52 +33,53 @@ module.exports = {
 		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
-		console.log(req.body)
 		db.Users.findOneAndUpdate({email:req.params.email}, req.body)
 				.then(result => res.json(result))
 				.catch(err => console.log(err))
 	},
 	// get portfolio
 	getPortfolio: (req, res) => {
-		db.Users.findOne({email:req.params.email})
-		.populate('ledger')
-		.then(data => {
-			Array.prototype.sortBySymbol = function(){
-				return this.reduce((groups,item) => {
-				groups[item.symbol] = groups[item.symbol] || [];
-				groups[item.symbol].push(item);
-				return groups
-			}, {});
-			}
-
-			let stocks = data.ledger.sortBySymbol();
-			let portfolioData = [];
-
-			for(key in stocks){
-				let count = 0;
-				let total = 0;
-
-				stocks[key].map((record)=>{
-					count = count + record.stock_count;
-					total = total + record.stock_count*record.purchase_price;
-
-				if (count !== 0) {
-					let avg_price = (total/count).toFixed(2);
-					portfolioData.push({
-						symbol: key,
-						count: count,
-						purchase_price: avg_price
-					});
+			db.Users.findOne({email:req.params.email})
+			.populate('ledger')
+			.then(data => {
+				//console.log(data)
+				Array.prototype.sortBySymbol = function(){
+					return this.reduce((groups,item) => {
+					groups[item.symbol] = groups[item.symbol] || [];
+					groups[item.symbol].push(item);
+					return groups
+				}, {});
 				}
-			});
-			res.json(portfolioData);
-		}
-	})
-	.catch(err => { console.log(err)})
+
+				let stocks = data.ledger.sortBySymbol();
+				let portfolioData = [];
+				console.log(stocks)
+				for(key in stocks){
+					console.log(key)
+					let count = 0;
+					let total = 0;
+
+					stocks[key].map((record)=>{
+						console.log(record)
+						count = count + record.stock_count;
+						total = total + record.stock_count*record.purchase_price;
+
+					if (count !== 0) {
+						let avg_price = (total/count).toFixed(2);
+						portfolioData.push({
+							symbol: key,
+							count: count,
+							purchase_price: avg_price
+						});
+					}
+				});
+				res.json(portfolioData);
+			}
+		}).catch(err => { console.log(err)})
 	},
 	// get trade history
 	getHistory: (req, res) => {
-		db.Users.findOne({_id:req.params.id})
+		db.Users.findOne({email:req.params.email})
 		.populate('ledger')
 		.then(data => {
 			res.json(data.ledger)
