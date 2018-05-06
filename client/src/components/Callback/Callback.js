@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import loading from './loading.svg';
 import { setIdToken, setAccessToken } from '../../utils/AuthService';
 import * as userActionCreators from "../../actions/userActions"
+import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from "react-redux"
 import { bindActionCreators} from "redux"
 
@@ -53,7 +54,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActionCreators, dispatch),
-    
+    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
   };
 }
 const routedCallback = withRouter(Callback);

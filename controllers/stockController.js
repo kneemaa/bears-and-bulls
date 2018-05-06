@@ -38,52 +38,51 @@ module.exports = {
 		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
-		console.log(req.body)
-		db.Users.findOneAndUpdate({email:req.params.email}, req.body)
+		db.Users.findOneAndUpdate({_id:req.params.id}, req.body)
 				.then(result => res.json(result))
 				.catch(err => console.log(err))
 	},
 	// get portfolio
 	getPortfolio: (req, res) => {
-		db.Users.findOne({email:req.params.email})
-		.populate('ledger')
-		.then(data => {
-			Array.prototype.sortBySymbol = function(){
-				return this.reduce((groups,item) => {
-				groups[item.symbol] = groups[item.symbol] || [];
-				groups[item.symbol].push(item);
-				return groups
-			}, {});
-			}
+		console.log(req.params.id)
+			db.Ledger.find({owned_by: req.params.id})
+			.then(ledger => {
+				const consolidated = ledger.reduce((accum, stock) => {
+					const { symbol } = stock;
 
-			let stocks = data.ledger.sortBySymbol();
-			let portfolioData = [];
+					if (accum[symbol]) {
+						accum[symbol] = Object.assign(
+						accum[symbol],
+							{
+								stock_count: accum[symbol].stock_count + stock.stock_count,
+								total: accum[symbol].total + (stock.purchase_price * stock.stock_count)
+							},{})
+						return accum;
+					}
 
-			for(key in stocks){
-				let count = 0;
-				let total = 0;
+					accum[symbol] = Object.assign(
+						stock,
+							{
+							  total: stock.stock_count * stock.purchase_price
+							}, {})
+						return accum;
+				}, {})
 
-				stocks[key].map((record)=>{
-					count = count + record.stock_count;
-					total = total + record.stock_count*record.purchase_price;
+				const averages = Object.keys(consolidated).map((key) => {
+					const stock = consolidated[key];
 
-				if (count !== 0) {
-					let avg_price = (total/count).toFixed(2);
-					portfolioData.push({
-						symbol: key,
-						count: count,
-						purchase_price: avg_price
-					});
-				}
-			});
-			res.json(portfolioData);
-		}
-	})
-	.catch(err => { console.log(err)})
+					return Object.assign(
+						stock,
+							{
+							  purchase_price: (stock.total / stock.stock_count).toFixed(2)
+							},{})
+				})
+				res.json(averages)
+		}).catch(err => { console.log(err)})
 	},
 	// get trade history
 	getHistory: (req, res) => {
-		db.Users.findOne({_id:req.params.id})
+		db.Users.findOne({email:req.params.email})
 		.populate('ledger')
 		.then(data => {
 			res.json(data.ledger)
