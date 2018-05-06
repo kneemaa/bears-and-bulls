@@ -126,6 +126,7 @@ class Search extends Component {
 			console.log(this.props.state)
 				if (this.getOwnedCount(this.props.search.symbol) >= this.state.quantity) {
 					let newBalance = this.props.user.accountBalance + this.state.subtotal.toFixed(2)
+					debugger;
 					axios({
 							method: 'POST',
 							url: `/api/user/trade`, 
