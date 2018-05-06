@@ -22,7 +22,6 @@ class LedgerHistory extends Component {
 			axios.get(`/api/user/${this.props.user.id}/history`)
 				.then(function(res) {
 					self.setState({history:res.data})
-					console.log(self.state)
 					return
 				})
 		}
@@ -45,7 +44,7 @@ class LedgerHistory extends Component {
 				<tbody>
 				{(this.state.history).map(entry => {
 					return (
-						<tr>
+						<tr key={entry._id}>
 							<th>{entry.symbol}</th>
 							<th><Moment format="MM/DD/YYYY HH:mm:ss">{entry.createdAt}</Moment></th>
 							<th>{entry.stock_count}</th>

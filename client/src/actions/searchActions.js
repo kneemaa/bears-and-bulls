@@ -14,7 +14,7 @@ export const query = searchKey => {
 			let url = `https://api.iextrading.com/1.0/tops/last?symbols=${searchKey}`
 			axios.get(url)
 				.then(res => {
-					let price = res.data[0].price.toFixed(2)
+					let price = res.data[0].price
 					if (price !== undefined) {
 						let data = { price: price, symbol: searchKey, helpBlock: ''}
 						dispatch(searchStock(data))
