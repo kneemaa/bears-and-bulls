@@ -43,42 +43,42 @@ const ledgerSeed = [
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214301"),
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214302"),
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214303"),
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214304"),
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214305"),
 		symbol: "MNKD",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214306"),
@@ -92,14 +92,14 @@ const ledgerSeed = [
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214308"),
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214309"),
@@ -110,7 +110,7 @@ const ledgerSeed = [
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214310"),
-		symbol: "GOOG",
+		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
 		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
@@ -120,30 +120,44 @@ const ledgerSeed = [
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214312"),
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214313"),
 		symbol: "MNKD",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214314"),
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
-	]
+	{
+		_id: mongoose.Types.ObjectId("59316b89008c586bc2214315"),
+		symbol: "GOOG",
+		purchase_price: 1000,
+		stock_count: 7,
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+	},
+	{
+		_id: mongoose.Types.ObjectId("59316b89008c586bc2214316"),
+		symbol: "FB",
+		purchase_price: 120,
+		stock_count: 15,
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+	},
+]
 
 db.Ledger
 	.remove({})

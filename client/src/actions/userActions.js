@@ -6,19 +6,25 @@
 
 import axios from 'axios'; // for outbound api calls
 import actionTypes from './actionTypes';
+import {getPortfolio} from './stocksActions'
 
 export const getUser = data => {
     return function(dispatch) {
     const user = data
+    console.log('+-+-+-+-+')
+    console.log(data)
     const email = data.email
         axios
             .get(`/api/user/${email}`)
             .then(data => {
                 dispatch(getUserSuccess(data.data))
+                dispatch(getPortfolio(data.data._id))
+                return
             })
             .catch(error => {
                 console.log(error)
-                dispatch(createUser(user))
+                //dispatch(createUser(user))
+                return
             })
     }
 }

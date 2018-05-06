@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import { Button, FormControl, FormGroup, HelpBlock } from 'react-bootstrap'
 import * as searchActionCreators from '../../actions/searchActions'
 import * as userActionCreators from '../../actions/userActions'
+import * as stocksActionCreators from '../../actions/stocksActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import BarChart from '../BarChart/BarChart'
@@ -13,6 +14,7 @@ function mapStateToProps(state) {
 	  return {
 	    search: state.search,
 	    user: state.user,
+	    stocks: state.stocks
 	  };
 	}
 
@@ -20,16 +22,23 @@ function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
     userActions:bindActionCreators(userActionCreators, dispatch),
+    stocksActions:bindActionCreators(stocksActionCreators, dispatch),
   };
 }
 
 class Search extends Component {
+	constructor(props, context) {
+		super(props, context)
+		this.handleSelect = this.handleSelect.bind(this)
+	}
+
 	state = {
 		searchSymbol: '',
 		quantity: 0,
 		action: '',
+		localHelpBlock: ''
 	}
-
+	
 
 	handleChange = event => {
 		this.setState({searchSymbol: event.target.value})
@@ -41,11 +50,6 @@ class Search extends Component {
 		this.props.searchActions.query(searchSymbol)
 	}
 
-	constructor(props, context) {
-		super(props, context)
-		this.handleSelect = this.handleSelect.bind(this)
-	}
-
 	handleSelect = (key) => {
 		this.setState({key})
 	}
@@ -55,9 +59,9 @@ class Search extends Component {
 	}
 
 	handleQuantityChange = (event) => {
-		this.setState({quantity: event.target.value})
+		this.setState({quantity: Number(event.target.value)})
 		let subtotal = event.target.value * this.props.search.price
-		this.setState({ subtotal: subtotal })
+		this.setState({ subtotal: Number(subtotal.toFixed(2)) })
 	}
 
 	validateSymbol = () => {
@@ -80,33 +84,75 @@ class Search extends Component {
 		return null
 	}
 
+	getOwnedCount = () => {
+		if (this.props.stocks.owned.length > 0) {
+			let searched_stock = this.props.stocks.owned.find(stock => {return stock.symbol === this.props.search.symbol.trim().toUpperCase()})
+			return searched_stock ? searched_stock.stock_count : 0;
+		}
+		return 0;
+	}
+
 	actionHandler = (action) => {
 		switch (action) {
 			case 'buy':
-				let newBalance = this.props.user.accountBalance - this.state.subtotal
-				axios({
-					method: 'POST',
-					url: `/api/user/${this.props.user.email}/trade`, 
-					data:{
-						'symbol': this.props.search.symbol,
-						'purchase_price': this.props.search.price,
-						'stock_count': this.state.quantity,
-						'owned_by': this.props.user.id
-					},
-				}).then((data) => {
-					axios({
-						method: 'POST',
-						url: `/api/user/${this.props.user.email}/update`,
-						data: {
-							account_balance: newBalance.toFixed(2)
-						}
-					}).then(res => this.props.userActions.getUser(this.props.user.email))
-				})
+				if (this.props.user.accountBalance >= this.state.subtotal) {
+					let newBalance = this.props.user.accountBalance - this.state.subtotal
+					let email = this.props.email
+						axios({
+							method: 'POST',
+							url: `/api/user/trade`, 
+							data:{
+								'symbol': this.props.search.symbol,
+								'purchase_price': this.props.search.price,
+								'stock_count': this.state.quantity,
+								'owned_by': this.props.user.id
+							},
+						}).then((data) => {
+							axios({
+								method: 'POST',
+								url: `/api/user/${this.props.user.id}/update`,
+								data: {
+									account_balance: newBalance.toFixed(2)
+								}
+							})
+							.then(res => this.props.userActions.getUser({email:this.props.user.email}))
+							.catch(err => console.log(err))
+						})
+					} else {
+						this.setState({localHelpBlock: `Not enough funds in your account! Make sure you're logged in.`})
+					}
 				break;
 			case 'sell':
+				console.log((this.props.search.price) * -1)
+				if (this.getOwnedCount(this.props.search.symbol) >= this.state.quantity) {
+					let newBalance = this.props.user.accountBalance + this.state.subtotal
+					console.log(newBalance)
+					axios({
+							method: 'POST',
+							url: `/api/user/trade`, 
+							data:{
+								'symbol': this.props.search.symbol,
+								'purchase_price': ((this.props.search.price) * -1),
+								'stock_count': (this.state.quantity * -1),
+								'owned_by': this.props.user.id
+							},
+						}).then((data) => {
+							axios({
+								method: 'POST',
+								url: `/api/user/${this.props.user.id}/update`,
+								data: {
+									account_balance: newBalance
+								}
+							})
+							.then(res => this.props.userActions.getUser({email:this.props.user.email}))
+							.catch(err => console.log(err))
+						})
+				} else {
+					this.setState({localHelpBlock: `You can't sell more stocks than you own.`})
+				}
 				break;
 			default:
-				console.alert('Action was not "Buy" or "Sell"')
+				console.log('Action was not "Buy" or "Sell"')
 				break;
 		}
 	}
@@ -123,7 +169,8 @@ class Search extends Component {
 								<tr>
 									<th>Symbol</th>
 									<th>Current Price ($)</th>
-									<th>Quantity</th>
+									<th>QTY Owned</th>
+									<th>QTY to Purchase</th>
 									<th>Subtotal</th>
 									<th>Action</th>
 								</tr>
@@ -132,16 +179,22 @@ class Search extends Component {
 								<tr>
 									<th>{this.props.search.symbol}</th>
 									<th>{this.props.search.price}</th>
+									<th>{this.getOwnedCount()}</th>
 									<th>
 										<FormGroup controlId='formValidationError' validationState={this.validateQuantity()} >
 											<FormControl value={this.state.quantity} className='quantityInput' onChange={this.handleQuantityChange} componentClass='input' />
 										</FormGroup>
 									</th>
 									<th>{this.state.subtotal ? this.state.subtotal : 0}</th>
-									<th><Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button></th>
+									<th>
+										<Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button>
+										<Button type='submit' onClick={() => this.actionHandler('sell')} 
+											disabled={this.getOwnedCount() > 0 ? false : true}>Sell</Button>
+									</th>
 								</tr>
 							</tbody>
 						</table>
+						<HelpBlock>{this.state.localHelpBlock}</HelpBlock>
 						<BarChart symbol={this.props.search.symbol} style={{height:400, width:'100%'}}/>
 						<hr/>
 					</div>

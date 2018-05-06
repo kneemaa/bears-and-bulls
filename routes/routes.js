@@ -10,11 +10,11 @@ const routes = function(app){
 	// get portfolio
 	app.get('/api/user/:id/portfolio', controller.getPortfolio)
 	// get history
-	app.get('/api/user/:id/history', controller.getHistory)
+	app.get('/api/user/:email/history', controller.getHistory)
 	// buy and sell stock
-	app.post('/api/user/:id/trade', controller.stockTrade)
+	app.post('/api/user/trade', controller.stockTrade)
 	// update user's profile
-	app.post('/api/user/:email/update', controller.updateUser)
+	app.post('/api/user/:id/update', controller.updateUser)
 }
 
 module.exports = routes
