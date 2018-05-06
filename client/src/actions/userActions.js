@@ -15,7 +15,6 @@ export const getUser = data => {
         axios
             .get(`/api/user/${email}`)
             .then(data => {
-                console.log(data.data)
                 dispatch(getUserSuccess(data.data))
                 dispatch(getPortfolio(data.data._id))
             })

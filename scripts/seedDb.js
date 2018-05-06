@@ -157,7 +157,7 @@ const ledgerSeed = [
 		stock_count: 15,
 		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
-	]
+]
 
 db.Ledger
 	.remove({})

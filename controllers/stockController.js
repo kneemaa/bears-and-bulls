@@ -38,7 +38,7 @@ module.exports = {
 		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
-		db.Users.findOneAndUpdate({email:req.params.id}, req.body)
+		db.Users.findOneAndUpdate({_id:req.params.id}, req.body)
 				.then(result => res.json(result))
 				.catch(err => console.log(err))
 	},

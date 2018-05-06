@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
     userActions:bindActionCreators(userActionCreators, dispatch),
-    stocksAction:bindActionCreators(stocksActionCreators, dispatch),
+    stocksActions:bindActionCreators(stocksActionCreators, dispatch),
   };
 }
 
@@ -36,9 +36,9 @@ class Search extends Component {
 		searchSymbol: '',
 		quantity: 0,
 		action: '',
-		owned_count: 0
+		localHelpBlock: ''
 	}
-
+	
 
 	handleChange = event => {
 		this.setState({searchSymbol: event.target.value})
@@ -59,9 +59,9 @@ class Search extends Component {
 	}
 
 	handleQuantityChange = (event) => {
-		this.setState({quantity: event.target.value})
+		this.setState({quantity: Number(event.target.value)})
 		let subtotal = event.target.value * this.props.search.price
-		this.setState({ subtotal: subtotal })
+		this.setState({ subtotal: Number(subtotal.toFixed(2)) })
 	}
 
 	validateSymbol = () => {
@@ -86,7 +86,7 @@ class Search extends Component {
 
 	getOwnedCount = () => {
 		if (this.props.stocks.owned.length > 0) {
-			let searched_stock = this.props.stocks.owned.find(stock => {return stock.symbol === this.props.search.symbol.toUpperCase()})
+			let searched_stock = this.props.stocks.owned.find(stock => {return stock.symbol === this.props.search.symbol.trim().toUpperCase()})
 			return searched_stock ? searched_stock.stock_count : 0;
 		}
 		return 0;
@@ -95,31 +95,64 @@ class Search extends Component {
 	actionHandler = (action) => {
 		switch (action) {
 			case 'buy':
-				let newBalance = this.props.user.accountBalance - this.state.subtotal
-				console.log(this.props.user.id)
-				axios({
-					method: 'POST',
-					url: `/api/user/trade`, 
-					data:{
-						'symbol': this.props.search.symbol,
-						'purchase_price': this.props.search.price,
-						'stock_count': this.state.quantity,
-						'owned_by': this.props.user.id
-					},
-				}).then((data) => {
-					axios({
-						method: 'POST',
-						url: `/api/user/${this.props.user.id}/update`,
-						data: {
-							account_balance: newBalance.toFixed(2)
-						}
-					}).then(res => this.props.userActions.getUser(this.props.user.email))
-				})
+				if (this.props.user.accountBalance >= this.state.subtotal) {
+					let newBalance = this.props.user.accountBalance - this.state.subtotal
+						axios({
+							method: 'POST',
+							url: `/api/user/trade`, 
+							data:{
+								'symbol': this.props.search.symbol,
+								'purchase_price': this.props.search.price,
+								'stock_count': this.state.quantity,
+								'owned_by': this.props.user.id
+							},
+						}).then((data) => {
+							axios({
+								method: 'POST',
+								url: `/api/user/${this.props.user.id}/update`,
+								data: {
+									account_balance: newBalance.toFixed(2)
+								}
+							})
+							.then(res => this.props.userActions.getUser(this.props.user.email))
+							.then(res => this.props.stocksActions.getPortfolio(this.props.user.id))
+							.catch(err => console.log(err))
+						})
+					} else {
+						this.setState({localHelpBlock: `Not enough funds in your account! Make sure you're logged in.`})
+					}
 				break;
 			case 'sell':
+			console.log(this.props.state)
+				if (this.getOwnedCount(this.props.search.symbol) >= this.state.quantity) {
+					let newBalance = this.props.user.accountBalance + this.state.subtotal.toFixed(2)
+					axios({
+							method: 'POST',
+							url: `/api/user/trade`, 
+							data:{
+								'symbol': this.props.search.symbol,
+								'purchase_price': (this.props.search.price.toFixed(2) * -1),
+								'stock_count': (this.state.quantity * -1),
+								'owned_by': this.props.user.id
+							},
+						}).then((data) => {
+							axios({
+								method: 'POST',
+								url: `/api/user/${this.props.user.id}/update`,
+								data: {
+									account_balance: newBalance.toFixed(2)
+								}
+							})
+							.then(res => this.props.userActions.getUser(this.props.user.email))
+							.then(res => this.props.stocksActions.getPortfolio(this.props.user.id))
+							.catch(err => console.log(err))
+						})
+				} else {
+					this.setState({localHelpBlock: `You can't sell more stocks than you own.`})
+				}
 				break;
 			default:
-				console.alert('Action was not "Buy" or "Sell"')
+				console.log('Action was not "Buy" or "Sell"')
 				break;
 		}
 	}
@@ -161,6 +194,7 @@ class Search extends Component {
 								</tr>
 							</tbody>
 						</table>
+						<HelpBlock>{this.state.localHelpBlock}</HelpBlock>
 						<BarChart symbol={this.props.search.symbol} style={{height:400, width:'100%'}}/>
 						<hr/>
 					</div>
