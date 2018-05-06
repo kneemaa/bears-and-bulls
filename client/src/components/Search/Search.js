@@ -97,6 +97,7 @@ class Search extends Component {
 			case 'buy':
 				if (this.props.user.accountBalance >= this.state.subtotal) {
 					let newBalance = this.props.user.accountBalance - this.state.subtotal
+					let email = this.props.email
 						axios({
 							method: 'POST',
 							url: `/api/user/trade`, 
@@ -114,8 +115,7 @@ class Search extends Component {
 									account_balance: newBalance.toFixed(2)
 								}
 							})
-							.then(res => this.props.userActions.getUser(this.props.user.email))
-							.then(res => this.props.stocksActions.getPortfolio(this.props.user.id))
+							.then(res => this.props.userActions.getUser({email:this.props.user.email}))
 							.catch(err => console.log(err))
 						})
 					} else {
@@ -123,16 +123,16 @@ class Search extends Component {
 					}
 				break;
 			case 'sell':
-			console.log(this.props.state)
+				console.log((this.props.search.price) * -1)
 				if (this.getOwnedCount(this.props.search.symbol) >= this.state.quantity) {
-					let newBalance = this.props.user.accountBalance + this.state.subtotal.toFixed(2)
-					debugger;
+					let newBalance = this.props.user.accountBalance + this.state.subtotal
+					console.log(newBalance)
 					axios({
 							method: 'POST',
 							url: `/api/user/trade`, 
 							data:{
 								'symbol': this.props.search.symbol,
-								'purchase_price': (this.props.search.price.toFixed(2) * -1),
+								'purchase_price': ((this.props.search.price) * -1),
 								'stock_count': (this.state.quantity * -1),
 								'owned_by': this.props.user.id
 							},
@@ -141,11 +141,10 @@ class Search extends Component {
 								method: 'POST',
 								url: `/api/user/${this.props.user.id}/update`,
 								data: {
-									account_balance: newBalance.toFixed(2)
+									account_balance: newBalance
 								}
 							})
-							.then(res => this.props.userActions.getUser(this.props.user.email))
-							.then(res => this.props.stocksActions.getPortfolio(this.props.user.id))
+							.then(res => this.props.userActions.getUser({email:this.props.user.email}))
 							.catch(err => console.log(err))
 						})
 				} else {
