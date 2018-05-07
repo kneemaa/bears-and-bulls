@@ -83,17 +83,19 @@ module.exports = {
 	// get trade history
 	getHistory: (req, res) => {
 		db.Ledger.find({owned_by:req.params.id})
-		.then(data => {
-			res.json(data)
-		}).catch(err => {
-			console.log(err)
-		})
-		.catch(err => { console.log(err)})
+		.then(data => res.json(data))
+		.catch(err => console.log(err))
 	},
 	// buy and sell stock
 	stockTrade: (req, res) => {
 		db.Ledger.create(req.body)
 		.then(data => res.json(data.data))
 		.catch(err => res.json(err))
+	},
+	// get users opted in to global contest
+	getGlobalCompetitors: (req, res) => {
+		db.Users.find({competition_opted_out: false})
+		.then(data => res.json(data))
+		.catch(err => console.log(err))
 	}
 }

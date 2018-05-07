@@ -15,6 +15,10 @@ const UserSchema = new Schema({
 	account_balance: {
 		type: Number,
 		default: 100000
+	},
+	competition_opted_out: {
+		type: Boolean,
+		default: false
 	}
 }, { timestamps: Date })
 
