@@ -16,7 +16,7 @@ const routes = function(app){
 	// update user's profile
 	app.post('/api/user/:id/update', controller.updateUser)
 	// get global contest users
-	app.get('/api/contest/globalUsers', controller.getGlobalCompetitors)
+	app.get('/api/competitions/globalUsers', controller.getGlobalCompetitors)
 }
 
 module.exports = routes
