@@ -73,6 +73,9 @@ class Navbar extends Component {
 						<LinkContainer to='/search'>
 							<NavItem className="navbar-link">Search</NavItem>
 						</LinkContainer>
+						<LinkContainer to='/history'>
+							<NavItem className="navbar-link">History</NavItem>
+						</LinkContainer>
 						<NavItem className="navbar-link">{
 				              !isAuthenticated() && (
 				                  <Button

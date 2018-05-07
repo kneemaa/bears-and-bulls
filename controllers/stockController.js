@@ -35,7 +35,6 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
-		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
 		db.Users.findOneAndUpdate({_id:req.params.id}, req.body)
@@ -82,10 +81,9 @@ module.exports = {
 	},
 	// get trade history
 	getHistory: (req, res) => {
-		db.Users.findOne({email:req.params.email})
-		.populate('ledger')
+		db.Ledger.find({owned_by:req.params.id})
 		.then(data => {
-			res.json(data.ledger)
+			res.json(data)
 		}).catch(err => {
 			console.log(err)
 		})
@@ -94,7 +92,7 @@ module.exports = {
 	// buy and sell stock
 	stockTrade: (req, res) => {
 		db.Ledger.create(req.body)
-		.then(success => res.json(success))
+		.then(data => res.json(data.data))
 		.catch(err => res.json(err))
 	}
 }

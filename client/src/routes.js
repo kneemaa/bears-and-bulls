@@ -6,6 +6,7 @@ import Callback from './components/Callback/Callback';
 import Auth from './components/Auth/Auth';
 import history from './components/Auth/History';
 import Navbar from './components/Navbar/Navbar'
+import LedgerHistory from './components/LedgerHistory/LedgerHistory'
 import Footer from './components/Footer/Footer'
 import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
@@ -23,6 +24,7 @@ export const makeMainRoutes = () => {
           <MyAccount auth ={auth} />
           <Route exact path="/" render={(props) => <Portfolio auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          <Route path="/history" render={(props) => <LedgerHistory {...props} />} />
           <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => <Callback auth={auth} {...props} />} />
           <Route exact path="/search" render={(props) =>  <Search auth={auth} {...props}/>}/>

@@ -13,7 +13,6 @@ export const getPortfolio = data => {
 		const userId = data
 		axios.get(`/api/user/${userId}/portfolio`)
 			.then(data => {
-				console.log(data.data)
 				dispatch(getUserPortfolio(data.data))})
 			.catch(err => console.log(err))
 	}
