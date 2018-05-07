@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const ContestSchema = new Schema({
-	contest_name: {			//Friendly name of contest
+const CompetitionSchema = new Schema({
+	competition_name: {			//Friendly name of contest
 		type: String,
 		required: true
 	},
@@ -27,6 +27,6 @@ const ContestSchema = new Schema({
 	}]
 	}, { timestamps: Date })
 
-let Contest = mongoose.model('Contest', ContestSchema)
+let Competition = mongoose.model('Competition', CompetitionSchema)
 
-module.exports = Contest
+module.exports = Competition
