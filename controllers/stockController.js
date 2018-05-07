@@ -35,7 +35,6 @@ module.exports = {
 		}).catch(err => {
 			console.log(err)
 		})
-		.catch(err => { console.log(err)})
 	},
 	updateUser: (req, res) => {
 		db.Users.findOneAndUpdate({_id:req.params.id}, req.body)
