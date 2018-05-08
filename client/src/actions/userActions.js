@@ -18,6 +18,7 @@ export const getUser = data => {
             .get(`/api/user/${email}`)
             .then(data => {
                 dispatch(getUserSuccess(data.data))
+                // dispatch(getPortfolioSuccess("aapl"))
                 dispatch(getPortfolio(data.data._id))
                 return
             })
@@ -35,6 +36,13 @@ export const getUserSuccess = data => {
         data: data
     }
 }
+
+// export const getPortfolioSuccess = data => {
+//     return {
+//         type: "GET_PORTFOLIO_SUCCESS",
+//         stocks: data
+//     }
+// }
 
 export const createUser = data => {
     console.log(data)
