@@ -1,24 +1,17 @@
 
 
 export const stateUpdateMath = (stockInfo, oldState) => {
-    // console.log(oldState)
-    // console.log(stockInfo)
-    // const portfolioValue = oldState.portfolioValue
 
     // set variables relative to incoming state and socket data
     const owned = oldState.owned
     const updatingSymbol = stockInfo.symbol
     const lastPrice = stockInfo.lastPrice
-
-    // console.log(portfolioValue)
-    // console.log(owned)
-    // console.log(updatingSymbol)
-    // console.log(lastPrice)
-
+    
     // create array of only the stock we are updating
     const updatingStock = owned.filter(stock => {
         return stock.symbol === updatingSymbol
     })
+
     // create array of only the stocks NOT updating
     const otherStocks = owned.filter(stock => {
         return stock.symbol !== updatingSymbol
@@ -29,7 +22,7 @@ export const stateUpdateMath = (stockInfo, oldState) => {
     const totalGain = marketValue - (updatingStock[0].stock_count * updatingStock[0].purchase_price)
     const profitLoss = totalGain / (updatingStock[0].stock_count * updatingStock[0].purchase_price)
 
-    // redefine the stock with new values based oon new data
+    // redefine the stock with new values based on new data
     const newStockValues = [
         {
         _id: updatingStock[0]._id,
@@ -46,12 +39,17 @@ export const stateUpdateMath = (stockInfo, oldState) => {
         }
     ]
 
+    // combince updated stock value with array of other stocks
     const newStocksForState = newStockValues.concat(otherStocks)
+
+    // add the market_value of all stocks to get current portfolioValue
     const portfolioValueForState = newStocksForState.map(stock => {
         return stock.market_value
         })
         .reduce((a,b) => a+b)
-
+    
+    // return a new object that includes the portfolio value and owned stocks
+    // state will be reset using this object in the reducer
     return {
         portfolioValue: portfolioValueForState,
         owned: newStocksForState
