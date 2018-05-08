@@ -38,7 +38,7 @@ export const stateUpdateMath = (stockInfo, oldState) => {
         }
     ]
 
-    // combince updated stock value with array of other stocks
+    // combine updated stock value array with array of other stocks
     const newStocksForState = newStockValues.concat(otherStocks)
 
     // add the market_value of all stocks to get current portfolioValue
