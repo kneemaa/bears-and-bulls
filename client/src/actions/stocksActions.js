@@ -13,7 +13,14 @@ export const getPortfolio = data => {
 		const userId = data
 		axios.get(`/api/user/${userId}/portfolio`)
 			.then(data => {
-				dispatch(getUserPortfolio(data.data))})
+                let stockSymbolArray = data.data.map(stock => {
+                    return stock.symbol
+                })
+                let symbolsForSocket = stockSymbolArray.join(",")
+                console.log(symbolsForSocket)
+                dispatch(getUserPortfolio(data.data))
+                dispatch(openWebSocket(symbolsForSocket))
+            })
 			.catch(err => console.log(err))
 	}
 }
@@ -37,5 +44,12 @@ export const getUserPortfolio = data => {
     return {
         type: actionTypes.GET_USER_PORTFOLIO,
         data: data
+    }
+}
+
+export const openWebSocket = data => {
+    return {
+        type: actionTypes.OPEN_WEB_SOCKET,
+        stocks: data
     }
 }

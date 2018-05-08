@@ -1,9 +1,11 @@
 import io from "socket.io-client"
+import actionTypes from "./actions/actionTypes";
+
 
 const socketMiddleware = store => next => action => {
 
     // listen for action when we get users portfolio
-    if (action.type === "GET_PORTFOLIO_SUCCESS") {
+    if (action.type === "OPEN_WEB_SOCKET") {
         // instantiate socket connection
         const socket = io('https://ws-api.iextrading.com/1.0/tops');
     
@@ -15,11 +17,15 @@ const socketMiddleware = store => next => action => {
 
     socket.on("message", (data) => {
         // do something with data
-        console.log(data)
+        let stockInfo = JSON.parse(data)
+        let {symbol, lastSalePrice} = stockInfo
+        console.log(symbol)
+        console.log(lastSalePrice)
+
         // dispatch data received to update stocks data in redux
         store.dispatch({
-            type: "STOCK_DATA_RECEIVED",
-            data
+            type: actionTypes.STOCK_DATA_RECEIVED,
+            data: {symbol: symbol, lastPrice: lastSalePrice}
         })
     })
     }
