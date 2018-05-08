@@ -11,7 +11,6 @@ export const stateUpdateMath = (stockInfo, oldState) => {
     const updatingStock = owned.filter(stock => {
         return stock.symbol === updatingSymbol
     })
-
     // create array of only the stocks NOT updating
     const otherStocks = owned.filter(stock => {
         return stock.symbol !== updatingSymbol
@@ -27,12 +26,12 @@ export const stateUpdateMath = (stockInfo, oldState) => {
         {
         _id: updatingStock[0]._id,
         symbol: updatingSymbol,
-        purchase_price: updatingStock[0].purchase_price.toFixed(2),
-        stock_count: updatingStock[0].stock_count,
-        last_price: lastPrice.toFixed(2),
-        market_value: marketValue.toFixed(2),
-        total_gain: totalGain.toFixed(2),
-        profit_loss: profitLoss.toFixed(4),
+        purchase_price: Number(updatingStock[0].purchase_price.toFixed(2)),
+        stock_count: Number(updatingStock[0].stock_count),
+        last_price: Number(lastPrice.toFixed(2)),
+        market_value: Number(marketValue.toFixed(2)),
+        total_gain: Number(totalGain.toFixed(2)),
+        profit_loss: Number(profitLoss.toFixed(4)),
         owned_by: updatingStock[0].owned_by,
         createdAt: updatingStock[0].createdAt,
         updatedAt: updatingStock[0].updatedAt
