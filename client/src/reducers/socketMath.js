@@ -47,5 +47,13 @@ export const stateUpdateMath = (stockInfo, oldState) => {
     ]
 
     const newStocksForState = newStockValues.concat(otherStocks)
-    console.log(newStocksForState)
+    const portfolioValueForState = newStocksForState.map(stock => {
+        return stock.market_value
+        })
+        .reduce((a,b) => a+b)
+
+    return {
+        portfolioValue: portfolioValueForState,
+        owned: newStocksForState
+    }
 }

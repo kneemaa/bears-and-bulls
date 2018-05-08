@@ -19,10 +19,8 @@ export default function stocksReducer(state = initialState.stocks, action) {
       }
 
       case actionTypes.STOCK_DATA_RECEIVED:
-        utils.stateUpdateMath(action.data, state)
-        // return {
-        //   state
-        // }
+        return utils.stateUpdateMath(action.data, state)
+        
       default: {
         return state;
       }
