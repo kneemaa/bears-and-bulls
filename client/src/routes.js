@@ -25,7 +25,6 @@ const handleAuthentication = (nextState, replace) => {
 export const makeMainRoutes = () => {
 
   return (
-<<<<<<< HEAD
     <Router history={history}>
       <div>
         <div id="user">
@@ -34,12 +33,6 @@ export const makeMainRoutes = () => {
           <Pills />
         </div>
         <div className="container" id="main">
-=======
-        <Router history={history}>
-        <div>
-          <Navbar auth={auth}/>
-          <MyAccount auth={auth} />
->>>>>>> 2e048bce92a5847d68af0ac0da296c2f46b121b9
           <Route exact path="/" render={(props) => <Portfolio auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/history" render={(props) => <LedgerHistory {...props} />} />
