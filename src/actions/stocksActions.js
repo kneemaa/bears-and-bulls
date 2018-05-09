@@ -1,6 +1,6 @@
 // this file defines functions that need to be taken on state.stocks
 // buy
-// sell 
+// sell
 // retrieve
 // udate db
 
@@ -52,4 +52,11 @@ export const openWebSocket = data => {
         type: actionTypes.OPEN_WEB_SOCKET,
         stocks: data
     }
+}
+
+export const updateChart = data => {
+	return {
+		type: actionTypes.UPDATE_CHART,
+		data: data
+	}
 }

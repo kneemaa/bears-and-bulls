@@ -10,7 +10,8 @@ export default {
     },
     stocks: {
             portfolioValue: 20000,
-            owned: []
+            owned: [],
+			charted: "IBM"
     },
     search: {
         symbol: '',

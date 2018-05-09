@@ -28,9 +28,10 @@ class LedgerHistory extends Component {
 		return
 	}
 
-	render() { 
+	render() {
 		return (
 		<div>
+			<h1>History</h1>
 			<table className="table table-hover mt-5 show-hide">
 				<thead>
 					<tr>
