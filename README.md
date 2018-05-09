@@ -1,10 +1,10 @@
 # Bears-and-Bulls
 
-##Environment Requirements
+## Environment Requirements
 * Mongo v3.6.3+
 * Node v9.11.1+
 
-##Dev Setup
+## Dev Setup
 * Clone the repository
 
 `git clone https://github.com/smalldoorman/bears-and-bulls.git && cd bears-and-bulls`
