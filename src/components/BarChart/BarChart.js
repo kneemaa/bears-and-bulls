@@ -9,27 +9,31 @@ import 'echarts/lib/component/title';
 
 class BarChart extends Component {
 	state = {
-		symbol: this.props.symbol,
-		data: {}
+		// symbol: this.props.symbol,
+		// data: {}
 	}
 
 	componentDidMount(){
 		this.getChartData();
 	}
 
+	componentWillUpdate(){
+		this.props.symbol && this.getChartData()
+	}
+
 	getChartData = () => {
-		API.searchStock(this.state.symbol).then(res => {
-			console.log(res);
-			this.setState({data: res.data["Time Series (Daily)"]}, () => {
-				this.createChart();
-			});
+		API.searchStock(this.props.symbol).then(res => {
+			// console.log(res);
+			// this.setState({data: res.data["Time Series (Daily)"]}, () => {
+				this.createChart(res.data["Time Series (Daily)"]);
+			// });
 		})
 	}
 
-    createChart = () => {
+    createChart = (data) => {
 		let myChart = echarts.init(document.getElementById('bar'));
-		let symbol = this.state.symbol;
-		let data = this.state.data;
+		let symbol = this.props.symbol;
+		// let data = this.state.data;
 
 		// prices for last 30 days
 		let dates = Object.keys(data).slice(0,29).reverse();

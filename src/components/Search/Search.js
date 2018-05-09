@@ -160,7 +160,7 @@ class Search extends Component {
 	render() {
 		return (
 		<div className="row">
-			<div className='searchComponent'>
+			<div className='searchComponent col-12'>
 				<h1>Search & Trade</h1>
 				{this.props.search.price !== 0 ? (
 					<div>
