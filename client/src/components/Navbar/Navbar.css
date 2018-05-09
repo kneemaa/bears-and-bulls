@@ -1,58 +1,40 @@
-.navbar {
-  background: linear-gradient(to right, #0f2456, #546dd0);
-  box-shadow: none;
-  padding: 0;
-  color: white;
-}
+.header { background: linear-gradient(to right, #0f2456, #546dd0);}
 
-.branding h1 {
+.header .container{
+	display: flex;
+	justify-content: space-between;
+    box-shadow: none;
+    padding: 0;
+    color: white;
+}
+.navbar-brand p {
   font-size: 24px;
   font-family: 'Pacifico';
   opacity: .8;
-  box-shadow: none;
-  margin-top: 10px;
-  padding: 6px 0;
+  display: flex;
+  margin: 10px 40px 8px 0;
+}
+.justify-content-between {
+	display: flex;
+	justify-content: space-between;
+}
+.custom-navbar-nav, .custom-navbar-form {
+	display: flex;
 }
 
-.navbar form input {
-  border-radius: 0;
-  font-size: 11px;
-  border: none;
-  background: none;
-  border-bottom: 1px solid lightgrey;
-  color: white;
+.custom-navbar-form input.form-control.form-control-sm {
+	width: 200px;
+	display: flex;
+	border-radius: 0;
+	background: none;
+	border: none;
+	border-bottom: 1px solid white;
 }
 
-.navbar form input:focus {
-  background: rgba(255,255,255,.2);
-  border: none;
-  border-bottom: 1px solid white;
-  color: white;
+.custom-navbar-nav.nav.nav-pills { align-items: center;}
+.custom-navbar-nav.nav.nav-pills .navbar-link a {
+	color: white;
+	padding: 20px 10px;
 }
 
-.navbar .links { text-align: right; }
-
-.navbar a.nav-link {
-  color: white;
-  padding: 0 10px;
-  display: inline-block;
-}
-
-.navbar a.nav-link:hover { color: #00BDD4;}
-
-button.login-btn, button.logout-btn {
-  display: inline-block;
-  margin-right: 0;
-  border-radius: 0;
-  padding: 8px 15px;
-  font-size: 11px;
-}
-
-@media screen and (max-width: 767.98px) {
-  .navbar { text-align: center;}
-  .branding { font-size: 18px; }
-  .navbar form input { display: none;}
-  .navbar .links { margin-top: -5px; text-align: center; font-size: 11px;}
-  .navbar a.nav-link { padding: 0 6px;}
-  button.login-btn, button.logout-btn { font-size: 8px; padding: 6px 10px;}
-}
+.custom-navbar-nav.nav.nav-pills .navbar-link a:hover { color: #00BDD4;}
