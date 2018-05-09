@@ -1,6 +1,9 @@
+import "babel-polyfill";
 import React from 'react';
 import { Provider } from 'react-redux'
-//import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import 'core-js/es6/map'
+import 'core-js/es6/set'
+//import 'raf/polyfill'
 
 import ReactDOM from 'react-dom';
 import { makeMainRoutes } from './routes'
