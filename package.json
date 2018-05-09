@@ -24,8 +24,9 @@
     "axios": "^0.18.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
-    "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react-app": "^3.1.1",
     "babel-register": "6.26.0",
     "babel-runtime": "6.26.0",
@@ -52,7 +53,6 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "20.0.4",
     "jwt-decode": "^2.2.0",
     "mdbreact": "^4.3.0",
     "moment": "^2.22.1",
@@ -65,6 +65,7 @@
     "promise": "8.0.1",
     "raf": "^3.4.0",
     "react": "^16.3.2",
+    "react-app": "^1.1.2",
     "react-bootstrap": "^0.32.1",
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.3.2",
@@ -99,8 +100,8 @@
       ".*": "<rootDir>/node_modules/babel-jest/build/index.js"
     },
     "setupFiles": [
-      "./utilities/testSetup.js",
-      "raf/polyfill"
+      "<rootDir>//utilities/testSetup.js",
+      "<rootDir>/config/polyfills.js"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|txt)$": "<rootDir>/utilities/fileMock.js",
@@ -118,8 +119,14 @@
     "socket.io-client": "^2.1.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.0.0-beta.46",
     "core-js": "^2.5.6",
     "nodemon": "^1.17.4",
+    "react-addons-test-utils": "^15.6.2",
+    "react-css-modules": "^4.7.2",
+    "react-test-renderer": "^16.3.2",
+    "redux-mock-store": "^1.5.1",
+    "redux-test-utils": "^0.2.2",
     "watchman": "^1.0.0"
   },
   "babel": {
