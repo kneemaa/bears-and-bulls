@@ -38,7 +38,7 @@ class Search extends Component {
 		action: '',
 		localHelpBlock: ''
 	}
-	
+
 
 	handleChange = event => {
 		this.setState({searchSymbol: event.target.value})
@@ -80,7 +80,7 @@ class Search extends Component {
 			      return 'error'
 			    }
 			    return null
-			} 
+			}
 		return null
 	}
 
@@ -100,7 +100,7 @@ class Search extends Component {
 					let email = this.props.email
 						axios({
 							method: 'POST',
-							url: `/api/user/trade`, 
+							url: `/api/user/trade`,
 							data:{
 								'symbol': this.props.search.symbol,
 								'purchase_price': this.props.search.price,
@@ -129,7 +129,7 @@ class Search extends Component {
 					console.log(newBalance)
 					axios({
 							method: 'POST',
-							url: `/api/user/trade`, 
+							url: `/api/user/trade`,
 							data:{
 								'symbol': this.props.search.symbol,
 								'purchase_price': ((this.props.search.price) * -1),
@@ -159,7 +159,7 @@ class Search extends Component {
 
 	render() {
 		return (
-		<div>
+		<div className="row">
 			<div className='searchComponent'>
 				<h1>Search & Trade</h1>
 				{this.props.search.price !== 0 ? (
@@ -188,7 +188,7 @@ class Search extends Component {
 									<th>{this.state.subtotal ? this.state.subtotal : 0}</th>
 									<th>
 										<Button type='submit' onClick={() => this.actionHandler('buy')}>Buy</Button>
-										<Button type='submit' onClick={() => this.actionHandler('sell')} 
+										<Button type='submit' onClick={() => this.actionHandler('sell')}
 											disabled={this.getOwnedCount() > 0 ? false : true}>Sell</Button>
 									</th>
 								</tr>

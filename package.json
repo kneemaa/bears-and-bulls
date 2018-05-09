@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Mock Stock Market trading app",
   "main": "server.js",
+  "proxy": "http://localhost:3001",
   "repository": "git@github.com:smalldoorman/bears-and-bulls.git",
   "author": "Nema Darban <nema.darban@gmail.com>",
   "license": "MIT",
