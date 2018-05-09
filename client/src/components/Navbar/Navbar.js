@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import { Nav, NavItem, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-import './Navbar.css'
-import Auth from '../Auth/Auth.js'
-import * as searchActionCreators from '../../actions/searchActions'
-import * as stocksActionCreators from '../../actions/stocksActions'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import history from '../Auth/History'
+import React, { Component } from "react"
+import { withRouter } from "react-router-dom"
+import { Button } from "react-bootstrap";
+import "./Navbar.css"
+import Auth from "../Auth/Auth.js"
+import * as searchActionCreators from "../../actions/searchActions"
+import * as stocksActionCreators from "../../actions/stocksActions"
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import history from "../Auth/History"
 
 
 function mapStateToProps(state) {
@@ -29,7 +28,7 @@ function mapDispatchToProps(dispatch) {
 class Navbar extends Component {
 
 	state = {
-		searchKey: ''
+		searchKey: ""
 	}
 
 	handleChange = event => {
@@ -40,7 +39,7 @@ class Navbar extends Component {
 		event.preventDefault()
 		let searchKey = this.state.searchKey.trim().toUpperCase()
 		this.props.searchActions.query(searchKey)
-		history.push('/search')
+		history.push("/search")
 	}
 
 	login = () => {
@@ -57,29 +56,24 @@ class Navbar extends Component {
 	render() {
 		const { isAuthenticated } = this.props.auth
 		return (
-			<div className='container custom-navbar-container'>
-				<p className='navbar-brand'>Bears and Bulls</p>
-				<div className='collapse navbar-collapse justify-content-between' id='menubar'>
-					<form className='custom-navbar-form' onSubmit={this.handleSubmit}>
-						{/*<a href='' id='menu-search' onClick={this.handleSubmit}></a>*/}
-						<div className='waves-input-wrapper waves-effect waves-light'>
-						<input onChange={this.handleChange} id='menu-search-input' className='form-control form-control-sm' type='text' placeholder='Search Stock' aria-label='Search'></input>
-						</div>
-					</form>
-					<Nav className='custom-navbar-nav' bsStyle="pills">
-						<LinkContainer to='/'>
-							<NavItem className="custom-navbar-link">Home</NavItem>
-						</LinkContainer>
-						<LinkContainer to='/search'>
-							<NavItem className="navbar-link">Search</NavItem>
-						</LinkContainer>
-						<LinkContainer to='/trade'>
-							<NavItem className="navbar-link">Trade</NavItem>
-						</LinkContainer>
-						<NavItem className="navbar-link">{
+			<div className="navbar fixed-top">
+				<div className="container">
+
+					<div className="branding col-lg-3 col-md-6 col-sm-12"><h1>Bears and Bulls</h1></div>
+
+					<form className="col-lg-3 col-md-6 col-sm-12" onSubmit={this.handleSubmit}>
+						{/*<a href="" id="menu-search" onClick={this.handleSubmit}></a>*/}
+							<input onChange={this.handleChange} id="menu-search-input" className="form-control form-control-sm" type="text" placeholder="Search Stock" aria-label="Search"></input>
+          </form>
+
+					<div className="links col-lg-6 col-md-12 col-sm-12">
+						<a className="nav-link" to="/">Home</a>
+						<a className="nav-link" to="/search">Search</a>
+						<a className="nav-link" to="/trade">Trade</a>
+						<a className="nav-link">{
 				              !isAuthenticated() && (
 				                  <Button
-				                    bsStyle="primary"
+				                    bsStyle="info"
 				                    className="btn-margin login-btn"
 				                    onClick={this.login.bind(this)}
 				                  >
@@ -98,8 +92,9 @@ class Navbar extends Component {
 				                  </Button>
 				                )
 				            }
-				        </NavItem>
-					</Nav>
+				      </a>
+          </div>
+
 				</div>
 			</div>)
 	}

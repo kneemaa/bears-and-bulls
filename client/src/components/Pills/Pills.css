@@ -1,9 +1,19 @@
-.pills.nav li {
+
+.pills { padding: 10px 0;}
+
+.pills .nav li {
 	display: inline-block;
-	width: 80px;
 	opacity: .7;
+	font-size: 13px;
 }
 
-.pills.nav li.active {
-	opacity: 1;
+.pills li:hover { opacity: 1;}
+
+.pills a { color: white;}
+
+.pills i { margin-bottom: 5px;}
+
+
+@media screen and (max-width: 767.98px) {
+	.pills .nav li { font-size: 11px;}
 }

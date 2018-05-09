@@ -76,7 +76,7 @@ class Search extends Component {
 			      return 'error'
 			    }
 			    return null
-			} 
+			}
 		return null
 	}
 
@@ -86,7 +86,7 @@ class Search extends Component {
 				let newBalance = this.props.user.accountBalance - this.state.subtotal
 				axios({
 					method: 'POST',
-					url: `/api/user/${this.props.user.email}/trade`, 
+					url: `/api/user/${this.props.user.email}/trade`,
 					data:{
 						'symbol': this.props.search.symbol,
 						'purchase_price': this.props.search.price,
@@ -113,7 +113,7 @@ class Search extends Component {
 
 	render() {
 		return (
-		<div>
+		<div className="row">
 			<div className='searchComponent'>
 				<h1>Search & Trade</h1>
 				{this.props.search.price !== 0 ? (

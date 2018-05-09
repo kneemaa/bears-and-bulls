@@ -1,25 +1,58 @@
-.custom-navbar-container {
-	width: 100%;
-	background-color: lightblue;
-	display: flex;
-	justify-content: space-between;
+.navbar {
+  background: linear-gradient(to right, #0f2456, #546dd0);
+  box-shadow: none;
+  padding: 0;
+  color: white;
 }
-.navbar-brand {
-  margin-right: 60px;
+
+.branding h1 {
   font-size: 24px;
   font-family: 'Pacifico';
   opacity: .8;
-  display: flex;
-}
-.justify-content-between {
-	display: flex;
-	justify-content: space-between;
-}
-.custom-navbar-nav, .custom-navbar-form {
-	display: flex;
+  box-shadow: none;
+  margin-top: 10px;
+  padding: 6px 0;
 }
 
-#menu-search-input {
-	width: 200px;
-	display: flex;
+.navbar form input {
+  border-radius: 0;
+  font-size: 11px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid lightgrey;
+  color: white;
+}
+
+.navbar form input:focus {
+  background: rgba(255,255,255,.2);
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+
+.navbar .links { text-align: right; }
+
+.navbar a.nav-link {
+  color: white;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.navbar a.nav-link:hover { color: #00BDD4;}
+
+button.login-btn, button.logout-btn {
+  display: inline-block;
+  margin-right: 0;
+  border-radius: 0;
+  padding: 8px 15px;
+  font-size: 11px;
+}
+
+@media screen and (max-width: 767.98px) {
+  .navbar { text-align: center;}
+  .branding { font-size: 18px; }
+  .navbar form input { display: none;}
+  .navbar .links { margin-top: -5px; text-align: center; font-size: 11px;}
+  .navbar a.nav-link { padding: 0 6px;}
+  button.login-btn, button.logout-btn { font-size: 8px; padding: 6px 10px;}
 }
