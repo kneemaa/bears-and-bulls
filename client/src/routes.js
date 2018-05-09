@@ -16,6 +16,12 @@ import './style.css'
 
 const auth = new Auth();
 
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
+
 export const makeMainRoutes = () => {
 
   return (
@@ -31,7 +37,9 @@ export const makeMainRoutes = () => {
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/history" render={(props) => <LedgerHistory {...props} />} />
           <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => <Callback auth={auth} {...props} />} />
+          <Route path="/callback" render={(props) => {
+            handleAuthentication(props)
+            return <Callback auth={auth} {...props} />}} />
           <Route exact path="/search" render={(props) =>  <Search auth={auth} {...props}/>}/>
           <Route path="/search/:symbol" render={(props) => <Search auth={auth} {...props}/> }/>
         </div>
