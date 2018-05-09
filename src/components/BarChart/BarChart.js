@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import API from '../../utils/API.js';
+import * as stocksActionCreators from "../../actions/stocksActions"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/bar';
@@ -18,11 +21,11 @@ class BarChart extends Component {
 	}
 
 	componentWillUpdate(){
-		this.props.symbol && this.getChartData()
+		this.props.stocks.charted && this.getChartData()
 	}
 
 	getChartData = () => {
-		API.searchStock(this.props.symbol).then(res => {
+		API.searchStock(this.props.stocks.charted).then(res => {
 			// console.log(res);
 			// this.setState({data: res.data["Time Series (Daily)"]}, () => {
 				this.createChart(res.data["Time Series (Daily)"]);
@@ -32,7 +35,7 @@ class BarChart extends Component {
 
     createChart = (data) => {
 		let myChart = echarts.init(document.getElementById('bar'));
-		let symbol = this.props.symbol;
+		let symbol = this.props.stocks.charted;
 		// let data = this.state.data;
 
 		// prices for last 30 days
@@ -164,4 +167,16 @@ class BarChart extends Component {
     }
 }
 
-export default BarChart;
+function mapStateToProps(state) {
+    return {
+      stocks: state.stocks,
+    };
+  }
+  function mapDispatchToProps(dispatch) {
+    return {
+      stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+
+    };
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(BarChart);
