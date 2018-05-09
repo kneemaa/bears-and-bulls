@@ -38,8 +38,30 @@ describe('<MyAccount />', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('should render the the users account balance on the second paragraph tag', () => {
-    const expected = 'Available Balance: 9000';
+  it('should render the the users account balance on the first h5 tag', () => {
+    const expected = '9000';
+
+    const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
+
+    const paragraphRow = wrapper.find('h5').getElements()[0];
+
+    const actual = shallow(paragraphRow).text();
+    expect(actual).toEqual(expected);
+  });
+
+  it('should render the the users portfolio value on the second h5 tag', () => {
+    const expected = '3000';
+
+    const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
+
+    const paragraphRow = wrapper.find('h5').getElements()[1];
+
+    const actual = shallow(paragraphRow).text();
+    expect(actual).toEqual(expected);
+  });
+
+  it('should render the the users portfolio value on the second paragraph tag', () => {
+    const expected = 'Available Balance';
 
     const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
 
@@ -50,7 +72,7 @@ describe('<MyAccount />', () => {
   });
 
   it('should render the the users portfolio value on the third paragraph tag', () => {
-    const expected = 'Portfolio Value: 3000';
+    const expected = 'Portfolio Value';
 
     const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
 
