@@ -10,11 +10,11 @@ describe('<MyAccount />', () => {
       id: 'random-identifier-123',
       firstName: 'Nema',
       lastName: 'Darban',
-      accountBalance: 9000,
-      portfolioValue: 3000,
+      accountBalance: 9000.02,
+      portfolioValue: 3000.77,
     },
     stocks: {
-      portfolioValue: 3000,
+      portfolioValue: 3000.77,
     },
   };
 
@@ -39,7 +39,7 @@ describe('<MyAccount />', () => {
   });
 
   it('should render the the users account balance on the first h5 tag', () => {
-    const expected = '9000';
+    const expected = '9000.02';
 
     const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
 
@@ -50,7 +50,7 @@ describe('<MyAccount />', () => {
   });
 
   it('should render the the users portfolio value on the second h5 tag', () => {
-    const expected = '3000';
+    const expected = '3000.77';
 
     const wrapper = shallow(<MyAccount.WrappedComponent {...props} />);
 
