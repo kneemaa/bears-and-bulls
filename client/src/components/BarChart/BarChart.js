@@ -19,6 +19,7 @@ class BarChart extends Component {
 
 	getChartData = () => {
 		API.searchStock(this.state.symbol).then(res => {
+			console.log(res);
 			this.setState({data: res.data["Time Series (Daily)"]}, () => {
 				this.createChart();
 			});

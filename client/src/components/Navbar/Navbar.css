@@ -1,15 +1,18 @@
-.custom-navbar-container {
-	width: 100%;
-	background-color: lightblue;
+.header { background: linear-gradient(to right, #0f2456, #546dd0);}
+
+.header .container{
 	display: flex;
 	justify-content: space-between;
+    box-shadow: none;
+    padding: 0;
+    color: white;
 }
-.navbar-brand {
-  margin-right: 60px;
+.navbar-brand p {
   font-size: 24px;
   font-family: 'Pacifico';
   opacity: .8;
   display: flex;
+  margin: 10px 40px 8px 0;
 }
 .justify-content-between {
 	display: flex;
@@ -19,7 +22,19 @@
 	display: flex;
 }
 
-#menu-search-input {
+.custom-navbar-form input.form-control.form-control-sm {
 	width: 200px;
 	display: flex;
+	border-radius: 0;
+	background: none;
+	border: none;
+	border-bottom: 1px solid white;
 }
+
+.custom-navbar-nav.nav.nav-pills { align-items: center;}
+.custom-navbar-nav.nav.nav-pills .navbar-link a {
+	color: white;
+	padding: 20px 10px;
+}
+
+.custom-navbar-nav.nav.nav-pills .navbar-link a:hover { color: #00BDD4;}

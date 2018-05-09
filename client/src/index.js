@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { makeMainRoutes } from './routes'
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store'
+import './style.css'
 
 const store = configureStore()
 const routes = makeMainRoutes()
@@ -13,7 +14,7 @@ const routes = makeMainRoutes()
 
 ReactDOM.render(
 	<Provider store={store}>
-	  { routes } 
+	  { routes }
 	</Provider>,
 	document.getElementById('root'),
 	);

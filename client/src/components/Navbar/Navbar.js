@@ -57,18 +57,22 @@ class Navbar extends Component {
 	render() {
 		const { isAuthenticated } = this.props.auth
 		return (
-			<div className='container custom-navbar-container'>
-				<p className='navbar-brand'>Bears and Bulls</p>
+			<div className="header fixed-top">
+			<div className='container'>
+				<div className='navbar-brand'><p>Bears and Bulls</p></div>
+
 				<div className='collapse navbar-collapse justify-content-between' id='menubar'>
+
 					<form className='custom-navbar-form' onSubmit={this.handleSubmit}>
 						{/*<a href='' id='menu-search' onClick={this.handleSubmit}></a>*/}
-						<div className='waves-input-wrapper waves-effect waves-light'>
+						<div>
 						<input onChange={this.handleChange} id='menu-search-input' className='form-control form-control-sm' type='text' placeholder='Search Stock' aria-label='Search'></input>
 						</div>
 					</form>
-					<Nav className='custom-navbar-nav' bsStyle="pills">
+
+					<Nav className='custom-navbar-nav align-item-center' bsStyle="pills">
 						<LinkContainer to='/'>
-							<NavItem className="custom-navbar-link">Home</NavItem>
+							<NavItem className="navbar-link">Home</NavItem>
 						</LinkContainer>
 						<LinkContainer to='/search'>
 							<NavItem className="navbar-link">Search</NavItem>
@@ -100,7 +104,9 @@ class Navbar extends Component {
 				            }
 				        </NavItem>
 					</Nav>
+
 				</div>
+			</div>
 			</div>)
 	}
 }

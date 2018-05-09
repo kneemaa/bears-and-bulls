@@ -1,22 +1,18 @@
-.searchComponent{
-	width: 800px;
-	margin: 0 auto;
-	display: flex;
-	align-content: center;
-	justify-content: space-around;
-	flex-direction: column;
+.searchComponent { padding: 0;}
+
+.searchComponent input {
+	border-radius: 0;
+	padding: 8px 15px;
 }
-.searchInput {
-	width: 200px;
-}
+
+.searchInput { width: 200px;}
+
 .search-span {
 	display: flex;
 	flex-direction: row;
+	margin-top: 50px;
 }
 
-.chartComponent {
-	width: 300px;
-}
 .quantityInput {
 	width: 60px;
 }
