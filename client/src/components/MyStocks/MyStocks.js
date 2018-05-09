@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const MyStocks = (props) => {
-    console.log(props.stocks)
     return (
         <div>
             <h1>My Stocks</h1>
             <ul>
             {props.stocks.owned.map(stock => (
                     //reset the key to be something more unique
-                <li key={stock.symbol}> {stock.symbol}, {stock.paid}, {stock.quantity}</li>
+                <li key={stock.symbol}> {stock.symbol}, {stock.stock_count}, {stock.last_price}, {stock.purchase_price}, {stock.total_gain}, {stock.profit_loss}</li>
             ))}
             </ul>
             
