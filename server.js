@@ -8,7 +8,7 @@ const path = require('path')
 
 const controller = require('./controllers/stockController.js')
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/BearsAndBulls"
 mongoose.Promise = Promise;
