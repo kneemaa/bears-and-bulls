@@ -1,9 +1,0 @@
-.pills.nav li {
-	display: inline-block;
-	width: 80px;
-	opacity: .7;
-}
-
-.pills.nav li.active {
-	opacity: 1;
-}
