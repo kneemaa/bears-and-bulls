@@ -11,10 +11,10 @@ const MyAccount = (props) => {
 					<p>{props.user.firstName} {props.user.lastName}</p>
 				</div>
 				<div className="col-4 text-right">
-					<p>Available Balance</p> <h5>{props.user.accountBalance}</h5>
+					<p>Available Balance</p> <h5>{(props.user.accountBalance).toFixed(2)}</h5>
 				</div>
 				<div className="col-4 text-right">
-					<p>Portfolio Value</p> <h5>{props.stocks.portfolioValue}</h5>
+					<p>Portfolio Value</p> <h5>{(props.stocks.portfolioValue).toFixed(2)}</h5>
 				</div>
 			</div>
 		</div>

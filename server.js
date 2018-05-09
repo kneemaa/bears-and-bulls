@@ -14,7 +14,7 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/BearsAndBull
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
 
-app.use(logger('dev'))
+//app.use(logger('dev'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
