@@ -1,6 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
+import socketMiddleware from "./sockets"
 
 import rootReducer from './reducers/rootReducer';
 
@@ -12,6 +13,8 @@ export default function configureStore(initialState) {
       diff: true,
     }),
     thunk,
+    socketMiddleware,
+
   ];
 
   const store = createStore(
