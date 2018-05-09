@@ -12,28 +12,32 @@ const userSeed = [
 		first_name: 'Devin',
 		last_name: 'Thomas',
 		email: 'dthomase30@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214668"),
 		first_name: 'Nema',
 		last_name: 'Darban',
 		email: 'nema.darban@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214669"),
 		first_name: 'Daphne',
 		last_name: 'Chen',
 		email: 'daphne@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214666"),
 		first_name: 'Jeremy',
 		last_name: 'Gruhlkey',
 		email: 'jeremygruhlkey@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 ]
 
