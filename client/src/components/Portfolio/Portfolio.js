@@ -4,6 +4,9 @@ import PieChart from "../PieChart/PieChart.js"
 
 import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 import MyStocks from "../MyStocks/MyStocks.js"
+import * as stocksActionCreators from "../../actions/stocksActions"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import './Portfolio.css';
 
 class Portfolio extends Component {
@@ -17,7 +20,7 @@ class Portfolio extends Component {
             </div>
             <div className="row">
 				<div className="col-lg-8 col-md-8 col-sm-12">
-					<BarChart symbol="IBM" style={{height:400, width:'100%'}}/>
+					<BarChart symbol={this.props.stocks.charted} style={{height:400, width:'100%'}}/>
 				</div>
 				<div className="col-lg-4 col-md-4 col-sm-12">
 					<PieChart style={{height:400, width:'100%'}} />
@@ -33,4 +36,16 @@ class Portfolio extends Component {
 }
 
 
-export default Portfolio
+function mapStateToProps(state) {
+    return {
+      stocks: state.stocks,
+    };
+  }
+  function mapDispatchToProps(dispatch) {
+    return {
+      stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+
+    };
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
