@@ -1,9 +1,7 @@
-import "babel-polyfill";
 import React from 'react';
 import { Provider } from 'react-redux'
 import 'core-js/es6/map'
 import 'core-js/es6/set'
-//import 'raf/polyfill'
 
 import ReactDOM from 'react-dom';
 import { makeMainRoutes } from './routes'
@@ -11,6 +9,9 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store'
 import './style.css'
 
+global.requestAnimationFrme = function(callback) {
+    setTimeout(callback, 0);
+}
 const store = configureStore()
 const routes = makeMainRoutes()
 

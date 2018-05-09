@@ -26,7 +26,6 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-react-app": "^3.1.1",
     "babel-register": "6.26.0",
     "babel-runtime": "6.26.0",
@@ -101,7 +100,7 @@
     },
     "setupFiles": [
       "./utilities/testSetup.js",
-      "<rootDir>/config/polyfills.js"
+      "raf/polyfill"
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|txt)$": "<rootDir>/utilities/fileMock.js",
@@ -119,6 +118,7 @@
     "socket.io-client": "^2.1.0"
   },
   "devDependencies": {
+    "core-js": "^2.5.6",
     "nodemon": "^1.17.4",
     "watchman": "^1.0.0"
   },
