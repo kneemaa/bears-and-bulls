@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import './MyStocks.css';
 
 const MyStocks = props => (
+
+	
 	<div className="my-stock-history col-12">
 		{console.log(props)}
 		<h1>My Stocks</h1>
