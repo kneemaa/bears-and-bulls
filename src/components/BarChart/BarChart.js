@@ -3,7 +3,7 @@ import API from '../../utils/API.js';
 import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import './BarChart.css'
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/chart/line';

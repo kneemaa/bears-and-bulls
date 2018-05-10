@@ -97,7 +97,6 @@ class Search extends Component {
 			case 'buy':
 				if (this.props.user.accountBalance >= this.state.subtotal) {
 					let newBalance = this.props.user.accountBalance - this.state.subtotal
-					let email = this.props.email
 						axios({
 							method: 'POST',
 							url: `/api/user/trade`,
@@ -126,7 +125,6 @@ class Search extends Component {
 				console.log((this.props.search.price) * -1)
 				if (this.getOwnedCount(this.props.search.symbol) >= this.state.quantity) {
 					let newBalance = this.props.user.accountBalance + this.state.subtotal
-					console.log(newBalance)
 					axios({
 							method: 'POST',
 							url: `/api/user/trade`,
@@ -194,7 +192,7 @@ class Search extends Component {
 								</tr>
 							</tbody>
 						</table>
-						<HelpBlock>{this.state.localHelpBlock}</HelpBlock>
+						<HelpBlock id='searchHelpBlock'>{this.state.localHelpBlock}</HelpBlock>
 						<BarChart symbol={this.props.search.symbol} style={{height:400, width:'100%'}}/>
 						<hr/>
 					</div>

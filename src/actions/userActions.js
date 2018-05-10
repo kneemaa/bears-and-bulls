@@ -11,14 +11,11 @@ import {getPortfolio} from './stocksActions'
 export const getUser = data => {
     return function(dispatch) {
     const user = data
-    console.log('+-+-+-+-+')
-    console.log(data)
     const email = data.email
         axios
             .get(`/api/user/${email}`)
             .then(data => {
                 dispatch(getUserSuccess(data.data))
-                // dispatch(getPortfolioSuccess("aapl"))
                 dispatch(getPortfolio(data.data._id))
                 return
             })
@@ -62,7 +59,7 @@ export const updateTotalBalance = (id, total_balance) => {
     return function(dispatch){
         axios
         .post(`/api/user/${id}/update`, {total_balance: total_balance})
-        .then(data => console.log(data))
+        /*.then(data => console.log(data))*/
         .catch(error => console.log(error))
     }
 }
