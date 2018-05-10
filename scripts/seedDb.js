@@ -12,28 +12,32 @@ const userSeed = [
 		first_name: 'Devin',
 		last_name: 'Thomas',
 		email: 'dthomase30@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214668"),
 		first_name: 'Nema',
 		last_name: 'Darban',
 		email: 'nema.darban@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214669"),
 		first_name: 'Daphne',
 		last_name: 'Chen',
 		email: 'daphne@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89627c586bc2214666"),
 		first_name: 'Jeremy',
 		last_name: 'Gruhlkey',
 		email: 'jeremygruhlkey@gmail.com',
-		account_balance: 10000
+		account_balance: 100000,
+		total_balance: 100000
 	},
 ]
 
@@ -50,21 +54,21 @@ const ledgerSeed = [
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214302"),
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214303"),
 		symbol: "TSLA",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214304"),
@@ -85,14 +89,14 @@ const ledgerSeed = [
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
 	},	
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214307"),
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214308"),
@@ -106,21 +110,21 @@ const ledgerSeed = [
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214310"),
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214311"),
 		symbol: "FB",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214666")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214312"),
@@ -141,7 +145,7 @@ const ledgerSeed = [
 		symbol: "SNAP",
 		purchase_price: 50,
 		stock_count: 5,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214668")
 	},
 	{
 		_id: mongoose.Types.ObjectId("59316b89008c586bc2214315"),
@@ -155,7 +159,7 @@ const ledgerSeed = [
 		symbol: "FB",
 		purchase_price: 120,
 		stock_count: 15,
-		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214667")
+		owned_by: mongoose.Types.ObjectId("59316b89627c586bc2214669")
 	},
 ]
 

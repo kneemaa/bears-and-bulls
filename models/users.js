@@ -15,6 +15,10 @@ const UserSchema = new Schema({
 	account_balance: {
 		type: Number,
 		default: 100000
+	}, 
+	total_balance: {
+		type: Number,
+		default: 100000
 	}
 }, { timestamps: Date })
 

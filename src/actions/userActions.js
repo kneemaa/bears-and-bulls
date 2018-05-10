@@ -24,7 +24,7 @@ export const getUser = data => {
             })
             .catch(error => {
                 console.log(error)
-                //dispatch(createUser(user))
+                dispatch(createUser(user))
                 return
             })
     }
@@ -55,6 +55,15 @@ export const createUser = data => {
         .catch(error => {
             console.log(error)
         })
+    }
+}
+
+export const updateTotalBalance = (id, total_balance) => {
+    return function(dispatch){
+        axios
+        .post(`/api/user/${id}/update`, {total_balance: total_balance})
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
     }
 }
 

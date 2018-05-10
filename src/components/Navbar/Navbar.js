@@ -6,6 +6,8 @@ import './Navbar.css'
 import Auth from '../Auth/Auth.js'
 import * as searchActionCreators from '../../actions/searchActions'
 import * as stocksActionCreators from '../../actions/stocksActions'
+import * as userActionCreators from '../../actions/userActions'
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import history from '../Auth/History'
@@ -13,7 +15,7 @@ import history from '../Auth/History'
 
 function mapStateToProps(state) {
   return {
-    user: state.user.email,
+    user: state.user,
     search: state.search,
     stocks: state.stocks
   };
@@ -22,7 +24,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActionCreators, dispatch),
-    stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+		stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+		userActions: bindActionCreators(userActionCreators, dispatch),
   };
 }
 
@@ -30,6 +33,11 @@ class Navbar extends Component {
 
 	state = {
 		searchKey: ''
+	}
+
+	componentDidUpdate(){
+		const total_value = this.props.stocks.portfolioValue + this.props.user.accountBalance
+		this.props.userActions.updateTotalBalance(this.props.user.id, total_value)
 	}
 
 	handleChange = event => {

@@ -94,5 +94,5 @@ module.exports = {
 		db.Ledger.create(req.body)
 		.then(data => res.json(data.data))
 		.catch(err => res.json(err))
-	}
+	},
 }
