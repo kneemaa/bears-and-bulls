@@ -51,6 +51,7 @@ export const stateUpdateMath = (stockInfo, oldState) => {
     // state will be reset using this object in the reducer
     return {
         portfolioValue: portfolioValueForState,
-        owned: newStocksForState
+        owned: newStocksForState,
+        charted: oldState.charted
     }
 }

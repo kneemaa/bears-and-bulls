@@ -24,7 +24,7 @@ class Portfolio extends Component {
             </div>
             <div className="row">
 				<div className="col-lg-8 col-md-8 col-sm-12">
-					<BarChart symbol={this.props.stocks.charted} style={{height:400, width:'100%'}}/>
+					<BarChart  style={{height:400, width:'100%'}}/>
 				</div>
 				<div className="col-lg-4 col-md-4 col-sm-12">
 					<PieChart style={{height:400, width:'100%'}} />
