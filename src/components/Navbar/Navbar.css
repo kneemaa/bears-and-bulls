@@ -38,3 +38,7 @@
 }
 
 .custom-navbar-nav.nav.nav-pills .navbar-link a:hover { color: #00BDD4;}
+
+#menu-search-input {
+	color: white;
+}

@@ -16,3 +16,12 @@
 .quantityInput {
 	width: 60px;
 }
+#searchHelpBlock {
+	justify-content: center;
+    display: flex;
+    color: red;
+}
+.search-span {
+	display: flex;
+    justify-content: center;
+}

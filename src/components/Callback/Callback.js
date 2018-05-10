@@ -14,7 +14,6 @@ class Callback extends Component {
     setIdToken();
 
     this.props.auth.getProfile((err, user) => {
-      console.log(user)
       if (err) {
         console.log(err)
       }

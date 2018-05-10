@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import BarChart from "../BarChart/BarChart.js"
 import PieChart from "../PieChart/PieChart.js"
-
-//import SuggestedStock from "../SuggestedStock/SuggestedStock.js"
 import MyStocks from "../MyStocks/MyStocks.js"
 import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from 'react-redux';
@@ -12,13 +10,10 @@ import './Portfolio.css';
 
 
 class Portfolio extends Component {
-  componentDidMount() {
-    console.log(this.props)
-  }
+
     render() {
         return(
         <div>
-            {/* <Pills />  */}
             <div className="row">
                 <h1 className = "heading">Portfolio</h1>
             </div>
@@ -32,7 +27,6 @@ class Portfolio extends Component {
 			</div>
 			<div className="row">
                 <MyStocks />
-
             </div>
         </div>
         )

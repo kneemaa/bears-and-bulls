@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from 'react-redux';
@@ -6,10 +6,8 @@ import { bindActionCreators } from 'redux';
 import './MyStocks.css';
 
 const MyStocks = props => (
-
 	
 	<div className="my-stock-history col-12">
-		{console.log(props)}
 		<h1>My Stocks</h1>
 		<table className="table table-hover text-center">
 			<thead>
