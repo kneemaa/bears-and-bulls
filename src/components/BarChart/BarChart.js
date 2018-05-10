@@ -20,7 +20,7 @@ class BarChart extends Component {
 		this.getChartData();
 	}
 
-	componentWillUpdate(){
+	componentDidUpdate(){
 		this.props.stocks.charted && this.getChartData()
 	}
 
