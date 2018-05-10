@@ -15,7 +15,7 @@ import history from '../Auth/History'
 
 function mapStateToProps(state) {
   return {
-    user: state.user.id,
+    user: state.user,
     search: state.search,
     stocks: state.stocks
   };
@@ -33,6 +33,11 @@ class Navbar extends Component {
 
 	state = {
 		searchKey: ''
+	}
+
+	componentDidUpdate(){
+		const total_value = this.props.stocks.portfolioValue + this.props.user.accountBalance
+		this.props.userActions.updateTotalBalance(this.props.user.id, total_value)
 	}
 
 	handleChange = event => {
@@ -99,7 +104,7 @@ class Navbar extends Component {
 				                  <Button
 				                    bsStyle="primary"
 				                    className="btn-margin logout-btn"
-				                    onClick={(event) =>{ this.logout.bind(this); this.props.userActions.updateTotalBalance(this.props.user, this.props.stocks.portfolioValue);}}
+				                    onClick={this.logout.bind(this)}
 				                  >
 				                    Log Out
 				                  </Button>
