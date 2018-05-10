@@ -18,7 +18,7 @@ export const getPortfolio = data => {
                 })*/
                 //let symbolsForSocket = stockSymbolArray.join(",")
                 dispatch(getUserPortfolio(data.data))
-                //dispatch(openWebSocket(symbolsForSocket))
+                dispatch(openWebSocket(symbolsForSocket))
             })
 			.catch(err => console.log(err))
 	}
