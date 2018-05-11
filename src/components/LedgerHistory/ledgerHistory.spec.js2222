@@ -1,0 +1,39 @@
+import React from 'react';
+import LedgerHistory from './LedgerHistory';
+import { shallow } from 'enzyme';
+/*import configureStore from 'redux-mock-store'
+import {Provider} from 'react-redux'*/
+
+describe('<LedgerHistory/>', () => {
+	const props = {
+		user: {
+			id: "random-id-2783"
+		},
+		history: [
+		{
+			_id: "random-id-233",
+			symbol: 'SNAP',
+			purchase_price: 25,
+			stock_count: 3,
+			owned_by: "random-id-2783",
+			createdAt: "2018-05-08T22:27:19.512Z"
+		},
+		{
+			_id: "random-id-9823",
+			symbol: 'FB',
+			purchase_price: 127.67,
+			stock_count: 13,
+			owned_by: "random-id-2783",
+			createdAt: "2017-06-228T04:17:19.512Z"
+		}
+		]
+	}
+
+
+	it('should render two rows in the table', () => {
+		const expected = 'History'
+		const wrapper = shallow(<LedgerHistory.WrappedComponent />)
+		const actual = wrapper.find('h1').text()
+		expect(actual).toEqual(expected)
+	})
+})
