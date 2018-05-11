@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
-
 import echarts from 'echarts/lib/echarts';
+import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import 'echarts/lib/chart/pie';
 import 'echarts/lib/component/title';
 
 class PieChart extends Component {
-	state = {
-		data: [
-			{ name: 'AAPL', value: 3000 },
-			{ name: 'IBM', value: 5000 },
-			{ name: 'WFC', value: 8000 },
-			{ name: 'FB', value: 2000 },
-			{ name: 'GOOG', value: 5000 }
-		]
-	}
 
 	componentDidMount(){
-		this.getChartData();
+		this.componentDidUpdate();
 	}
 
-	getChartData = id => {
-		this.createChart();
+	componentDidUpdate(){
+		let data =[];
+		this.props.stocks.map(stock => {
+			let value = stock.market_value*stock.stock_count;
+			data.push({
+				name: stock.symbol,
+				value: value
+			})
+			return data
+		});
+		this.props.stocks && this.createChart(data);
 	}
 
-	createChart = () => {
+	createChart = data => {
+		let title = 'Distribution'
+		if (this.props.stocks.length === 0) {
+			title = 'You do not own any stocks.';
+		}
+
 		let myChart = echarts.init(document.getElementById('pie'));
-		let data = this.state.data;
-
 		myChart.setOption({
 			title: {
-				text: 'Distribution'
+				text: title
 			},
 			tooltip: {
 				trigger: 'item',
@@ -61,11 +65,18 @@ class PieChart extends Component {
 
 		});
 	}
+
 	render() {
 		return (
 			<div id="pie" style={this.props.style}></div>
-		);
+		)
 	}
 }
 
-export default PieChart;
+function mapStateToProps(state) {
+    return {
+      stocks: state.stocks.owned
+    };
+  }
+
+export default connect(mapStateToProps)(PieChart);
