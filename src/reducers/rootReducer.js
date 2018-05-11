@@ -8,12 +8,14 @@
 import { combineReducers } from 'redux';
 import stocks from './stocksReducer';
 import user from './userReducer';
-import search from './searchReducer'
+import search from './searchReducer';
+import contests from './contestReducer';
 
 const rootReducer = combineReducers({
   stocks,
   user,
   search,
+  contests
 });
 
 export default rootReducer;

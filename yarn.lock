@@ -8265,6 +8265,10 @@ sockjs@0.3.18:
     faye-websocket "^0.10.0"
     uuid "^2.0.2"
 
+sort-json-array@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/sort-json-array/-/sort-json-array-0.1.7.tgz#993a5aa05e482740975f2990515300e4dacd639a"
+
 sort-keys@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-1.1.2.tgz#441b6d4d346798f1b4e49e8920adfba0e543f9ad"

@@ -78,6 +78,7 @@
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
     "socket.io-client": "^2.1.0",
+    "sort-json-array": "^0.1.7",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
