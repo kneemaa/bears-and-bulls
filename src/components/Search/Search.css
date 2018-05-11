@@ -5,6 +5,8 @@
 	padding: 8px 15px;
 }
 
+.searchComponent .form-group { margin-bottom: 0;}
+
 .searchInput { width: 200px;}
 
 .search-span {

@@ -25,17 +25,24 @@ class BarChart extends Component {
 	}
 
 	getChartData = () => {
-		API.searchStock(this.props.stocks.charted).then(res => {
+		let symbol;
+		if (this.props.symbol === undefined) {
+			symbol = this.props.stocks.charted
+		} else {
+			symbol = this.props.symbol
+		}
+		console.log(symbol)
+		API.searchStock(symbol).then(res => {
 			// console.log(res);
 			// this.setState({data: res.data["Time Series (Daily)"]}, () => {
-				this.createChart(res.data["Time Series (Daily)"]);
+				this.createChart(symbol, res.data["Time Series (Daily)"]);
 			// });
 		})
 	}
 
-    createChart = (data) => {
+    createChart = (symbol, data) => {
 		let myChart = echarts.init(document.getElementById('bar'));
-		let symbol = this.props.stocks.charted;
+		// let symbol = this.props.stocks.charted;
 		// let data = this.state.data;
 
 		// prices for last 30 days

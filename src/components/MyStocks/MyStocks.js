@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import './MyStocks.css';
 
 const MyStocks = props => (
-	
+
 	<div className="my-stock-history col-12">
 		<h1>My Stocks</h1>
 		<table className="table table-hover text-center">
@@ -19,6 +19,7 @@ const MyStocks = props => (
 					<th>$ Purchase Price</th>
 					<th>$ Total Gain</th>
 					<th>$ Profit/Loss</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>

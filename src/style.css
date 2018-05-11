@@ -33,3 +33,5 @@ button.btn {
   padding: 8px 15px;
   font-size: 11px;
 }
+
+.table td, .table th { vertical-align: middle;}
