@@ -4,6 +4,7 @@ import * as stocksActionCreators from "../../actions/stocksActions"
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './MyStocks.css';
+import sortArray from "sort-json-array"
 
 const MyStocks = props => (
 
@@ -23,7 +24,7 @@ const MyStocks = props => (
 				</tr>
 			</thead>
 			<tbody>
-				{props.stocks.owned.map(stock => (
+				{sortArray(props.stocks.owned, "symbol").map(stock => (
 					//reset the key to be something more unique
 					<tr key={stock.symbol}>
 						<td>{stock.symbol} </td>
