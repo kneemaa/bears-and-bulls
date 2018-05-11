@@ -18,5 +18,8 @@ export default {
         helpBlock: '',
         price: 0,
     },
-    contests: {}
+    contests: {
+        global: []
+    },
+
 }
