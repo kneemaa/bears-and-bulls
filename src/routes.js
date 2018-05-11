@@ -12,6 +12,7 @@ import Profile from './components/Profile/Profile'
 import Portfolio from './components/Portfolio/Portfolio'
 import MyAccount from './components/MyAccount/MyAccount'
 import Pills from './components/Pills/Pills'
+import Contests from './components/Contests/Contests'
 import './style.css'
 
 const auth = new Auth();
@@ -40,6 +41,7 @@ export const makeMainRoutes = () => {
           <Route path="/callback" render={(props) => {
             handleAuthentication(props)
             return <Callback auth={auth} {...props} />}} />
+          <Route path="/contests" render={(props) => <Contests {...props}/>}/>
           <Route exact path="/search" render={(props) =>  <Search auth={auth} {...props}/>}/>
           <Route path="/search/:symbol" render={(props) => <Search auth={auth} {...props}/> }/>
         </div>
