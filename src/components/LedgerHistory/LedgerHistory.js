@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 	  };
 	}
 
-export class LedgerHistory extends Component {
+class LedgerHistory extends Component {
 	state = {history:[]}
 
 	componentDidMount() {
@@ -22,7 +22,6 @@ export class LedgerHistory extends Component {
 			axios.get(`/api/user/${this.props.user.id}/history`)
 				.then(function(res) {
 					self.setState({history:res.data})
-					console.log(self.state)
 					return
 				})
 		}

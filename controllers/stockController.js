@@ -41,9 +41,13 @@ module.exports = {
 				.then(result => res.json(result))
 				.catch(err => console.log(err))
 	},
+	getGlobalContestants: (req, res) => {
+		db.Users.find({competition_opted_out: false})
+			.then(result => res.json(result))
+			.catch(err => console.log(err))
+	},
 	// get portfolio
 	getPortfolio: (req, res) => {
-		console.log(req.params.id)
 			db.Ledger.find({owned_by: req.params.id})
 			.then(ledger => {
 				const consolidated = ledger.reduce((accum, stock) => {
