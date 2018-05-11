@@ -59,15 +59,14 @@ export const updateTotalBalance = (id, total_balance) => {
 
 
 export const toggleOptOut = (id, newValue) => {
-    console.log(newValue)
-    /*return function(dispatch) {
-        let url = `/api/user/${id}/globalOptToggle`
-        axios.post(url, {competition_opted_out: newValue})
+    return function(dispatch) {
+        console.log(newValue, !newValue)
+        axios.post(`/api/user/${id}/update`, {competition_opted_out: !newValue})
             .then(data => {
-                console.log(data)
+                dispatch(getUserSuccess(data.data))
             })
             .catch(err => {
                 console.log(err)
             })
-    }*/
+    }
 }

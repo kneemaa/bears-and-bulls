@@ -11,11 +11,17 @@ class Contests extends Component {
 	componentWillMount() {
 		this.props.contestActions.query_getGlobalContestants()
 	}
-	
+
+	updateOptStatus = () => {
+		this.props.userActions.toggleOptOut(this.props.user.id, this.props.user.opted_out)
+		this.props.contestActions.query_getGlobalContestants()
+	}
 	render() { 
 		return (
 		<div>
-			<Button disabled={this.props.user.id !== 0 ? false : true} onClick={() => this.props.userActions.toggleOptOut(this.props.user.id, this.props.user.competition_opted_out)}>Opt Out</Button>
+			<Button disabled={this.props.user.id !== 0 ? false : true} 
+			onClick={this.updateOptStatus}
+			>{ this.props.user.opted_out ? "Opt Out" : "Opt In"}</Button>
 			<table className="table table-hover mt-5 show-hide">
 				<thead>
 					<tr>

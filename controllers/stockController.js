@@ -42,6 +42,7 @@ module.exports = {
 				.catch(err => console.log(err))
 	},
 	toggleOptOut: (req, res) => {
+		console.log(req.params.id)
 		db.Users.findOneAndUpdate({_id:req.params.id}, req.body)
 				.then(result => res.json(result))
 				.catch(err => console.log(err))
