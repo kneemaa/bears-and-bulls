@@ -1,5 +1,3 @@
-import React from 'react'
-
 import initialState from './initialState';
 import actionTypes from '../actions/actionTypes'
 

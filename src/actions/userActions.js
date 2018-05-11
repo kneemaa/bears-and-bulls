@@ -57,3 +57,16 @@ export const updateTotalBalance = (id, total_balance) => {
     }
 }
 
+
+export const toggleOptOut = (id, newValue) => {
+    return function(dispatch) {
+        console.log(newValue, !newValue)
+        axios.post(`/api/user/${id}/update`, {competition_opted_out: !newValue})
+            .then(data => {
+                dispatch(getUserSuccess(data.data))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
