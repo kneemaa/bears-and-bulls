@@ -48,7 +48,6 @@ module.exports = {
 	},
 	// get portfolio
 	getPortfolio: (req, res) => {
-		console.log(req.params.id)
 			db.Ledger.find({owned_by: req.params.id})
 			.then(ledger => {
 				const consolidated = ledger.reduce((accum, stock) => {

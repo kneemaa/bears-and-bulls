@@ -102,7 +102,6 @@
       ".*": "<rootDir>/node_modules/babel-jest/build/index.js"
     },
     "setupFiles": [
-      "<rootDir>//utilities/testSetup.js",
       "<rootDir>/config/polyfills.js"
     ],
     "moduleNameMapper": {
@@ -131,7 +130,6 @@
     "core-js": "^2.5.6",
     "nodemon": "^1.17.4",
     "react-addons-test-utils": "^15.6.2",
-    "react-css-modules": "^4.7.2",
     "react-test-renderer": "^16.3.2",
     "redux-mock-store": "^1.5.1",
     "redux-saga": "^0.16.0",
