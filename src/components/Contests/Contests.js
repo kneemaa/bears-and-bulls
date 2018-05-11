@@ -1,8 +1,11 @@
+import './Contests.css'
 import React, {Component} from 'react'
 import * as contestActionCreators from "../../actions/contestActions"
+import * as userActionCreators from '../../actions/userActions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Moment from 'react-moment'
+import { Button } from 'react-bootstrap'
 
 class Contests extends Component {
 	componentWillMount() {
@@ -12,6 +15,7 @@ class Contests extends Component {
 	render() { 
 		return (
 		<div>
+			<Button disabled={this.props.user.id !== 0 ? false : true} onClick={() => this.props.userActions.toggleOptOut(this.props.user.id, this.props.user.competition_opted_out)}>Opt Out</Button>
 			<table className="table table-hover mt-5 show-hide">
 				<thead>
 					<tr>
@@ -41,11 +45,13 @@ class Contests extends Component {
 function mapStateToProps(state) {
     return {
       contests: state.contests,
+      user: state.user,
     };
   }
 function mapDispatchToProps(dispatch) {
 	return {
 	  contestActions: bindActionCreators(contestActionCreators, dispatch),
+	  userActions: bindActionCreators(userActionCreators, dispatch),
 	};
 }
 

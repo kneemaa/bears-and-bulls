@@ -20,7 +20,7 @@ export const query_getGlobalContestants = () => {
 					let trimmedResults = []
 
 					results.map(result => {
-						trimmedResults.push({
+						return trimmedResults.push({
 								user: `${result.first_name} ${result.last_name}`,
 								total_balance: result.total_balance,
 								percentage_growth: Number(((result.total_balance - 100000) / 100000).toFixed(5)),
@@ -38,4 +38,3 @@ export const query_getGlobalContestants = () => {
 					console.log(err))
 			}
 }
-
