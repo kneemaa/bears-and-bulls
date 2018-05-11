@@ -13,10 +13,10 @@ export const getPortfolio = data => {
 		const userId = data
 		axios.get(`/api/user/${userId}/portfolio`)
 			.then(data => {
-                /*let stockSymbolArray = data.data.map(stock => {
+                let stockSymbolArray = data.data.map(stock => {
                     return stock.symbol
-                })*/
-                //let symbolsForSocket = stockSymbolArray.join(",")
+                })
+                let symbolsForSocket = stockSymbolArray.join(",")
                 dispatch(getUserPortfolio(data.data))
                 dispatch(openWebSocket(symbolsForSocket))
             })
