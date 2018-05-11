@@ -31,7 +31,6 @@ class BarChart extends Component {
 		} else {
 			symbol = this.props.symbol
 		}
-		console.log(symbol)
 		API.searchStock(symbol).then(res => {
 			// console.log(res);
 			// this.setState({data: res.data["Time Series (Daily)"]}, () => {
