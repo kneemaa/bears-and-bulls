@@ -34,13 +34,6 @@ export const getUserSuccess = data => {
     }
 }
 
-// export const getPortfolioSuccess = data => {
-//     return {
-//         type: "GET_PORTFOLIO_SUCCESS",
-//         stocks: data
-//     }
-// }
-
 export const createUser = data => {
     console.log(data)
     return function(dispatch){
