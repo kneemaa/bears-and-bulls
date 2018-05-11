@@ -18,8 +18,10 @@ export const query = searchKey => {
 					if (price !== undefined) {
 						let data = { price: price, symbol: searchKey, helpBlock: ''}
 						dispatch(searchStock(data))
+						return
 					}
 					dispatch(searchStock({ symbol: searchKey, helpBlock: `${searchKey} is not a valid stock symbol. Please try again.`}))
+					return
 				})
 				.catch(err => 
 					console.log(err))

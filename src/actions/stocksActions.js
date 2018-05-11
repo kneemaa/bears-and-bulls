@@ -9,10 +9,10 @@ import actionTypes from "./actionTypes";
 import axios from 'axios'
 
 export const getPortfolio = data => {
-	return function(dispatch) {
-		const userId = data
-		axios.get(`/api/user/${userId}/portfolio`)
-			.then(data => {
+    return function(dispatch) {
+        const userId = data
+        axios.get(`/api/user/${userId}/portfolio`)
+            .then(data => {
                 let stockSymbolArray = data.data.map(stock => {
                     return stock.symbol
                 })
@@ -20,8 +20,8 @@ export const getPortfolio = data => {
                 dispatch(getUserPortfolio(data.data))
                 dispatch(openWebSocket(symbolsForSocket))
             })
-			.catch(err => console.log(err))
-	}
+            .catch(err => console.log(err))
+    }
 }
 
 
@@ -54,8 +54,8 @@ export const openWebSocket = data => {
 }
 
 export const updateChart = data => {
-	return {
-		type: actionTypes.UPDATE_CHART,
-		data: data
-	}
+    return {
+        type: actionTypes.UPDATE_CHART,
+        data: data
+    }
 }
