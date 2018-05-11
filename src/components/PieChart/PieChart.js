@@ -14,7 +14,7 @@ class PieChart extends Component {
 	componentDidUpdate(){
 		let data =[];
 		this.props.stocks.map(stock => {
-			let value = stock.market_value*stock.stock_count;
+			let value = stock.market_value;
 			data.push({
 				name: stock.symbol,
 				value: value
