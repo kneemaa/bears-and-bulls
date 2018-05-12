@@ -9,7 +9,7 @@ export default {
         email: ""
     },
     stocks: {
-            portfolioValue: 20000,
+            portfolioValue: 0,
             owned: [],
 			charted: "IBM"
     },

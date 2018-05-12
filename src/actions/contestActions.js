@@ -20,13 +20,15 @@ export const query_getGlobalContestants = () => {
 					let trimmedResults = []
 
 					results.map(result => {
+						let days_since = moment().diff(result.createdAt, 'days')
+						let average_growth = Number((result.total_balance - 100000) / 100000) / days_since
 						return trimmedResults.push({
 								user: `${result.first_name} ${result.last_name}`,
 								total_balance: result.total_balance,
-								percentage_growth: Number(((result.total_balance - 100000) / 100000).toFixed(5)),
+								percentage_growth: Number((result.total_balance - 100000) / 100000),
 								last_login: result.updatedAt,
 								days_since_signup: moment().diff(result.createdAt, 'days'),
-								average_growth: ((result.total_balance - 100000) / 100000).toFixed(5) / moment().diff(result.createdAt, 'days') ? ((result.total_balance - 100000) / 100000).toFixed(5) / moment().diff(result.createdAt, 'days') : 0,
+								average_growth: days_since > 0 ? average_growth : 0,
 							})
 					})
 
