@@ -22,11 +22,6 @@ export default function stocksReducer(state = initialState.stocks, action) {
         return utils.stateUpdateMath(action.data, state)
 	}
 
-	  case actionTypes.UPDATE_CHART: {
-		  return {
-			  ...state, charted: action.data
-		  }
-	  }
       default: {
         return state;
       }

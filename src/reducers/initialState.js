@@ -11,7 +11,6 @@ export default {
     stocks: {
             portfolioValue: 20000,
             owned: [],
-			charted: "IBM"
     },
     search: {
         symbol: '',
@@ -21,5 +20,6 @@ export default {
     contests: {
         global: []
     },
+    charted: "ibm"
 
 }

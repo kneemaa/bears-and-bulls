@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as stocksActionCreators from "../../actions/stocksActions"
+import * as chartActionCreators from "../../actions/chartActions"
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './MyStocks.css';
@@ -34,7 +36,7 @@ const MyStocks = props => (
 						<td>{stock.purchase_price} </td>
 						<td>{stock.total_gain} </td>
 						<td>{stock.profit_loss} </td>
-						<td><Button onClick={() => props.stocksActions.updateChart(stock.symbol)}>Chart</Button></td>
+						<td><Button onClick={() => props.chartActions.updateChart(stock.symbol)}>Chart</Button></td>
 					</tr>
 				))}
 			</tbody>
@@ -50,7 +52,8 @@ function mapStateToProps(state) {
   }
   function mapDispatchToProps(dispatch) {
     return {
-      stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+			stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+			chartActions: bindActionCreators(chartActionCreators, dispatch)
 
     };
   }
