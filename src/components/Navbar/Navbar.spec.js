@@ -7,8 +7,8 @@ describe('<Navbar />', () => {
 	it('should get this', () => {
 		const expected = 'Home'
 		const wrapper = shallow(<Navbar.WrappedComponent {...props}/>)
-		const getLink = wrapper.find('.navbar-link').getElements()[0]
-		const actual = shallow(getLink).text()
+		const find = wrapper.find('.navbar-link').getElements()[0]
+		const actual = shallow(find).text()
 		expect(actual).toEqual(expected)
 	})
 })
