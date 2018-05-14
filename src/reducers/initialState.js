@@ -9,7 +9,7 @@ export default {
         email: ""
     },
     stocks: {
-            portfolioValue: 20000,
+            portfolioValue: 0,
             owned: [],
     },
     search: {
@@ -20,6 +20,6 @@ export default {
     contests: {
         global: []
     },
-    charted: "ibm"
+    charted: "IBM"
 
 }
