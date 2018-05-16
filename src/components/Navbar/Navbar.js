@@ -48,7 +48,12 @@ class Navbar extends Component {
 		event.preventDefault()
 		let searchKey = this.state.searchKey.trim().toUpperCase()
 		this.props.searchActions.query(searchKey)
+		this.clearSearch()
 		history.push('/search')
+	}
+
+	clearSearch = () => {
+		this.setState({searchKey: ''})
 	}
 
 	login = () => {
