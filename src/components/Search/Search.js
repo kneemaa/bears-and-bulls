@@ -48,6 +48,7 @@ class Search extends Component {
 		event.preventDefault()
 		let searchSymbol = this.state.searchSymbol.trim().toUpperCase()
 		this.props.searchActions.query(searchSymbol)
+		this.setState({searchSymbol: ''})
 	}
 
 	handleSelect = (key) => {
@@ -59,6 +60,9 @@ class Search extends Component {
 	}
 
 	handleQuantityChange = (event) => {
+		if (isNaN(event.target.value)) {
+			return
+		}
 		this.setState({quantity: Number(event.target.value)})
 		let subtotal = event.target.value * this.props.search.price
 		this.setState({ subtotal: Number(subtotal.toFixed(2)) })
@@ -71,16 +75,6 @@ class Search extends Component {
 			    }
 			    return 'error'
 			  }
-		return null
-	}
-
-	validateQuantity = () => {
-		if (this.state.quantity.length) {
-			    if (isNaN(this.state.quantity)) {
-			      return 'error'
-			    }
-			    return null
-			}
 		return null
 	}
 
@@ -179,7 +173,7 @@ class Search extends Component {
 									<th>{this.props.search.price}</th>
 									<th>{this.getOwnedCount()}</th>
 									<th>
-										<FormGroup controlId='formValidationError' validationState={this.validateQuantity()} >
+										<FormGroup>
 											<FormControl value={this.state.quantity} className='quantityInput' onChange={this.handleQuantityChange} componentClass='input' />
 										</FormGroup>
 									</th>
