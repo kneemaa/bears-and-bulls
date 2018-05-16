@@ -27,7 +27,7 @@ class PieChart extends Component {
 	createChart = data => {
 		let title = 'Distribution'
 		if (this.props.stocks.length === 0) {
-			title = 'You do not own any stocks.';
+			title = 'You either are not logged in\n or do not own stock yet.';
 		}
 
 		let myChart = echarts.init(document.getElementById('pie'));

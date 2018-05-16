@@ -13,15 +13,6 @@ describe('<Footer />', () => {
 		expect(expected).toEqual(actual)
 	})
 
-	it('render "References" in the first h5 header', () => {
-		const expected = "References"
-
-		const wrapper = shallow(<Footer />)
-		const header = wrapper.find('h5').getElements()[1]
-		const actual = shallow(header).text()
-		expect(expected).toEqual(actual)
-	})
-
 	it('set the github project url in the 5th `a` tag', () => {
 		const expected = 1
 
