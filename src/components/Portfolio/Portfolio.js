@@ -39,7 +39,7 @@ class Portfolio extends Component {
 function mapStateToProps(state) {
     return {  
       charted: state.charted,
-      stocks: state.stocks
+    //   stocks: state.stocks
     };
   }
   function mapDispatchToProps(dispatch) {

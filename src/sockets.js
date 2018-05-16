@@ -1,7 +1,6 @@
 import io from "socket.io-client"
 import actionTypes from "./actions/actionTypes";
 
-
 const socketMiddleware = store => next => action => {
 
     // listen for action when we get users portfolio
@@ -19,14 +18,12 @@ const socketMiddleware = store => next => action => {
         // do something with data
         let stockInfo = JSON.parse(data)
         let {symbol, lastSalePrice} = stockInfo
-        console.log(symbol)
-        console.log(lastSalePrice)
 
-        // dispatch data received to update stocks data in redux
         store.dispatch({
             type: actionTypes.STOCK_DATA_RECEIVED,
             data: {symbol: symbol, lastPrice: lastSalePrice}
         })
+    
     })
     }
     // keep the midleware going!!
