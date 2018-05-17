@@ -10,12 +10,14 @@ import stocks from './stocksReducer';
 import user from './userReducer';
 import search from './searchReducer';
 import contests from './contestReducer';
+import charted from './chartReducer'
 
 const rootReducer = combineReducers({
   stocks,
   user,
   search,
-  contests
+  contests,
+  charted
 });
 
 export default rootReducer;

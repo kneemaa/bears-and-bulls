@@ -52,6 +52,6 @@ export const stateUpdateMath = (stockInfo, oldState) => {
     return {
         portfolioValue: portfolioValueForState,
         owned: newStocksForState,
-        charted: oldState.charted
+        // charted: oldState.charted
     }
 }

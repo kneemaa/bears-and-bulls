@@ -17,20 +17,25 @@ class BarChart extends Component {
 	}
 
 	componentDidMount(){
+		console.log(this.props)
 		this.getChartData();
 	}
 
+	// static getDerivedStateFromProps(nextProps, prevState){
+	// 	return null
+	// }
 	componentDidUpdate(){
-		this.props.stocks.charted && this.getChartData()
+		console.log(this.props)
+		this.props.symbol && this.getChartData()
 	}
 
 	getChartData = () => {
-		let symbol;
-		if (this.props.symbol === undefined) {
-			symbol = this.props.stocks.charted
-		} else {
-			symbol = this.props.symbol
-		}
+		let symbol = this.props.symbol
+		// if (this.props.symbol === undefined) {
+		// 	symbol = this.props.symbol
+		// } else {
+		// 	symbol = this.props.symbol
+		// }
 		API.searchStock(symbol).then(res => {
 			// console.log(res);
 			// this.setState({data: res.data["Time Series (Daily)"]}, () => {
@@ -173,16 +178,17 @@ class BarChart extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-      stocks: state.stocks,
-    };
-  }
-  function mapDispatchToProps(dispatch) {
-    return {
-      stocksActions: bindActionCreators(stocksActionCreators, dispatch),
+// function mapStateToProps(state) {
+//     return {
+// 	  stocks: state.stocks,
+//     };
+//   }
+//   function mapDispatchToProps(dispatch) {
+//     return {
+//       stocksActions: bindActionCreators(stocksActionCreators, dispatch),
 
-    };
-  }
+//     };
+//   }
 
-  export default connect(mapStateToProps, mapDispatchToProps)(BarChart);
+//   export default connect(mapStateToProps, mapDispatchToProps)(BarChart);
+  export default BarChart
